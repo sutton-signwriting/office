@@ -1,0 +1,176 @@
+import {cp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import path from 'node:path';
+
+const root = process.cwd();
+const sourceDir = path.join(root, 'site');
+const outputDir = path.join(root, 'dist');
+const readJson = async (file) => JSON.parse(await readFile(file, 'utf8'));
+
+const localeConfig = await readJson(path.join(sourceDir, 'data', 'locales.json'));
+const locales = localeConfig.locales;
+const localeCodes = locales.map((locale) => locale.code);
+const iso = await readJson(path.join(sourceDir, 'vendor', 'iso_3166-1.json'));
+const cldr = await readJson(path.join(sourceDir, 'vendor', 'cldr-territory-info.json'));
+const signwritingCountries = await readJson(path.join(sourceDir, 'vendor', 'signwriting-countries.json'));
+const signwritingLanguages = await readJson(path.join(sourceDir, 'vendor', 'signwriting-languages.json'));
+const office = await readJson(path.join(sourceDir, 'data', 'office.json'));
+const statusWeight = {official: 4, de_facto_official: 3, official_regional: 2, official_minority: 1};
+
+function territoryLanguages(code) {
+  const population = cldr.supplemental.territoryInfo[code]?.languagePopulation || {};
+  const merged = new Map();
+  for (const [rawCode, details] of Object.entries(population)) {
+    const languageCode = rawCode.split('_')[0];
+    const next = {
+      code: languageCode,
+      populationPercent: Number(details._populationPercent || 0),
+      officialStatus: details._officialStatus || null
+    };
+    const previous = merged.get(languageCode);
+    if (!previous || next.populationPercent > previous.populationPercent) merged.set(languageCode, next);
+  }
+  return [...merged.values()]
+    .filter((language) => language.populationPercent >= 0.5 || language.officialStatus)
+    .sort((a, b) => {
+      const officialDifference = (statusWeight[b.officialStatus] || 0) - (statusWeight[a.officialStatus] || 0);
+      return officialDifference || b.populationPercent - a.populationPercent;
+    })
+    .slice(0, 8);
+}
+
+const countries = iso['3166-1'].map((country) => {
+  const code = country.alpha_2;
+  const projectCountry = signwritingCountries[code] || {};
+  const languages = territoryLanguages(code);
+  for (const languageCode of projectCountry.language_spoken || []) {
+    if (!languages.some((language) => language.code === languageCode)) {
+      languages.push({code: languageCode, populationPercent: null, officialStatus: null});
+    }
+  }
+  return {
+    code,
+    name: country.common_name || country.name,
+    languages: languages.slice(0, 8),
+    signLanguages: (projectCountry.language_signed || []).map((languageCode) => ({
+      code: languageCode,
+      name: signwritingLanguages[languageCode]?.name || languageCode
+    }))
+  };
+}).sort((a, b) => a.name.localeCompare(b.name));
+
+countries.unshift({
+  code: 'WO',
+  name: 'International',
+  languages: localeCodes.map((code) => ({code, populationPercent: null, officialStatus: null})),
+  signLanguages: []
+});
+
+const fallback = await readJson(path.join(sourceDir, 'i18n', 'en.json'));
+const requiredKeys = new Set(Object.keys(fallback));
+for (const contact of office.contacts) {
+  requiredKeys.add('contact.' + contact.id + '.title');
+  requiredKeys.add('contact.' + contact.id + '.description');
+}
+for (const bot of office.bots) {
+  if (!bot.name || !bot.title || !bot.initials) throw new Error('Incomplete bot identity: ' + bot.id);
+}
+for (const department of office.departments) {
+  requiredKeys.add('department.' + department.id + '.title');
+  requiredKeys.add('department.' + department.id + '.description');
+}
+for (const campaign of office.campaigns) {
+  requiredKeys.add('campaign.' + campaign.id + '.title');
+  requiredKeys.add('campaign.' + campaign.id + '.description');
+}
+for (const resource of office.resources) {
+  requiredKeys.add('resource.' + resource.id + '.title');
+  requiredKeys.add('resource.' + resource.id + '.description');
+}
+const localeIds = new Set();
+const localeAliases = new Set();
+for (const locale of locales) {
+  if (localeIds.has(locale.code)) throw new Error('Duplicate locale code: ' + locale.code);
+  localeIds.add(locale.code);
+  if (!['ltr', 'rtl'].includes(locale.dir)) throw new Error('Invalid text direction: ' + locale.code);
+  if (!locale.spokenCodes?.length) throw new Error('Locale needs spokenCodes: ' + locale.code);
+  for (const alias of locale.aliases || []) {
+    const normalized = alias.toLowerCase();
+    if (localeAliases.has(normalized)) throw new Error('Duplicate locale alias: ' + alias);
+    localeAliases.add(normalized);
+  }
+  for (const country of locale.suggestedCountries || []) {
+    if (!/^[A-Z]{2}$/.test(country)) throw new Error('Invalid suggested country for ' + locale.code + ': ' + country);
+  }
+  const translations = await readJson(path.join(sourceDir, locale.catalog));
+  const missing = [...requiredKeys].filter((key) => !translations[key]);
+  const extra = Object.keys(translations).filter((key) => !requiredKeys.has(key));
+  if (missing.length || extra.length) {
+    throw new Error(locale.code + ' translation mismatch. Missing: ' + missing.join(', ') + '. Extra: ' + extra.join(', '));
+  }
+  for (const key of requiredKeys) {
+    const sourcePlaceholders = [...fallback[key].matchAll(/\{[a-zA-Z][a-zA-Z0-9]*\}/g)].map((match) => match[0]).sort();
+    const translatedPlaceholders = [...translations[key].matchAll(/\{[a-zA-Z][a-zA-Z0-9]*\}/g)].map((match) => match[0]).sort();
+    if (sourcePlaceholders.join('|') !== translatedPlaceholders.join('|')) {
+      throw new Error(locale.code + ' placeholder mismatch for ' + key);
+    }
+  }
+}
+if (!localeIds.has(localeConfig.defaultLocale)) throw new Error('Unknown default locale');
+
+const botIds = new Set(office.bots.map((bot) => bot.id));
+const departmentIds = new Set(office.departments.map((department) => department.id));
+const campaignIds = new Set(office.campaigns.map((campaign) => campaign.id));
+for (const department of office.departments) {
+  if (!botIds.has(department.head)) throw new Error('Unknown department head: ' + department.head);
+  for (const campaign of department.campaigns) {
+    if (!campaignIds.has(campaign)) throw new Error('Unknown campaign: ' + campaign);
+  }
+}
+for (const bot of office.bots) {
+  if (bot.headOf && !departmentIds.has(bot.headOf)) throw new Error('Unknown home department: ' + bot.headOf);
+  for (const membership of bot.memberOf) {
+    if (!departmentIds.has(membership)) throw new Error('Unknown bot membership: ' + membership);
+  }
+  if (bot.image) await readFile(path.join(sourceDir, bot.image));
+}
+
+await rm(outputDir, {recursive: true, force: true});
+await mkdir(outputDir, {recursive: true});
+await cp(sourceDir, outputDir, {
+  recursive: true,
+  filter(source) {
+    const relative = path.relative(sourceDir, source);
+    return relative !== 'vendor'
+      && relative !== 'README.md'
+      && relative !== path.join('assets', 'front-office-ensemble.png');
+  }
+});
+await writeFile(path.join(outputDir, 'data', 'countries.json'), JSON.stringify(countries), 'utf8');
+
+const revisionHash = createHash('sha256');
+for (const file of [
+  'app.js',
+  'styles.css',
+  'data/office.json',
+  'data/locales.json',
+  ...locales.map((locale) => locale.catalog),
+  ...office.bots.map((bot) => bot.image).filter(Boolean)
+]) {
+  revisionHash.update(await readFile(path.join(sourceDir, file)));
+}
+revisionHash.update(JSON.stringify(countries));
+const revision = revisionHash.digest('hex').slice(0, 12);
+
+const indexPath = path.join(outputDir, 'index.html');
+const index = (await readFile(indexPath, 'utf8'))
+  .replace('href="styles.css"', 'href="styles.css?v=' + revision + '"')
+  .replace('src="app.js"', 'src="app.js?v=' + revision + '"');
+await writeFile(indexPath, index);
+
+const localAssets = [...index.matchAll(/(?:href|src)="([^"#]+)"/g)]
+  .map((match) => match[1])
+  .filter((reference) => !reference.includes(':'));
+for (const reference of localAssets) await readFile(path.join(outputDir, reference.split('?')[0]));
+
+console.log('Built public office ' + revision + ': ' + countries.length + ' locations, ' + localeCodes.length + ' complete interface languages, ' + office.bots.length + ' bots, ' + office.departments.length + ' departments.');

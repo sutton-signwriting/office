@@ -1,0 +1,722 @@
+{
+  "ads": {
+    "name": "Adamorobe Sign Language",
+    "sign": true
+  },
+  "aed": {
+    "name": "Argentine Sign Language",
+    "sign": true
+  },
+  "aen": {
+    "name": "Armenian Sign Language",
+    "sign": true
+  },
+  "af": {
+    "name": "Afrikaans",
+    "sign": false
+  },
+  "afg": {
+    "name": "Afghan Sign Language",
+    "sign": true
+  },
+  "ar": {
+    "name": "Arabic",
+    "sign": false
+  },
+  "ase": {
+    "name": "American Sign Language",
+    "sign": true
+  },
+  "asf": {
+    "name": "Australian Sign Language",
+    "sign": true
+  },
+  "asp": {
+    "name": "Algerian Sign Language",
+    "sign": true
+  },
+  "asq": {
+    "name": "Austrian Sign Language",
+    "sign": true
+  },
+  "asw": {
+    "name": "Australian Aborigines Sign Language",
+    "sign": true
+  },
+  "bfi": {
+    "name": "British Sign Language",
+    "sign": true
+  },
+  "bfk": {
+    "name": "Ban Khor Sign Language",
+    "sign": true
+  },
+  "bn": {
+    "name": "Bengali",
+    "sign": false
+  },
+  "bog": {
+    "name": "Bamako Sign Language",
+    "sign": true
+  },
+  "bqn": {
+    "name": "Bulgarian Sign Language",
+    "sign": true
+  },
+  "bqy": {
+    "name": "Bengkala Sign Language",
+    "sign": true
+  },
+  "bvl": {
+    "name": "Bolivian Sign Language",
+    "sign": true
+  },
+  "bzs": {
+    "name": "Brazilian Sign Language",
+    "sign": true
+  },
+  "ca": {
+    "name": "Catalan",
+    "sign": false
+  },
+  "cds": {
+    "name": "Chadian Sign Language",
+    "sign": true
+  },
+  "cmn": {
+    "name": "Mandarin Chinese",
+    "sign": false
+  },
+  "cs": {
+    "name": "Czech",
+    "sign": false
+  },
+  "csc": {
+    "name": "Catalan Sign Language",
+    "sign": true
+  },
+  "csd": {
+    "name": "Chiangmai Sign Language",
+    "sign": true
+  },
+  "cse": {
+    "name": "Czech Sign Language",
+    "sign": true
+  },
+  "csf": {
+    "name": "Cuba Sign Language",
+    "sign": true
+  },
+  "csg": {
+    "name": "Chilean Sign Language",
+    "sign": true
+  },
+  "csl": {
+    "name": "Chinese Sign Language",
+    "sign": true
+  },
+  "csn": {
+    "name": "Colombian Sign Language",
+    "sign": true
+  },
+  "csq": {
+    "name": "Croatia Sign Language",
+    "sign": true
+  },
+  "csr": {
+    "name": "Costa Rican Sign Language",
+    "sign": true
+  },
+  "da": {
+    "name": "Danish",
+    "sign": false
+  },
+  "de": {
+    "name": "German",
+    "sign": false
+  },
+  "doq": {
+    "name": "Dominican Sign Language",
+    "sign": true
+  },
+  "dse": {
+    "name": "Dutch Sign Language",
+    "sign": true
+  },
+  "dsl": {
+    "name": "Danish Sign Language",
+    "sign": true
+  },
+  "ecs": {
+    "name": "Ecuadorian Sign Language",
+    "sign": true
+  },
+  "en": {
+    "name": "English",
+    "sign": false
+  },
+  "eo": {
+    "name": "Esperanto",
+    "sign": false
+  },
+  "es": {
+    "name": "Spanish",
+    "sign": false
+  },
+  "esl": {
+    "name": "Egypt Sign Language",
+    "sign": true
+  },
+  "esn": {
+    "name": "Salvadoran Sign Language",
+    "sign": true
+  },
+  "eso": {
+    "name": "Estonian Sign Language",
+    "sign": true
+  },
+  "eth": {
+    "name": "Ethiopian Sign Language",
+    "sign": true
+  },
+  "fa": {
+    "name": "Persian",
+    "sign": false
+  },
+  "fcs": {
+    "name": "Quebec Sign Language",
+    "sign": true
+  },
+  "fi": {
+    "name": "Finnish",
+    "sign": false
+  },
+  "fr": {
+    "name": "French",
+    "sign": false
+  },
+  "fse": {
+    "name": "Finnish Sign Language",
+    "sign": true
+  },
+  "fsl": {
+    "name": "French Sign Language",
+    "sign": true
+  },
+  "fss": {
+    "name": "Finland-Swedish Sign Language",
+    "sign": true
+  },
+  "gds": {
+    "name": "Ghandruk Sign Language",
+    "sign": true
+  },
+  "gse": {
+    "name": "Ghanaian Sign Language",
+    "sign": true
+  },
+  "gsg": {
+    "name": "German Sign Language",
+    "sign": true
+  },
+  "gsm": {
+    "name": "Guatemalan Sign Language",
+    "sign": true
+  },
+  "gss": {
+    "name": "Greek Sign Language",
+    "sign": true
+  },
+  "gus": {
+    "name": "Guinean Sign Language",
+    "sign": true
+  },
+  "hab": {
+    "name": "Hanoi Sign Language",
+    "sign": true
+  },
+  "haf": {
+    "name": "Haiphong Sign Language",
+    "sign": true
+  },
+  "hds": {
+    "name": "Honduras Sign Language",
+    "sign": true
+  },
+  "hi": {
+    "name": "Hindi",
+    "sign": false
+  },
+  "hks": {
+    "name": "Hong Kong Sign Language",
+    "sign": true
+  },
+  "hos": {
+    "name": "Ho Chi Minh City Sign Language",
+    "sign": true
+  },
+  "hsh": {
+    "name": "Hungarian Sign Language",
+    "sign": true
+  },
+  "hsl": {
+    "name": "Hausa Sign Language",
+    "sign": true
+  },
+  "ht": {
+    "name": "Haitian",
+    "sign": false
+  },
+  "hu": {
+    "name": "Hungarian",
+    "sign": false
+  },
+  "icl": {
+    "name": "Icelandic Sign Language",
+    "sign": true
+  },
+  "id": {
+    "name": "Indonesian",
+    "sign": false
+  },
+  "ils": {
+    "name": "International Sign",
+    "sign": true
+  },
+  "inl": {
+    "name": "Indonesian Sign Language",
+    "sign": true
+  },
+  "ins": {
+    "name": "Indian Sign Language",
+    "sign": true
+  },
+  "is": {
+    "name": "Icelandic",
+    "sign": false
+  },
+  "ise": {
+    "name": "Italian Sign Language",
+    "sign": true
+  },
+  "isg": {
+    "name": "Irish Sign Language",
+    "sign": true
+  },
+  "isr": {
+    "name": "Israeli Sign Language",
+    "sign": true
+  },
+  "it": {
+    "name": "Italian",
+    "sign": false
+  },
+  "ja": {
+    "name": "Japanese",
+    "sign": false
+  },
+  "jcs": {
+    "name": "Jamaican Country Sign Language",
+    "sign": true
+  },
+  "jhs": {
+    "name": "Jhankot Sign Language",
+    "sign": true
+  },
+  "jls": {
+    "name": "Jamaican Sign Language",
+    "sign": true
+  },
+  "jos": {
+    "name": "Jordanian Sign Language",
+    "sign": true
+  },
+  "jsl": {
+    "name": "Japanese Sign Language",
+    "sign": true
+  },
+  "jus": {
+    "name": "Jumla Sign Language",
+    "sign": true
+  },
+  "jv": {
+    "name": "Javanese",
+    "sign": false
+  },
+  "kgi": {
+    "name": "Selangor Sign Language",
+    "sign": true
+  },
+  "ko": {
+    "name": "Korean",
+    "sign": false
+  },
+  "kvk": {
+    "name": "Korean Sign Language",
+    "sign": true
+  },
+  "lbs": {
+    "name": "Libyan Sign Language",
+    "sign": true
+  },
+  "lls": {
+    "name": "Lithuanian Sign Language",
+    "sign": true
+  },
+  "lsg": {
+    "name": "Lyons Sign Language",
+    "sign": true
+  },
+  "lsl": {
+    "name": "Latvian Sign Language",
+    "sign": true
+  },
+  "lso": {
+    "name": "Laos Sign Language",
+    "sign": true
+  },
+  "lsp": {
+    "name": "Panamanian Sign Language",
+    "sign": true
+  },
+  "lst": {
+    "name": "Trinidad and Tobago Sign Language",
+    "sign": true
+  },
+  "lsy": {
+    "name": "Mauritian Sign Language",
+    "sign": true
+  },
+  "mdl": {
+    "name": "Maltese Sign Language",
+    "sign": true
+  },
+  "mfs": {
+    "name": "Mexican Sign Language",
+    "sign": true
+  },
+  "mis": {
+    "name": "Myanmar Sign Language",
+    "sign": true
+  },
+  "msd": {
+    "name": "Yucatec Maya Sign Language",
+    "sign": true
+  },
+  "msr": {
+    "name": "Mongolian Sign Language",
+    "sign": true
+  },
+  "mt": {
+    "name": "Maltese",
+    "sign": false
+  },
+  "my": {
+    "name": "Burmese",
+    "sign": false
+  },
+  "mzc": {
+    "name": "Madagascar Sign Language",
+    "sign": true
+  },
+  "mzg": {
+    "name": "Monastic Sign Language",
+    "sign": true
+  },
+  "mzy": {
+    "name": "Mozambican Sign Language",
+    "sign": true
+  },
+  "nbs": {
+    "name": "Namibian Sign Language",
+    "sign": true
+  },
+  "ncs": {
+    "name": "Nicaraguan Sign Language",
+    "sign": true
+  },
+  "nl": {
+    "name": "Dutch",
+    "sign": false
+  },
+  "no": {
+    "name": "Norwegian",
+    "sign": false
+  },
+  "nsi": {
+    "name": "Nigerian Sign Language",
+    "sign": true
+  },
+  "nsl": {
+    "name": "Norwegian Sign Language",
+    "sign": true
+  },
+  "nsp": {
+    "name": "Nepalese Sign Language",
+    "sign": true
+  },
+  "nsr": {
+    "name": "Maritime Sign Language",
+    "sign": true
+  },
+  "nzs": {
+    "name": "New Zealand Sign Language",
+    "sign": true
+  },
+  "pa": {
+    "name": "Punjabi",
+    "sign": false
+  },
+  "pks": {
+    "name": "Pakistan Sign Language",
+    "sign": true
+  },
+  "pl": {
+    "name": "Polish",
+    "sign": false
+  },
+  "prl": {
+    "name": "Peruvian Sign Language",
+    "sign": true
+  },
+  "prz": {
+    "name": "Providencia Sign Language",
+    "sign": true
+  },
+  "psc": {
+    "name": "Persian Sign Language",
+    "sign": true
+  },
+  "psd": {
+    "name": "Plains Indian Sign Language",
+    "sign": true
+  },
+  "psg": {
+    "name": "Penang Sign Language",
+    "sign": true
+  },
+  "psl": {
+    "name": "Puerto Rican Sign Language",
+    "sign": true
+  },
+  "pso": {
+    "name": "Polish Sign Language",
+    "sign": true
+  },
+  "psp": {
+    "name": "Philippine Sign Language",
+    "sign": true
+  },
+  "psr": {
+    "name": "Portuguese Sign Language",
+    "sign": true
+  },
+  "pt": {
+    "name": "Portuguese",
+    "sign": false
+  },
+  "pys": {
+    "name": "Paraguayan Sign Language",
+    "sign": true
+  },
+  "qqq": {
+    "name": "pseudo-language",
+    "sign": false
+  },
+  "rms": {
+    "name": "Romanian Sign Language",
+    "sign": true
+  },
+  "ro": {
+    "name": "Romanian",
+    "sign": false
+  },
+  "rsi": {
+    "name": "Rennellese Sign Language",
+    "sign": true
+  },
+  "rsl": {
+    "name": "Russian Sign Language",
+    "sign": true
+  },
+  "ru": {
+    "name": "Russian",
+    "sign": false
+  },
+  "sdl": {
+    "name": "Saudi Arabian Sign Language",
+    "sign": true
+  },
+  "sfb": {
+    "name": "French Belgian Sign Language",
+    "sign": true
+  },
+  "sfs": {
+    "name": "South African Sign Language",
+    "sign": true
+  },
+  "sgg": {
+    "name": "Swiss-German Sign Language",
+    "sign": true
+  },
+  "sgx": {
+    "name": "Sierra Leone Sign Language",
+    "sign": true
+  },
+  "sk": {
+    "name": "Slovak",
+    "sign": false
+  },
+  "sl": {
+    "name": "Slovenian",
+    "sign": false
+  },
+  "slf": {
+    "name": "Swiss-Italian Sign Language",
+    "sign": true
+  },
+  "sls": {
+    "name": "Singapore Sign Language",
+    "sign": true
+  },
+  "sqk": {
+    "name": "Albanian Sign Language",
+    "sign": true
+  },
+  "sqs": {
+    "name": "Sri Lankan Sign Language",
+    "sign": true
+  },
+  "ssp": {
+    "name": "Spanish Sign Language",
+    "sign": true
+  },
+  "ssr": {
+    "name": "Swiss-French Sign Language",
+    "sign": true
+  },
+  "sv": {
+    "name": "Swedish",
+    "sign": false
+  },
+  "svk": {
+    "name": "Slovakian Sign Language",
+    "sign": true
+  },
+  "sw": {
+    "name": "Swahili",
+    "sign": false
+  },
+  "swl": {
+    "name": "Swedish Sign Language",
+    "sign": true
+  },
+  "syy": {
+    "name": "Al-Sayyid Bedouin Sign Language",
+    "sign": true
+  },
+  "ta": {
+    "name": "Tamil",
+    "sign": false
+  },
+  "th": {
+    "name": "Thai",
+    "sign": false
+  },
+  "tr": {
+    "name": "Turkish",
+    "sign": false
+  },
+  "tse": {
+    "name": "Tunisian Sign Language",
+    "sign": true
+  },
+  "tsm": {
+    "name": "Turkish Sign Language",
+    "sign": true
+  },
+  "tsq": {
+    "name": "Thai Sign Language",
+    "sign": true
+  },
+  "tss": {
+    "name": "Taiwan Sign Language",
+    "sign": true
+  },
+  "tsy": {
+    "name": "Tebul Sign Language",
+    "sign": true
+  },
+  "tza": {
+    "name": "Tanzanian Sign Language",
+    "sign": true
+  },
+  "ugn": {
+    "name": "Ugandan Sign Language",
+    "sign": true
+  },
+  "ugy": {
+    "name": "Uruguayan Sign Language",
+    "sign": true
+  },
+  "ukl": {
+    "name": "Ukrainian Sign Language",
+    "sign": true
+  },
+  "uks": {
+    "name": "Urubú-Kaapor Sign Language",
+    "sign": true
+  },
+  "vgt": {
+    "name": "Flemish Sign Language",
+    "sign": true
+  },
+  "vi": {
+    "name": "Vietnamese",
+    "sign": false
+  },
+  "vsi": {
+    "name": "Moldova Sign Language",
+    "sign": true
+  },
+  "vsl": {
+    "name": "Venezuelan Sign Language",
+    "sign": true
+  },
+  "vsv": {
+    "name": "Valencian Sign Language",
+    "sign": true
+  },
+  "xki": {
+    "name": "Kenyan Sign Language",
+    "sign": true
+  },
+  "xml": {
+    "name": "Malaysian Sign Language",
+    "sign": true
+  },
+  "xms": {
+    "name": "Moroccan Sign Language",
+    "sign": true
+  },
+  "yds": {
+    "name": "Yiddish Sign Language",
+    "sign": true
+  },
+  "ysl": {
+    "name": "Yugoslavian Sign Language",
+    "sign": true
+  },
+  "zh": {
+    "name": "Chinese",
+    "sign": false
+  },
+  "zib": {
+    "name": "Zimbabwe Sign Language",
+    "sign": true
+  },
+  "zsl": {
+    "name": "Zambian Sign Language",
+    "sign": true
+  }
+}

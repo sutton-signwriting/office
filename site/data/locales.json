@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "defaultLocale": "en",
+  "locales": [
+    {
+      "code": "en",
+      "bcp47": "en",
+      "english": "English",
+      "native": "English",
+      "dir": "ltr",
+      "spokenCodes": ["en"],
+      "catalog": "i18n/en.json",
+      "reviewStatus": "source"
+    },
+    {
+      "code": "es",
+      "bcp47": "es",
+      "english": "Spanish",
+      "native": "Español",
+      "dir": "ltr",
+      "spokenCodes": ["es"],
+      "catalog": "i18n/es.json",
+      "reviewStatus": "needs-community-review"
+    },
+    {
+      "code": "pt-BR",
+      "bcp47": "pt-BR",
+      "english": "Portuguese (Brazil)",
+      "native": "Português (Brasil)",
+      "dir": "ltr",
+      "spokenCodes": ["pt"],
+      "aliases": ["pt"],
+      "suggestedCountries": ["BR"],
+      "catalog": "i18n/pt.json",
+      "reviewStatus": "needs-community-review"
+    },
+    {
+      "code": "pt-PT",
+      "bcp47": "pt-PT",
+      "english": "Portuguese (Portugal)",
+      "native": "Português (Portugal)",
+      "dir": "ltr",
+      "spokenCodes": ["pt"],
+      "suggestedCountries": ["PT", "AO", "CV", "GQ", "GW", "MO", "MZ", "ST", "TL"],
+      "catalog": "i18n/pt-PT.json",
+      "reviewStatus": "needs-community-review"
+    },
+    {
+      "code": "fr",
+      "bcp47": "fr",
+      "english": "French",
+      "native": "Français",
+      "dir": "ltr",
+      "spokenCodes": ["fr"],
+      "catalog": "i18n/fr.json",
+      "reviewStatus": "needs-community-review"
+    },
+    {
+      "code": "de",
+      "bcp47": "de",
+      "english": "German",
+      "native": "Deutsch",
+      "dir": "ltr",
+      "spokenCodes": ["de"],
+      "catalog": "i18n/de.json",
+      "reviewStatus": "needs-community-review"
+    },
+    {
+      "code": "ar",
+      "bcp47": "ar",
+      "english": "Arabic",
+      "native": "العربية",
+      "dir": "rtl",
+      "spokenCodes": ["ar"],
+      "catalog": "i18n/ar.json",
+      "reviewStatus": "needs-community-review"
+    },
+    {
+      "code": "zh",
+      "bcp47": "zh-Hans",
+      "english": "Chinese",
+      "native": "简体中文",
+      "dir": "ltr",
+      "spokenCodes": ["zh", "cmn"],
+      "catalog": "i18n/zh.json",
+      "reviewStatus": "needs-community-review"
+    },
+    {
+      "code": "ja",
+      "bcp47": "ja",
+      "english": "Japanese",
+      "native": "日本語",
+      "dir": "ltr",
+      "spokenCodes": ["ja"],
+      "catalog": "i18n/ja.json",
+      "reviewStatus": "needs-community-review"
+    },
+    {
+      "code": "ko",
+      "bcp47": "ko",
+      "english": "Korean",
+      "native": "한국어",
+      "dir": "ltr",
+      "spokenCodes": ["ko"],
+      "catalog": "i18n/ko.json",
+      "reviewStatus": "needs-community-review"
+    },
+    {
+      "code": "hi",
+      "bcp47": "hi",
+      "english": "Hindi",
+      "native": "हिन्दी",
+      "dir": "ltr",
+      "spokenCodes": ["hi"],
+      "catalog": "i18n/hi.json",
+      "reviewStatus": "needs-community-review"
+    },
+    {
+      "code": "bn",
+      "bcp47": "bn",
+      "english": "Bengali",
+      "native": "বাংলা",
+      "dir": "ltr",
+      "spokenCodes": ["bn"],
+      "catalog": "i18n/bn.json",
+      "reviewStatus": "needs-community-review"
+    }
+  ]
+}

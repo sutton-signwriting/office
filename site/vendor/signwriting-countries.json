@@ -1,0 +1,1697 @@
+{
+  "AF": {
+    "continent": "AS",
+    "language": [
+      "afg"
+    ],
+    "language_signed": [
+      "afg"
+    ],
+    "language_spoken": [],
+    "name": "Afghanistan"
+  },
+  "AL": {
+    "continent": "EU",
+    "language": [
+      "sqk"
+    ],
+    "language_signed": [
+      "sqk"
+    ],
+    "language_spoken": [],
+    "name": "Albania"
+  },
+  "AM": {
+    "continent": "AS",
+    "language": [
+      "aen"
+    ],
+    "language_signed": [
+      "aen"
+    ],
+    "language_spoken": [],
+    "name": "Armenia"
+  },
+  "AR": {
+    "continent": "SA",
+    "language": [
+      "aed",
+      "es"
+    ],
+    "language_signed": [
+      "aed"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Argentina"
+  },
+  "AT": {
+    "continent": "EU",
+    "language": [
+      "asq",
+      "sk",
+      "sl",
+      "hu",
+      "cs",
+      "de"
+    ],
+    "language_signed": [
+      "asq"
+    ],
+    "language_spoken": [
+      "sk",
+      "sl",
+      "hu",
+      "cs",
+      "de"
+    ],
+    "name": "Austria"
+  },
+  "AU": {
+    "continent": "OC",
+    "language": [
+      "asf",
+      "asw",
+      "en",
+      "cmn"
+    ],
+    "language_signed": [
+      "asf",
+      "asw"
+    ],
+    "language_spoken": [
+      "en",
+      "cmn"
+    ],
+    "name": "Australia"
+  },
+  "BD": {
+    "continent": "AS",
+    "language": [
+      "ins",
+      "bn"
+    ],
+    "language_signed": [
+      "ins"
+    ],
+    "language_spoken": [
+      "bn"
+    ],
+    "name": "Bangladesh"
+  },
+  "BE": {
+    "continent": "EU",
+    "language": [
+      "sfb",
+      "vgt",
+      "fr",
+      "de",
+      "nl"
+    ],
+    "language_signed": [
+      "sfb",
+      "vgt"
+    ],
+    "language_spoken": [
+      "fr",
+      "de",
+      "nl"
+    ],
+    "name": "Belgium"
+  },
+  "BG": {
+    "continent": "EU",
+    "language": [
+      "bqn",
+      "rsl",
+      "tr"
+    ],
+    "language_signed": [
+      "bqn",
+      "rsl"
+    ],
+    "language_spoken": [
+      "tr"
+    ],
+    "name": "Bulgaria"
+  },
+  "BO": {
+    "continent": "SA",
+    "language": [
+      "bvl",
+      "es"
+    ],
+    "language_signed": [
+      "bvl"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Plurinational State of Bolivia"
+  },
+  "BR": {
+    "continent": "SA",
+    "language": [
+      "bzs",
+      "uks",
+      "pt"
+    ],
+    "language_signed": [
+      "bzs",
+      "uks"
+    ],
+    "language_spoken": [
+      "pt"
+    ],
+    "name": "Brazil"
+  },
+  "CA": {
+    "continent": "NA",
+    "language": [
+      "ase",
+      "fcs",
+      "nsr",
+      "en",
+      "fr"
+    ],
+    "language_signed": [
+      "ase",
+      "fcs",
+      "nsr"
+    ],
+    "language_spoken": [
+      "en",
+      "fr"
+    ],
+    "name": "Canada"
+  },
+  "CH": {
+    "continent": "EU",
+    "language": [
+      "sgg",
+      "slf",
+      "ssr",
+      "fr",
+      "de",
+      "it"
+    ],
+    "language_signed": [
+      "sgg",
+      "slf",
+      "ssr"
+    ],
+    "language_spoken": [
+      "fr",
+      "de",
+      "it"
+    ],
+    "name": "Switzerland"
+  },
+  "CL": {
+    "continent": "SA",
+    "language": [
+      "csg",
+      "es"
+    ],
+    "language_signed": [
+      "csg"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Chile"
+  },
+  "CN": {
+    "continent": "AS",
+    "language": [
+      "csl",
+      "cmn",
+      "ru",
+      "vi",
+      "zh",
+      "ko"
+    ],
+    "language_signed": [
+      "csl"
+    ],
+    "language_spoken": [
+      "cmn",
+      "ru",
+      "vi",
+      "zh",
+      "ko"
+    ],
+    "name": "China"
+  },
+  "CO": {
+    "continent": "SA",
+    "language": [
+      "csn",
+      "prz",
+      "es"
+    ],
+    "language_signed": [
+      "csn",
+      "prz"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Colombia"
+  },
+  "CR": {
+    "continent": "NA",
+    "language": [
+      "csr",
+      "es"
+    ],
+    "language_signed": [
+      "csr"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Costa Rica"
+  },
+  "CU": {
+    "continent": "NA",
+    "language": [
+      "csf",
+      "es"
+    ],
+    "language_signed": [
+      "csf"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Cuba"
+  },
+  "CZ": {
+    "continent": "EU",
+    "language": [
+      "cse",
+      "sk",
+      "cs",
+      "de",
+      "pl"
+    ],
+    "language_signed": [
+      "cse"
+    ],
+    "language_spoken": [
+      "sk",
+      "cs",
+      "de",
+      "pl"
+    ],
+    "name": "Czech Republic"
+  },
+  "DE": {
+    "continent": "EU",
+    "language": [
+      "gsg",
+      "da",
+      "de",
+      "pl"
+    ],
+    "language_signed": [
+      "gsg"
+    ],
+    "language_spoken": [
+      "da",
+      "de",
+      "pl"
+    ],
+    "name": "Germany"
+  },
+  "DK": {
+    "continent": "EU",
+    "language": [
+      "dsl",
+      "sv",
+      "da",
+      "de"
+    ],
+    "language_signed": [
+      "dsl"
+    ],
+    "language_spoken": [
+      "sv",
+      "da",
+      "de"
+    ],
+    "name": "Denmark"
+  },
+  "DO": {
+    "continent": "NA",
+    "language": [
+      "doq",
+      "ht",
+      "en",
+      "es"
+    ],
+    "language_signed": [
+      "doq"
+    ],
+    "language_spoken": [
+      "ht",
+      "en",
+      "es"
+    ],
+    "name": "Dominican Republic"
+  },
+  "DZ": {
+    "continent": "AF",
+    "language": [
+      "asp",
+      "fr"
+    ],
+    "language_signed": [
+      "asp"
+    ],
+    "language_spoken": [
+      "fr"
+    ],
+    "name": "Algeria"
+  },
+  "EC": {
+    "continent": "SA",
+    "language": [
+      "ecs",
+      "es"
+    ],
+    "language_signed": [
+      "ecs"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Ecuador"
+  },
+  "EE": {
+    "continent": "EU",
+    "language": [
+      "eso",
+      "ru"
+    ],
+    "language_signed": [
+      "eso"
+    ],
+    "language_spoken": [
+      "ru"
+    ],
+    "name": "Estonia"
+  },
+  "EG": {
+    "continent": "AF",
+    "language": [
+      "esl"
+    ],
+    "language_signed": [
+      "esl"
+    ],
+    "language_spoken": [],
+    "name": "Egypt"
+  },
+  "ES": {
+    "continent": "EU",
+    "language": [
+      "csc",
+      "ssp",
+      "vsv",
+      "ca",
+      "es"
+    ],
+    "language_signed": [
+      "csc",
+      "ssp",
+      "vsv"
+    ],
+    "language_spoken": [
+      "ca",
+      "es"
+    ],
+    "name": "Spain"
+  },
+  "ET": {
+    "continent": "AF",
+    "language": [
+      "eth",
+      "en"
+    ],
+    "language_signed": [
+      "eth"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "Ethiopia"
+  },
+  "FI": {
+    "continent": "EU",
+    "language": [
+      "fse",
+      "fss",
+      "sv",
+      "fi"
+    ],
+    "language_signed": [
+      "fse",
+      "fss"
+    ],
+    "language_spoken": [
+      "sv",
+      "fi"
+    ],
+    "name": "Finland"
+  },
+  "FR": {
+    "continent": "EU",
+    "language": [
+      "fsl",
+      "lsg",
+      "ca",
+      "fr",
+      "es",
+      "pt",
+      "it"
+    ],
+    "language_signed": [
+      "fsl",
+      "lsg"
+    ],
+    "language_spoken": [
+      "ca",
+      "fr",
+      "es",
+      "pt",
+      "it"
+    ],
+    "name": "France"
+  },
+  "GB": {
+    "continent": "EU",
+    "language": [
+      "bfi",
+      "en",
+      "fr"
+    ],
+    "language_signed": [
+      "bfi"
+    ],
+    "language_spoken": [
+      "en",
+      "fr"
+    ],
+    "name": "United Kingdom"
+  },
+  "GH": {
+    "continent": "AF",
+    "language": [
+      "ads",
+      "gse",
+      "en"
+    ],
+    "language_signed": [
+      "ads",
+      "gse"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "Ghana"
+  },
+  "GN": {
+    "continent": "AF",
+    "language": [
+      "gus",
+      "fr"
+    ],
+    "language_signed": [
+      "gus"
+    ],
+    "language_spoken": [
+      "fr"
+    ],
+    "name": "Guinea"
+  },
+  "GR": {
+    "continent": "EU",
+    "language": [
+      "gss",
+      "tr"
+    ],
+    "language_signed": [
+      "gss"
+    ],
+    "language_spoken": [
+      "tr"
+    ],
+    "name": "Greece"
+  },
+  "GT": {
+    "continent": "NA",
+    "language": [
+      "gsm",
+      "es"
+    ],
+    "language_signed": [
+      "gsm"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Guatemala"
+  },
+  "HN": {
+    "continent": "NA",
+    "language": [
+      "hds",
+      "en",
+      "es"
+    ],
+    "language_signed": [
+      "hds"
+    ],
+    "language_spoken": [
+      "en",
+      "es"
+    ],
+    "name": "Honduras"
+  },
+  "HR": {
+    "continent": "EU",
+    "language": [
+      "csq",
+      "sk",
+      "sl",
+      "hu",
+      "cs",
+      "it"
+    ],
+    "language_signed": [
+      "csq"
+    ],
+    "language_spoken": [
+      "sk",
+      "sl",
+      "hu",
+      "cs",
+      "it"
+    ],
+    "name": "Croatia"
+  },
+  "HU": {
+    "continent": "EU",
+    "language": [
+      "hsh",
+      "sk",
+      "sl",
+      "ro",
+      "hu",
+      "de",
+      "pl"
+    ],
+    "language_signed": [
+      "hsh"
+    ],
+    "language_spoken": [
+      "sk",
+      "sl",
+      "ro",
+      "hu",
+      "de",
+      "pl"
+    ],
+    "name": "Hungary"
+  },
+  "ID": {
+    "continent": "AS",
+    "language": [
+      "bqy",
+      "inl",
+      "cmn",
+      "id",
+      "jv"
+    ],
+    "language_signed": [
+      "bqy",
+      "inl"
+    ],
+    "language_spoken": [
+      "cmn",
+      "id",
+      "jv"
+    ],
+    "name": "Indonesia"
+  },
+  "IE": {
+    "continent": "EU",
+    "language": [
+      "isg",
+      "en"
+    ],
+    "language_signed": [
+      "isg"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "Ireland"
+  },
+  "IL": {
+    "continent": "AS",
+    "language": [
+      "isr",
+      "syy",
+      "yds",
+      "ro",
+      "hu",
+      "en",
+      "ru",
+      "pl"
+    ],
+    "language_signed": [
+      "isr",
+      "syy",
+      "yds"
+    ],
+    "language_spoken": [
+      "ro",
+      "hu",
+      "en",
+      "ru",
+      "pl"
+    ],
+    "name": "Israel"
+  },
+  "IN": {
+    "continent": "AS",
+    "language": [
+      "ins",
+      "en",
+      "fr",
+      "pt",
+      "hi",
+      "ta",
+      "bn",
+      "pa"
+    ],
+    "language_signed": [
+      "ins"
+    ],
+    "language_spoken": [
+      "en",
+      "fr",
+      "pt",
+      "hi",
+      "ta",
+      "bn",
+      "pa"
+    ],
+    "name": "India"
+  },
+  "IR": {
+    "continent": "AS",
+    "language": [
+      "psc",
+      "fa"
+    ],
+    "language_signed": [
+      "psc"
+    ],
+    "language_spoken": [
+      "fa"
+    ],
+    "name": "Islamic Republic of Iran"
+  },
+  "IS": {
+    "continent": "EU",
+    "language": [
+      "icl",
+      "is"
+    ],
+    "language_signed": [
+      "icl"
+    ],
+    "language_spoken": [
+      "is"
+    ],
+    "name": "Iceland"
+  },
+  "IT": {
+    "continent": "EU",
+    "language": [
+      "ils",
+      "ise",
+      "sl",
+      "ca",
+      "fr",
+      "de",
+      "it"
+    ],
+    "language_signed": [
+      "ils",
+      "ise"
+    ],
+    "language_spoken": [
+      "sl",
+      "ca",
+      "fr",
+      "de",
+      "it"
+    ],
+    "name": "Italy"
+  },
+  "JM": {
+    "continent": "NA",
+    "language": [
+      "jcs",
+      "jls",
+      "en"
+    ],
+    "language_signed": [
+      "jcs",
+      "jls"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "Jamaica"
+  },
+  "JO": {
+    "continent": "AS",
+    "language": [
+      "jos"
+    ],
+    "language_signed": [
+      "jos"
+    ],
+    "language_spoken": [],
+    "name": "Jordan"
+  },
+  "JP": {
+    "continent": "AS",
+    "language": [
+      "jsl",
+      "ja",
+      "ko"
+    ],
+    "language_signed": [
+      "jsl"
+    ],
+    "language_spoken": [
+      "ja",
+      "ko"
+    ],
+    "name": "Japan"
+  },
+  "KE": {
+    "continent": "AF",
+    "language": [
+      "xki",
+      "en",
+      "pa"
+    ],
+    "language_signed": [
+      "xki"
+    ],
+    "language_spoken": [
+      "en",
+      "pa"
+    ],
+    "name": "Kenya"
+  },
+  "KR": {
+    "continent": "AS",
+    "language": [
+      "kvk",
+      "ko"
+    ],
+    "language_signed": [
+      "kvk"
+    ],
+    "language_spoken": [
+      "ko"
+    ],
+    "name": "Republic of Korea"
+  },
+  "LA": {
+    "continent": "AS",
+    "language": [
+      "lso"
+    ],
+    "language_signed": [
+      "lso"
+    ],
+    "language_spoken": [],
+    "name": "Lao People's Democratic Republic"
+  },
+  "LK": {
+    "continent": "AS",
+    "language": [
+      "sqs",
+      "en",
+      "ta"
+    ],
+    "language_signed": [
+      "sqs"
+    ],
+    "language_spoken": [
+      "en",
+      "ta"
+    ],
+    "name": "Sri Lanka"
+  },
+  "LT": {
+    "continent": "EU",
+    "language": [
+      "lls",
+      "ru",
+      "pl"
+    ],
+    "language_signed": [
+      "lls"
+    ],
+    "language_spoken": [
+      "ru",
+      "pl"
+    ],
+    "name": "Lithuania"
+  },
+  "LV": {
+    "continent": "EU",
+    "language": [
+      "lsl",
+      "ru"
+    ],
+    "language_signed": [
+      "lsl"
+    ],
+    "language_spoken": [
+      "ru"
+    ],
+    "name": "Latvia"
+  },
+  "LY": {
+    "continent": "AF",
+    "language": [
+      "lbs"
+    ],
+    "language_signed": [
+      "lbs"
+    ],
+    "language_spoken": [],
+    "name": "Libyan Arab Jamahiriya"
+  },
+  "MA": {
+    "continent": "AF",
+    "language": [
+      "xms",
+      "es"
+    ],
+    "language_signed": [
+      "xms"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Morocco"
+  },
+  "MD": {
+    "continent": "EU",
+    "language": [
+      "vsi",
+      "ro",
+      "ru"
+    ],
+    "language_signed": [
+      "vsi"
+    ],
+    "language_spoken": [
+      "ro",
+      "ru"
+    ],
+    "name": "Republic of Moldova"
+  },
+  "MG": {
+    "continent": "AF",
+    "language": [
+      "mzc",
+      "en",
+      "fr"
+    ],
+    "language_signed": [
+      "mzc"
+    ],
+    "language_spoken": [
+      "en",
+      "fr"
+    ],
+    "name": "Madagascar"
+  },
+  "ML": {
+    "continent": "AF",
+    "language": [
+      "bog",
+      "tsy",
+      "fr"
+    ],
+    "language_signed": [
+      "bog",
+      "tsy"
+    ],
+    "language_spoken": [
+      "fr"
+    ],
+    "name": "Mali"
+  },
+  "MM": {
+    "continent": "AS",
+    "language": [
+      "mis",
+      "my"
+    ],
+    "language_signed": [
+      "mis"
+    ],
+    "language_spoken": [
+      "my"
+    ],
+    "name": "Myanmar"
+  },
+  "MN": {
+    "continent": "AS",
+    "language": [
+      "msr",
+      "cmn",
+      "ru"
+    ],
+    "language_signed": [
+      "msr"
+    ],
+    "language_spoken": [
+      "cmn",
+      "ru"
+    ],
+    "name": "Mongolia"
+  },
+  "MX": {
+    "continent": "NA",
+    "language": [
+      "mfs",
+      "msd",
+      "es"
+    ],
+    "language_signed": [
+      "mfs",
+      "msd"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Mexico"
+  },
+  "MY": {
+    "continent": "AS",
+    "language": [
+      "kgi",
+      "psg",
+      "xml",
+      "en",
+      "cmn",
+      "ta",
+      "jv"
+    ],
+    "language_signed": [
+      "kgi",
+      "psg",
+      "xml"
+    ],
+    "language_spoken": [
+      "en",
+      "cmn",
+      "ta",
+      "jv"
+    ],
+    "name": "Malaysia"
+  },
+  "MZ": {
+    "continent": "AF",
+    "language": [
+      "mzy",
+      "pt"
+    ],
+    "language_signed": [
+      "mzy"
+    ],
+    "language_spoken": [
+      "pt"
+    ],
+    "name": "Mozambique"
+  },
+  "NA": {
+    "continent": "AF",
+    "language": [
+      "nbs",
+      "en",
+      "de",
+      "af"
+    ],
+    "language_signed": [
+      "nbs"
+    ],
+    "language_spoken": [
+      "en",
+      "de",
+      "af"
+    ],
+    "name": "Namibia"
+  },
+  "NG": {
+    "continent": "AF",
+    "language": [
+      "hsl",
+      "nsi",
+      "en"
+    ],
+    "language_signed": [
+      "hsl",
+      "nsi"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "Nigeria"
+  },
+  "NI": {
+    "continent": "NA",
+    "language": [
+      "ncs",
+      "es"
+    ],
+    "language_signed": [
+      "ncs"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Nicaragua"
+  },
+  "NL": {
+    "continent": "EU",
+    "language": [
+      "dse",
+      "nl"
+    ],
+    "language_signed": [
+      "dse"
+    ],
+    "language_spoken": [
+      "nl"
+    ],
+    "name": "Netherlands"
+  },
+  "NO": {
+    "continent": "EU",
+    "language": [
+      "nsl",
+      "no"
+    ],
+    "language_signed": [
+      "nsl"
+    ],
+    "language_spoken": [
+      "no"
+    ],
+    "name": "Norway"
+  },
+  "NP": {
+    "continent": "AS",
+    "language": [
+      "gds",
+      "jhs",
+      "jus",
+      "nsp",
+      "hi",
+      "bn"
+    ],
+    "language_signed": [
+      "gds",
+      "jhs",
+      "jus",
+      "nsp"
+    ],
+    "language_spoken": [
+      "hi",
+      "bn"
+    ],
+    "name": "Nepal"
+  },
+  "NZ": {
+    "continent": "OC",
+    "language": [
+      "nzs",
+      "en"
+    ],
+    "language_signed": [
+      "nzs"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "New Zealand"
+  },
+  "PA": {
+    "continent": "NA",
+    "language": [
+      "lsp",
+      "es"
+    ],
+    "language_signed": [
+      "lsp"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Panama"
+  },
+  "PE": {
+    "continent": "SA",
+    "language": [
+      "prl",
+      "es"
+    ],
+    "language_signed": [
+      "prl"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Peru"
+  },
+  "PH": {
+    "continent": "AS",
+    "language": [
+      "psp",
+      "en",
+      "es",
+      "cmn"
+    ],
+    "language_signed": [
+      "psp"
+    ],
+    "language_spoken": [
+      "en",
+      "es",
+      "cmn"
+    ],
+    "name": "Philippines"
+  },
+  "PK": {
+    "continent": "AS",
+    "language": [
+      "pks",
+      "en"
+    ],
+    "language_signed": [
+      "pks"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "Pakistan"
+  },
+  "PL": {
+    "continent": "EU",
+    "language": [
+      "pso",
+      "eo",
+      "de",
+      "pl"
+    ],
+    "language_signed": [
+      "pso"
+    ],
+    "language_spoken": [
+      "eo",
+      "de",
+      "pl"
+    ],
+    "name": "Poland"
+  },
+  "PT": {
+    "continent": "EU",
+    "language": [
+      "psr",
+      "pt"
+    ],
+    "language_signed": [
+      "psr"
+    ],
+    "language_spoken": [
+      "pt"
+    ],
+    "name": "Portugal"
+  },
+  "PY": {
+    "continent": "SA",
+    "language": [
+      "pys",
+      "es",
+      "de"
+    ],
+    "language_signed": [
+      "pys"
+    ],
+    "language_spoken": [
+      "es",
+      "de"
+    ],
+    "name": "Paraguay"
+  },
+  "RO": {
+    "continent": "EU",
+    "language": [
+      "rms",
+      "sk",
+      "ro",
+      "hu",
+      "cs",
+      "de",
+      "it",
+      "tr",
+      "pl"
+    ],
+    "language_signed": [
+      "rms"
+    ],
+    "language_spoken": [
+      "sk",
+      "ro",
+      "hu",
+      "cs",
+      "de",
+      "it",
+      "tr",
+      "pl"
+    ],
+    "name": "Romania"
+  },
+  "RS": {
+    "continent": "EU",
+    "language": [
+      "ysl",
+      "sk",
+      "ro",
+      "hu",
+      "cs"
+    ],
+    "language_signed": [
+      "ysl"
+    ],
+    "language_spoken": [
+      "sk",
+      "ro",
+      "hu",
+      "cs"
+    ],
+    "name": "Serbia"
+  },
+  "RU": {
+    "continent": "EU",
+    "language": [
+      "rsl",
+      "fi",
+      "ru",
+      "ko"
+    ],
+    "language_signed": [
+      "rsl"
+    ],
+    "language_spoken": [
+      "fi",
+      "ru",
+      "ko"
+    ],
+    "name": "Russian Federation"
+  },
+  "SA": {
+    "continent": "AS",
+    "language": [
+      "sdl",
+      "ar"
+    ],
+    "language_signed": [
+      "sdl"
+    ],
+    "language_spoken": [
+      "ar"
+    ],
+    "name": "Saudi Arabia"
+  },
+  "SB": {
+    "continent": "OC",
+    "language": [
+      "rsi",
+      "en"
+    ],
+    "language_signed": [
+      "rsi"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "Solomon Islands"
+  },
+  "SE": {
+    "continent": "EU",
+    "language": [
+      "swl",
+      "sv",
+      "fi"
+    ],
+    "language_signed": [
+      "swl"
+    ],
+    "language_spoken": [
+      "sv",
+      "fi"
+    ],
+    "name": "Sweden"
+  },
+  "SK": {
+    "continent": "EU",
+    "language": [
+      "svk",
+      "sk",
+      "hu",
+      "de",
+      "pl"
+    ],
+    "language_signed": [
+      "svk"
+    ],
+    "language_spoken": [
+      "sk",
+      "hu",
+      "de",
+      "pl"
+    ],
+    "name": "Slovakia"
+  },
+  "SL": {
+    "continent": "AF",
+    "language": [
+      "sgx",
+      "en"
+    ],
+    "language_signed": [
+      "sgx"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "Sierra Leone"
+  },
+  "SV": {
+    "continent": "NA",
+    "language": [
+      "esn",
+      "es"
+    ],
+    "language_signed": [
+      "esn"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "El Salvador"
+  },
+  "TD": {
+    "continent": "AF",
+    "language": [
+      "cds",
+      "fr"
+    ],
+    "language_signed": [
+      "cds"
+    ],
+    "language_spoken": [
+      "fr"
+    ],
+    "name": "Chad"
+  },
+  "TH": {
+    "continent": "AS",
+    "language": [
+      "bfk",
+      "csd",
+      "tsq",
+      "cmn",
+      "th",
+      "ko"
+    ],
+    "language_signed": [
+      "bfk",
+      "csd",
+      "tsq"
+    ],
+    "language_spoken": [
+      "cmn",
+      "th",
+      "ko"
+    ],
+    "name": "Thailand"
+  },
+  "TN": {
+    "continent": "AF",
+    "language": [
+      "tse",
+      "fr"
+    ],
+    "language_signed": [
+      "tse"
+    ],
+    "language_spoken": [
+      "fr"
+    ],
+    "name": "Tunisia"
+  },
+  "TR": {
+    "continent": "EU",
+    "language": [
+      "tsm",
+      "tr"
+    ],
+    "language_signed": [
+      "tsm"
+    ],
+    "language_spoken": [
+      "tr"
+    ],
+    "name": "Turkey"
+  },
+  "TW": {
+    "continent": "AS",
+    "language": [
+      "tss",
+      "cmn",
+      "ja"
+    ],
+    "language_signed": [
+      "tss"
+    ],
+    "language_spoken": [
+      "cmn",
+      "ja"
+    ],
+    "name": "Province of China Taiwan"
+  },
+  "TZ": {
+    "continent": "AF",
+    "language": [
+      "tza",
+      "en",
+      "sw"
+    ],
+    "language_signed": [
+      "tza"
+    ],
+    "language_spoken": [
+      "en",
+      "sw"
+    ],
+    "name": "United Republic of Tanzania"
+  },
+  "UA": {
+    "continent": "EU",
+    "language": [
+      "ukl",
+      "sk",
+      "ro",
+      "hu",
+      "cs",
+      "ru",
+      "de",
+      "pl"
+    ],
+    "language_signed": [
+      "ukl"
+    ],
+    "language_spoken": [
+      "sk",
+      "ro",
+      "hu",
+      "cs",
+      "ru",
+      "de",
+      "pl"
+    ],
+    "name": "Ukraine"
+  },
+  "UG": {
+    "continent": "AF",
+    "language": [
+      "ugn",
+      "en"
+    ],
+    "language_signed": [
+      "ugn"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "Uganda"
+  },
+  "US": {
+    "continent": "NA",
+    "language": [
+      "ase",
+      "psd",
+      "en",
+      "fr",
+      "es"
+    ],
+    "language_signed": [
+      "ase",
+      "psd"
+    ],
+    "language_spoken": [
+      "en",
+      "fr",
+      "es"
+    ],
+    "name": "United States"
+  },
+  "UY": {
+    "continent": "SA",
+    "language": [
+      "ugy",
+      "es"
+    ],
+    "language_signed": [
+      "ugy"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Uruguay"
+  },
+  "VE": {
+    "continent": "SA",
+    "language": [
+      "vsl",
+      "es"
+    ],
+    "language_signed": [
+      "vsl"
+    ],
+    "language_spoken": [
+      "es"
+    ],
+    "name": "Bolivarian Republic of Venezuela"
+  },
+  "VN": {
+    "continent": "AS",
+    "language": [
+      "hab",
+      "haf",
+      "hos",
+      "vi"
+    ],
+    "language_signed": [
+      "hab",
+      "haf",
+      "hos"
+    ],
+    "language_spoken": [
+      "vi"
+    ],
+    "name": "Viet Nam"
+  },
+  "WO": {
+    "continent": "",
+    "language": [
+      "ils",
+      "en"
+    ],
+    "language_signed": [
+      "ils"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "World"
+  },
+  "ZA": {
+    "continent": "AF",
+    "language": [
+      "sfs",
+      "en",
+      "hi",
+      "af"
+    ],
+    "language_signed": [
+      "sfs"
+    ],
+    "language_spoken": [
+      "en",
+      "hi",
+      "af"
+    ],
+    "name": "South Africa"
+  },
+  "ZM": {
+    "continent": "AF",
+    "language": [
+      "zsl",
+      "en",
+      "af"
+    ],
+    "language_signed": [
+      "zsl"
+    ],
+    "language_spoken": [
+      "en",
+      "af"
+    ],
+    "name": "Zambia"
+  },
+  "ZW": {
+    "continent": "AF",
+    "language": [
+      "zib",
+      "en"
+    ],
+    "language_signed": [
+      "zib"
+    ],
+    "language_spoken": [
+      "en"
+    ],
+    "name": "Zimbabwe"
+  }
+}

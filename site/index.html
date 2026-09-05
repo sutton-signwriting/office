@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#102d3b">
+    <meta name="description" content="Meet the Sutton SignWriting Office, find the right contact, and follow active international work.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sutton SignWriting Office">
+    <meta property="og:title" content="Sutton SignWriting Office">
+    <meta property="og:description" content="A clear public front door for Sutton SignWriting.">
+    <meta property="og:url" content="https://office.signwriting.org/">
+    <link rel="canonical" href="https://office.signwriting.org/">
+    <title>Sutton SignWriting Office</title>
+    <link rel="icon" href="assets/office-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Sutton SignWriting Office home">
+        <span class="brand-mark" aria-hidden="true">SW</span>
+        <span>
+          <strong>Sutton SignWriting</strong>
+          <small data-i18n="brand.office">The Office</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary">
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="#bots" data-i18n="nav.bots">Office bots</a>
+        <a href="#departments" data-i18n="nav.departments">Departments</a>
+        <a href="#resources" data-i18n="nav.resources">Resources</a>
+      </nav>
+
+      <div class="locale-controls">
+        <label>
+          <span data-i18n="controls.language">Site language</span>
+          <select id="language-select"></select>
+        </label>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero section-shell" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero.eyebrow">A human-directed international office</p>
+          <h1 data-i18n="hero.title">A clear front door for Sutton SignWriting</h1>
+          <p class="lede" data-i18n="hero.body">Find the right contact, meet the office roles, and see the active work connecting SignWriting communities around the world.</p>
+          <div class="hero-actions">
+            <a class="button button-primary js-register" href="mailto:register@signwriting.org" data-i18n="actions.preregister">Pre-register your interest</a>
+            <a class="button button-quiet" href="#departments" data-i18n="actions.explore">Explore the office</a>
+          </div>
+          <p class="microcopy" data-i18n="hero.readonly">This first release is informational and read-only. Email is the way to respond.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 720px)" srcset="assets/front-office-ensemble-720.webp">
+            <source type="image/webp" srcset="assets/front-office-ensemble-1200.webp">
+            <img src="assets/front-office-ensemble-1200.webp" alt="" width="1200" height="800">
+          </picture>
+        </div>
+      </section>
+
+      <section class="context-band" aria-labelledby="context-title">
+        <div class="section-shell context-grid">
+          <div class="context-location">
+            <p class="eyebrow" data-i18n="context.eyebrow">Your local starting point</p>
+            <div class="context-place" aria-live="polite">
+              <span class="context-flag" id="context-flag" aria-hidden="true">🌐</span>
+              <h2 id="context-title"><span id="context-country">International</span></h2>
+            </div>
+            <label class="context-country-control">
+              <span data-i18n="controls.country">Country or region</span>
+              <select id="country-select" aria-describedby="location-note"></select>
+            </label>
+            <p id="location-note" data-i18n="context.explainer">Choose a country or region to see useful spoken-language suggestions and known sign languages. Choose International for work between countries or on shared infrastructure. A flag identifies a place, never a language.</p>
+          </div>
+          <div class="context-languages">
+            <div>
+              <h3 data-i18n="context.siteLanguages">Suggested site languages</h3>
+              <div class="chip-list" id="site-language-suggestions"></div>
+            </div>
+            <div>
+              <h3 data-i18n="context.signLanguages">Sign languages in project data</h3>
+              <div class="chip-list" id="sign-language-list"></div>
+            </div>
+            <a class="text-link" id="language-help" href="mailto:support@signwriting.org" data-i18n="context.requestLanguage">Ask for a language or report a translation issue</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section section-shell" id="contact">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="contact.eyebrow">Start with an email</p>
+            <h2 data-i18n="contact.title">Choose the route that fits</h2>
+          </div>
+          <p data-i18n="contact.intro">Each address is a public doorway into the same human-directed office. Your selected country and site language are added to the message template.</p>
+        </div>
+        <div class="card-grid contact-grid" id="contact-list"></div>
+      </section>
+
+      <section class="content-section section-shell" id="bots">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="bots.eyebrow">Meet the office roles</p>
+            <h2 data-i18n="bots.title">Specialists with clear responsibilities</h2>
+          </div>
+          <p data-i18n="bots.intro">Bots help research, organize, explain, and review. They do not speak for Sutton SignWriting or take public action without human approval.</p>
+        </div>
+        <div class="notice" role="note">
+          <strong data-i18n="bots.noticeTitle">No live chat yet.</strong>
+          <span data-i18n="bots.noticeBody"> These profiles show who can help. Email the office and the right role can be included in the response.</span>
+        </div>
+        <div class="card-grid bot-grid" id="bot-list"></div>
+      </section>
+
+      <section class="content-section section-shell" id="departments">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="departments.eyebrow">How the work is organized</p>
+            <h2 data-i18n="departments.title">Departments and active campaigns</h2>
+          </div>
+          <p data-i18n="departments.intro">Every bot has one home department and may serve in others. Every department owns a visible campaign with a contact route.</p>
+        </div>
+        <div class="department-list" id="department-list"></div>
+      </section>
+
+      <section class="content-section section-shell" id="resources">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="resources.eyebrow">Learn and verify</p>
+            <h2 data-i18n="resources.title">Continue with primary sources</h2>
+          </div>
+          <p data-i18n="resources.intro">The office helps people find current, public information. These links remain the source of record for learning materials and software work.</p>
+        </div>
+        <div class="resource-grid" id="resource-list"></div>
+      </section>
+
+      <section class="principles section-shell" aria-labelledby="principles-title">
+        <div>
+          <p class="eyebrow" data-i18n="principles.eyebrow">A transparent first release</p>
+          <h2 id="principles-title" data-i18n="principles.title">Useful now, ready to grow later</h2>
+        </div>
+        <ul>
+          <li data-i18n="principles.item1">No account, tracking profile, or message database is created.</li>
+          <li data-i18n="principles.item2">Country choice suggests languages; it never decides your language for you.</li>
+          <li data-i18n="principles.item3">Future sign-in and direct messaging can use these same stable departments and bot roles.</li>
+        </ul>
+      </section>
+
+      <section class="content-section section-shell roadmap" id="roadmap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="roadmap.eyebrow">From interest to access</p>
+            <h2 data-i18n="roadmap.title">A careful path to the future app</h2>
+          </div>
+          <p data-i18n="roadmap.intro">Pre-registration is an interest list, not an authenticated account. The later registration service will make that transition explicit.</p>
+        </div>
+        <ol class="roadmap-list">
+          <li>
+            <span class="roadmap-step" data-i18n="roadmap.step1.label">Available now</span>
+            <h3 data-i18n="roadmap.step1.title">Join the interest list</h3>
+            <p data-i18n="roadmap.step1.body">Email register@signwriting.org. This records interest separately from future application users.</p>
+          </li>
+          <li>
+            <span class="roadmap-step" data-i18n="roadmap.step2.label">Planned</span>
+            <h3 data-i18n="roadmap.step2.title">Receive an invitation</h3>
+            <p data-i18n="roadmap.step2.body">When register.signwriting.org is ready, pre-registered people can receive an email with a unique invitation key.</p>
+          </li>
+          <li>
+            <span class="roadmap-step" data-i18n="roadmap.step3.label">Future</span>
+            <h3 data-i18n="roadmap.step3.title">Activate app access</h3>
+            <p data-i18n="roadmap.step3.body">Redeem the invitation through registration to activate eligible features and usage allowances for app.signwriting.org and related api.signwriting.org services.</p>
+          </li>
+        </ol>
+        <p class="roadmap-note" data-i18n="roadmap.security">The invitation key should be a one-time registration credential. The app and API should issue separate, revocable authentication tokens after activation.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Sutton SignWriting Office</strong>
+        <p data-i18n="footer.description">A public guide to people, roles, and active work.</p>
+      </div>
+      <div>
+        <a href="mailto:support@signwriting.org">support@signwriting.org</a>
+        <p><span data-i18n="footer.updated">Content reviewed</span> <time datetime="2026-09-04">2026-09-04</time></p>
+      </div>
+    </footer>
+
+    <nav class="mobile-nav" aria-label="Mobile">
+      <a href="#contact"><span aria-hidden="true">✉</span><span data-i18n="nav.contact">Contact</span></a>
+      <a href="#bots"><span aria-hidden="true">◎</span><span data-i18n="nav.bots">Office bots</span></a>
+      <a href="#departments"><span aria-hidden="true">▦</span><span data-i18n="nav.departments">Departments</span></a>
+    </nav>
+
+    <noscript>
+      <p class="noscript">JavaScript is needed for country and language selection. You can still email <a href="mailto:support@signwriting.org">support@signwriting.org</a>.</p>
+    </noscript>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

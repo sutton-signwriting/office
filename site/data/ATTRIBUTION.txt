@@ -1,0 +1,17 @@
+Data sources for the Sutton SignWriting Office
+
+Country codes and English country names are derived from Debian iso-codes, copyright its
+contributors, licensed LGPL-2.1-or-later:
+https://salsa.debian.org/iso-codes-team/iso-codes
+
+Spoken-language suggestions are derived from Unicode CLDR territory language information,
+copyright Unicode, Inc., licensed under the Unicode License v3:
+https://github.com/unicode-org/cldr-json
+https://www.unicode.org/license.txt
+
+CLDR population data is approximate and is used only to suggest useful language choices. It is not
+an exhaustive statement about the languages of a country.
+
+Sign-language associations are a 2026-09-04 snapshot of curated Sutton SignWriting project data:
+data/ref/world/countries.json and data/ref/world/languages.json in the Sutton SignWriting project.
+The Office presents this separately from spoken-language suggestions and invites corrections.

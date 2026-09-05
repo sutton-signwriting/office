@@ -1,0 +1,9 @@
+name: office
+
+services:
+  web:
+    build: .
+    container_name: signwriting-office
+    ports:
+      - "${OFFICE_BIND_IP:-127.0.0.1}:7040:80"
+    restart: unless-stopped

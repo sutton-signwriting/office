@@ -1,0 +1,10 @@
+# Common editor and operating-system files.
+.DS_Store
+*.swp
+*~
+
+# Generated website, test state, and local dependencies.
+dist/
+node_modules/
+.browser-cdp-*/
+.env

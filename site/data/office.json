@@ -1,0 +1,50 @@
+{
+  "updated": "2026-09-04",
+  "contacts": [
+    {"id": "steve", "email": "steve@signwriting.org", "icon": "hello"},
+    {"id": "register", "email": "register@signwriting.org", "icon": "spark"},
+    {"id": "support", "email": "support@signwriting.org", "icon": "help"},
+    {"id": "education", "email": "education@signwriting.org", "icon": "lens"},
+    {"id": "research", "email": "research@signwriting.org", "icon": "records"},
+    {"id": "business", "email": "business@signwriting.org", "icon": "bridge"}
+  ],
+  "bots": [
+    {"id": "chief-of-staff", "name": "Chief of Staff", "title": "Office Operations Lead", "initials": "CS", "image": "assets/avatars/chief-of-staff.webp", "accent": "teal", "headOf": "front-desk", "memberOf": []},
+    {"id": "steward", "name": "Steward", "title": "Stewardship Lead", "initials": "ST", "image": "assets/avatars/steward.webp", "accent": "ochre", "headOf": "stewardship", "memberOf": ["product", "community"]},
+    {"id": "philanthropy", "name": "Philanthropy", "title": "Head of Advancement", "initials": "PH", "image": "assets/avatars/philanthropy.webp", "accent": "coral", "headOf": "advancement", "memberOf": ["community", "research"]},
+    {"id": "researcher", "name": "Researcher", "title": "Head of Research & Records", "initials": "RE", "image": "assets/avatars/researcher.webp", "accent": "blue", "headOf": "research", "memberOf": ["advancement", "product"]},
+    {"id": "archivist", "name": "Archivist", "title": "Archivist and Fact Checker", "initials": "AR", "image": "assets/avatars/archivist.webp", "accent": "green", "headOf": null, "memberOf": ["research", "stewardship", "voice-editorial"]},
+    {"id": "systems", "name": "Systems", "title": "Head of Product & Platform", "initials": "SY", "image": "assets/avatars/systems.webp", "accent": "violet", "headOf": "product", "memberOf": ["assurance"]},
+    {"id": "designer", "name": "Designer", "title": "Product and Experience Designer", "initials": "DE", "image": "assets/avatars/designer.webp", "accent": "navy", "headOf": null, "memberOf": ["product", "community", "voice-editorial"]},
+    {"id": "code", "name": "Code", "title": "Public-Code Analyst", "initials": "CO", "image": "assets/avatars/code.webp", "accent": "rose", "headOf": null, "memberOf": ["product", "assurance"]},
+    {"id": "community", "name": "Community", "title": "Head of Community", "initials": "CM", "image": "assets/avatars/community.webp", "accent": "green", "headOf": "community", "memberOf": ["advancement", "voice-editorial"]},
+    {"id": "voice", "name": "Voice", "title": "Voice and Editorial Lead", "initials": "VO", "image": "assets/avatars/voice.webp", "accent": "ochre", "headOf": "voice-editorial", "memberOf": ["community", "advancement"]},
+    {"id": "red-team", "name": "Red Team", "title": "Assurance Lead", "initials": "RT", "image": "assets/avatars/red-team.webp", "accent": "coral", "headOf": "assurance", "memberOf": []},
+    {"id": "security", "name": "Security", "title": "Security and Abuse Reviewer", "initials": "SE", "image": "assets/avatars/security.webp", "accent": "violet", "headOf": null, "memberOf": ["assurance", "product"]}
+  ],
+  "departments": [
+    {"id": "stewardship", "head": "steward", "email": "education@signwriting.org", "campaigns": ["source-paths"]},
+    {"id": "front-desk", "head": "chief-of-staff", "email": "steve@signwriting.org", "campaigns": ["guided-arrivals"]},
+    {"id": "advancement", "head": "philanthropy", "email": "business@signwriting.org", "campaigns": ["sustainable-support"]},
+    {"id": "research", "head": "researcher", "email": "research@signwriting.org", "campaigns": ["world-language-review"]},
+    {"id": "product", "head": "systems", "email": "register@signwriting.org", "campaigns": ["early-access"]},
+    {"id": "community", "head": "community", "email": "business@signwriting.org", "campaigns": ["country-connections"]},
+    {"id": "voice-editorial", "head": "voice", "email": "steve@signwriting.org", "campaigns": ["clear-public-voice"]},
+    {"id": "assurance", "head": "red-team", "email": "support@signwriting.org", "campaigns": ["translation-quality"]}
+  ],
+  "campaigns": [
+    {"id": "guided-arrivals", "status": "active"},
+    {"id": "source-paths", "status": "active"},
+    {"id": "sustainable-support", "status": "active"},
+    {"id": "world-language-review", "status": "active"},
+    {"id": "early-access", "status": "active"},
+    {"id": "country-connections", "status": "active"},
+    {"id": "clear-public-voice", "status": "active"},
+    {"id": "translation-quality", "status": "active"}
+  ],
+  "resources": [
+    {"id": "lessons", "url": "https://www.signwriting.org/lessons/"},
+    {"id": "project", "url": "https://www.sutton-signwriting.io/"},
+    {"id": "code", "url": "https://github.com/sutton-signwriting"}
+  ]
+}
