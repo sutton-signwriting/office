@@ -112,6 +112,11 @@ const snapshot = `(() => ({
   researchContact: [...document.querySelectorAll('#contact-list .contact-card')].some((card) =>
     card.querySelector('.email')?.textContent === 'research@signwriting.org'
     && card.getAttribute('href')?.startsWith('mailto:research@signwriting.org?')),
+  helpContact: [...document.querySelectorAll('#contact-list .contact-card')].some((card) =>
+    card.querySelector('.email')?.textContent === 'help@signwriting.org'
+    && card.getAttribute('href')?.startsWith('mailto:help@signwriting.org?')),
+  languageHelp: document.querySelector('#language-help')
+    ?.getAttribute('href')?.startsWith('mailto:help@signwriting.org?') || false,
   researchDepartment: document.querySelector('#department-research .campaign a')
     ?.getAttribute('href')?.startsWith('mailto:research@signwriting.org?') || false,
   avatarImages: document.querySelectorAll('.bot-avatar.has-image img').length,
@@ -193,8 +198,8 @@ try {
     language: 'de', languageSelect: 'de', countrySelect: 'DE', country: 'Deutschland',
     flag: '🇩🇪', headerCountryControl: false, localCountryControl: true,
     savedLanguage: 'de', savedCountry: 'DE', urlLanguage: 'de', urlCountry: 'DE',
-    firstBotAction: 'E-Mail an Chief of Staff', researchContact: true,
-    researchDepartment: true, avatarImages: 12, rawKeyVisible: false
+    firstBotAction: 'E-Mail an Chief of Staff', researchContact: true, helpContact: true,
+    languageHelp: true, researchDepartment: true, avatarImages: 12, rawKeyVisible: false
   });
 
   await client.call('Page.reload', {ignoreCache: false});

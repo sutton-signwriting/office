@@ -85,5 +85,5 @@ Stable message keys belong to meaning, not page position. Office records refer t
 stable IDs, so names, departments, and campaigns can move without invalidating translations.
 Source copy changes first in English, then all supported catalogs change in the same revision.
 
-Visitors can report missing languages or translation problems through support@signwriting.org.
+Visitors can report missing languages or translation problems through help@signwriting.org.
 Corrections should record the locale, message key, proposed wording, reviewer, and review date.

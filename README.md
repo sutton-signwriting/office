@@ -44,7 +44,7 @@ after GitHub provisions the certificate.
 ## Launch checklist
 
 - Provision and test every address listed in site/data/office.json.
-- Confirm that support@signwriting.org receives language requests and translation corrections.
+- Confirm that help@signwriting.org receives language requests and translation corrections.
 - Review the translated copy with fluent community members.
 - Confirm every bot avatar remains suitable for public use after any replacement.
 - Review each active campaign and its owner before announcing the site.

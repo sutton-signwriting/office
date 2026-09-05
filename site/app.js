@@ -241,7 +241,7 @@ function renderContext() {
     signList.append(element('span', 'chip muted', t('context.noSignData')));
   }
 
-  document.querySelector('#language-help').href = mailtoHref('support@signwriting.org', t('mail.topic.language'));
+  document.querySelector('#language-help').href = mailtoHref('help@signwriting.org', t('mail.topic.language'));
   document.querySelectorAll('.js-register').forEach((link) => {
     link.href = mailtoHref('register@signwriting.org', t('mail.topic.register'));
   });

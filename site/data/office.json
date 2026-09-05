@@ -1,9 +1,9 @@
 {
-  "updated": "2026-09-04",
+  "updated": "2026-09-05",
   "contacts": [
     {"id": "steve", "email": "steve@signwriting.org", "icon": "hello"},
     {"id": "register", "email": "register@signwriting.org", "icon": "spark"},
-    {"id": "support", "email": "support@signwriting.org", "icon": "help"},
+    {"id": "support", "email": "help@signwriting.org", "icon": "help"},
     {"id": "education", "email": "education@signwriting.org", "icon": "lens"},
     {"id": "research", "email": "research@signwriting.org", "icon": "records"},
     {"id": "business", "email": "business@signwriting.org", "icon": "bridge"}
@@ -30,7 +30,7 @@
     {"id": "product", "head": "systems", "email": "register@signwriting.org", "campaigns": ["early-access"]},
     {"id": "community", "head": "community", "email": "business@signwriting.org", "campaigns": ["country-connections"]},
     {"id": "voice-editorial", "head": "voice", "email": "steve@signwriting.org", "campaigns": ["clear-public-voice"]},
-    {"id": "assurance", "head": "red-team", "email": "support@signwriting.org", "campaigns": ["translation-quality"]}
+    {"id": "assurance", "head": "red-team", "email": "help@signwriting.org", "campaigns": ["translation-quality"]}
   ],
   "campaigns": [
     {"id": "guided-arrivals", "status": "active"},
