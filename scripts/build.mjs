@@ -1,6 +1,7 @@
 import {cp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
+import {marked} from 'marked';
 
 const root = process.cwd();
 const sourceDir = path.join(root, 'site');
@@ -148,6 +149,27 @@ await cp(sourceDir, outputDir, {
 });
 await writeFile(path.join(outputDir, 'data', 'countries.json'), JSON.stringify(countries), 'utf8');
 
+const modelMarkdown = await readFile(path.join(sourceDir, 'office-model.md'), 'utf8');
+const modelRevision = createHash('sha256').update(modelMarkdown).digest('hex').slice(0, 12);
+const modelBody = await marked.parse(modelMarkdown.replace(/^# .+\n+/, ''));
+const modelHtml = `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A public explanation of how the Sutton SignWriting Front and Back Offices work together.">
+<link rel="canonical" href="https://office.signwriting.org/office-model.html"><link rel="stylesheet" href="office-model.css">
+<title>How the Sutton SignWriting Office works</title></head><body>
+<div class="print-document-header" aria-hidden="true"><strong>Sutton SignWriting Office</strong><span>https://office.signwriting.org/office-model.html · Reviewed 2026-09-05</span></div>
+<header class="model-header"><a class="brand" href="./">Sutton SignWriting Office</a><a class="back-link" href="./">Back to the Office</a></header>
+<main class="model-main"><header class="hero"><p class="eyebrow">Public Office model · Reviewed 2026-09-05</p><h1>How the Office works</h1><p class="lede">One human-directed path from research and design to implementation, verification, and deliberate publication.</p>
+<div class="actions"><a class="button primary" href="office-model.md">Markdown source</a><button class="button" type="button" data-print>Print / Save PDF</button><a class="button" href="downloads/office-model.pdf">Download PDF</a></div></header>
+<article class="markdown-body">${modelBody}</article></main>
+<footer class="model-footer"><span>Public method only; private operational detail stays private.</span><span>Reviewed 2026-09-05 · Source ${modelRevision}</span></footer>
+<script src="office-model.js" defer></script></body></html>\n`;
+for (const pattern of [/192\.168\./, /127\.0\.0\.1/, /\/home\//, /oauth_token/i, /BEGIN [A-Z ]*PRIVATE KEY/]) {
+  if (pattern.test(modelMarkdown + modelHtml)) throw new Error(`Prohibited public Office-model content matched ${pattern}`);
+}
+await writeFile(path.join(outputDir, 'office-model.html'), modelHtml);
+try { await cp(path.join(root, 'downloads'), path.join(outputDir, 'downloads'), {recursive: true}); } catch {}
+
 const revisionHash = createHash('sha256');
 for (const file of [
   'app.js',
@@ -155,7 +177,10 @@ for (const file of [
   'data/office.json',
   'data/locales.json',
   ...locales.map((locale) => locale.catalog),
-  ...office.bots.map((bot) => bot.image).filter(Boolean)
+  ...office.bots.map((bot) => bot.image).filter(Boolean),
+  'office-model.md',
+  'office-model.css',
+  'office-model.js'
 ]) {
   revisionHash.update(await readFile(path.join(sourceDir, file)));
 }

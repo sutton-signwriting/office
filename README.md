@@ -6,8 +6,12 @@ in a separate repository.
 
 ## Local build and preview
 
-Run `node scripts/build.mjs` to validate the data, translations, local assets, and generated country
+Run `npm ci` once, then `npm run build` to validate the data, translations, local assets, and generated country
 manifest. The static publication is written to `dist/`.
+
+The public Office model is maintained in `site/office-model.md`. Its generated page provides the
+Markdown source, browser print, and a downloadable PDF. Run `npm run build:pdf` when the model
+changes so the reviewed HTML, Markdown, and PDF editions remain aligned.
 
 The Docker Compose service publishes the same static build on port 7040 for LAN review.
 
