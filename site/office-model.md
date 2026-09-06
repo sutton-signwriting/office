@@ -19,12 +19,12 @@ office, but each handoff keeps its authority and review boundary.
 
 ## The shared working loop
 
-1. **Receive** — identify the request, audience, desired result, and constraints.
-2. **Prepare** — gather sources, distinguish facts from proposals, and make the decision clear.
-3. **Approve** — Steve decides whether the packet may cross into implementation or publication.
-4. **Implement** — make the smallest coherent change in the owning project.
-5. **Verify** — test the result, inspect what people will see, and record remaining gaps.
-6. **Publish or hand back** — release only approved public material and preserve a reviewable source.
+1. **Receive** - identify the request, audience, desired result, and constraints.
+2. **Prepare** - gather sources, distinguish facts from proposals, and make the decision clear.
+3. **Approve** - Steve decides whether the packet may cross into implementation or publication.
+4. **Implement** - make the smallest coherent change in the owning project.
+5. **Verify** - test the result, inspect what people will see, and record remaining gaps.
+6. **Publish or hand back** - release only approved public material and preserve a reviewable source.
 
 ## What crosses the boundary
 
@@ -35,13 +35,14 @@ production.
 
 ## Knowledge and publication
 
-Public guides are maintained as Markdown and released together as HTML, Markdown source, and PDF.
-The public edition contains the reusable method, public roles, approved contacts, and reviewed
-organizational explanations. Private handbooks retain correspondence, account administration,
-local systems, recovery procedures, unpublished work, and other operational detail.
+The public Office door is https://office.signwriting.org/. Reviewed public explanations may be
+published there when Steve authorizes them. Auto-generated method guides on
+www.sutton-signwriting.io were retired on 2026-09-06.
 
-Public and private editions may share language, but publication is always a deliberate reviewed
-copy. Private files are never mirrored automatically.
+Private handbooks retain correspondence, account administration, local systems, recovery
+procedures, unpublished work, and other operational detail. Public and private editions may share
+language, but publication is always a deliberate reviewed copy. Private files are never mirrored
+automatically.
 
 ## Human authority
 
@@ -51,6 +52,4 @@ publication, spending, account creation, commitments, and production changes.
 
 ## Continue
 
-- [Front Office public guide](https://www.sutton-signwriting.io/front-office/)
-- [Back Office public guide](https://www.sutton-signwriting.io/back-office/)
 - [Contact the Office](https://office.signwriting.org/#contact)
