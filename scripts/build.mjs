@@ -157,12 +157,12 @@ const modelHtml = `<!doctype html>
 <meta name="description" content="A public explanation of how the Sutton SignWriting Front and Back Offices work together.">
 <link rel="canonical" href="https://office.signwriting.org/office-model.html"><link rel="stylesheet" href="office-model.css">
 <title>How the Sutton SignWriting Office works</title></head><body>
-<div class="print-document-header" aria-hidden="true"><strong>Sutton SignWriting Office</strong><span>https://office.signwriting.org/office-model.html · Reviewed 2026-09-05</span></div>
+<div class="print-document-header" aria-hidden="true"><strong>Sutton SignWriting Office</strong><span>https://office.signwriting.org/office-model.html · Reviewed 2026-09-07</span></div>
 <header class="model-header"><a class="brand" href="./">Sutton SignWriting Office</a><a class="back-link" href="./">Back to the Office</a></header>
-<main class="model-main"><header class="hero"><p class="eyebrow">Public Office model · Reviewed 2026-09-05</p><h1>How the Office works</h1><p class="lede">One human-directed path from research and design to implementation, verification, and deliberate publication.</p>
+<main class="model-main"><header class="hero"><p class="eyebrow">Public Office model · Reviewed 2026-09-07</p><h1>How the Office works</h1><p class="lede">One human-directed path from research and design to implementation, verification, and deliberate publication.</p>
 <div class="actions"><a class="button primary" href="office-model.md">Markdown source</a><button class="button" type="button" data-print>Print / Save PDF</button><a class="button" href="downloads/office-model.pdf">Download PDF</a></div></header>
 <article class="markdown-body">${modelBody}</article></main>
-<footer class="model-footer"><span>Public method only; private operational detail stays private.</span><span>Reviewed 2026-09-05 · Source ${modelRevision}</span></footer>
+<footer class="model-footer"><span>Public method only; private operational detail stays private.</span><span>Reviewed 2026-09-07 · Source ${modelRevision}</span></footer>
 <script src="office-model.js" defer></script></body></html>\n`;
 for (const pattern of [/192\.168\./, /127\.0\.0\.1/, /\/home\//, /oauth_token/i, /BEGIN [A-Z ]*PRIVATE KEY/]) {
   if (pattern.test(modelMarkdown + modelHtml)) throw new Error(`Prohibited public Office-model content matched ${pattern}`);

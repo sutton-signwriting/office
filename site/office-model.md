@@ -37,7 +37,7 @@ production.
 
 The public Office door is https://office.signwriting.org/. Reviewed public explanations may be
 published there when Steve authorizes them. Auto-generated method guides on
-www.sutton-signwriting.io were retired on 2026-09-06.
+www.sutton-signwriting.io are retired.
 
 Private handbooks retain correspondence, account administration, local systems, recovery
 procedures, unpublished work, and other operational detail. Public and private editions may share
