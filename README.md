@@ -1,8 +1,8 @@
 # Sutton SignWriting Office
 
 This is the canonical source for the public, read-only Sutton SignWriting Office at
-https://office.signwriting.org/. The private Front Office handbook and Grok operating material live
-in a separate repository.
+https://office.signwriting.org/. Private operating details and platform development belong outside
+this public publication repository.
 
 ## Local build and preview
 
@@ -31,9 +31,8 @@ records. The temporary browser profile is removed after the run.
 ## Bot avatars
 
 Bot records include initials and an `image` path. The current twelve-image WebP set is stored in
-`site/assets/avatars/`. The private Front Office repository retains the generation specifications;
-this public repository contains only approved publication assets. Initials remain the resilient
-public fallback.
+`site/assets/avatars/`. This public repository contains approved publication assets. Initials
+remain the resilient public fallback.
 
 ## GitHub Pages publishing
 

@@ -4,7 +4,7 @@
 
 Maintain the public, read-only Sutton SignWriting Office website. This repository contains only
 material approved for public release and publishes the static site at `office.signwriting.org`.
-The private Front Office handbook, Grok workspace details, and Archie operations belong elsewhere.
+Private Grok workspace details, infrastructure planning, and Archie operations belong elsewhere.
 
 ## Publication boundary
 
