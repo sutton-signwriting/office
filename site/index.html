@@ -39,6 +39,7 @@
           <span data-i18n="controls.language">Site language</span>
           <select id="language-select"></select>
         </label>
+        <button type="button" id="account-entry" class="button account-entry" aria-haspopup="dialog" aria-controls="account-dialog" data-i18n="account.title">Account</button>
       </div>
     </header>
 
@@ -197,6 +198,25 @@
       <a href="#bots"><span aria-hidden="true">◎</span><span data-i18n="nav.bots">Office bots</span></a>
       <a href="#departments"><span aria-hidden="true">▦</span><span data-i18n="nav.departments">Departments</span></a>
     </nav>
+
+
+    <dialog id="account-dialog" class="account-dialog" aria-labelledby="account-label">
+      <div class="account-heading">
+        <p class="eyebrow" id="account-label" data-i18n="account.title">Account</p>
+        <button type="button" class="account-close" data-account-close aria-label="Close account panel">×</button>
+      </div>
+      <div data-account-status role="status" aria-live="polite" aria-atomic="true">
+        <h2 data-account-title>Sign-in is not available yet</h2>
+        <p data-account-body>You can still use the public Office and contact us by email.</p>
+        <p class="account-profile" data-account-profile hidden></p>
+        <p class="account-allowance" data-account-allowance hidden></p>
+      </div>
+      <div class="account-actions">
+        <button type="button" class="button button-primary" data-account-primary hidden>Sign in</button>
+        <button type="button" class="button account-secondary" data-account-signout data-i18n="account.signOut" hidden>Sign out</button>
+      </div>
+      <div data-account-controls></div>
+    </dialog>
 
     <noscript>
       <p class="noscript">JavaScript is needed for country and language selection. You can still email <a href="mailto:help@signwriting.org">help@signwriting.org</a>.</p>

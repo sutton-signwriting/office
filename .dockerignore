@@ -1,0 +1,6 @@
+.git
+.env
+dist/
+dist-preview/
+node_modules/
+.browser-cdp-*/

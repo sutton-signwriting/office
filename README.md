@@ -28,6 +28,18 @@ the country control's placement in the local starting point, the selected flag, 
 bot email action. It also checks the Research contact and department route and all twelve avatar
 records. The temporary browser profile is removed after the run.
 
+## Account interface
+
+The Account panel and static callback page are prepared for authentication integration.
+The normal build currently reports that sign-in is unavailable. It collects no credentials
+and provides no protected content. The callback is emitted as
+`auth/callback/index.html` for direct static hosting.
+
+`npm run build` and `npm run check:account` verify that publication output contains the
+unavailable provider and no sample account artifacts. Enabling a live provider requires an
+explicit update to that check after integration verification. The browser state check also
+covers keyboard access, phone layout, and unsolicited callback rejection.
+
 ## Bot avatars
 
 Bot records include initials and an `image` path. The current twelve-image WebP set is stored in

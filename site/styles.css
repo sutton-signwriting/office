@@ -1231,3 +1231,28 @@ h3 {
     scroll-behavior: auto;
   }
 }
+
+/* Account entry and accessible modal. */
+.locale-controls { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 10px; }
+.account-entry { background: var(--navy); color: var(--white); cursor: pointer; min-height: 46px; }
+.account-dialog { width: min(560px, calc(100% - 28px)); max-height: calc(100dvh - 40px); overflow-y: auto; border: 1px solid var(--line); border-radius: 24px; background: var(--paper); color: var(--ink); padding: 28px; box-shadow: var(--shadow); }
+.account-dialog::backdrop { background: rgb(16 45 59 / 65%); }
+.account-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-block-end: 18px; }
+.account-heading .eyebrow { margin: 0; }
+.account-close { min-width: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 50%; background: var(--white); cursor: pointer; font-size: 1.5rem; }
+.account-dialog h2 { font-size: clamp(1.8rem, 7vw, 2.65rem); overflow-wrap: anywhere; }
+.account-dialog p { overflow-wrap: anywhere; }
+.account-dialog [data-account-body] { color: var(--ink-soft); }
+.account-profile { font-weight: 800; }
+.account-allowance { border-radius: 14px; padding: 16px; background: var(--teal-soft); }
+.account-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.account-secondary { background: var(--white); border-color: var(--line); color: var(--ink); }
+.account-dialog button { cursor: pointer; }
+.account-dialog [hidden] { display: none !important; }
+.account-dialog button:disabled { opacity: .6; cursor: wait; }
+.callback-shell { width: min(680px, calc(100% - 40px)); margin: 12vh auto; }
+.callback-shell h1 { font-size: clamp(2.4rem, 8vw, 4rem); }
+@media (min-width: 980px) {
+  .site-header { grid-template-columns: auto 1fr minmax(260px, 300px); }
+  .desktop-nav { gap: 14px; }
+}

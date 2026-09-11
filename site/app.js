@@ -1,3 +1,5 @@
+import {updateAccount} from './account.js';
+
 const iconByName = {hello: '◎', spark: '✦', help: '?', lens: '⌕', records: '▤', people: '◌', bridge: '⌁'};
 const storageKeys = {country: 'sgnw_office_country', language: 'sgnw_office_language'};
 const assetRevision = new URL(import.meta.url).searchParams.get('v');
@@ -411,6 +413,8 @@ function render() {
   renderBots();
   renderDepartments();
   renderResources();
+  document.querySelector('[data-account-close]').setAttribute('aria-label', t('account.close'));
+  updateAccount(t);
 }
 
 async function start() {

@@ -35,6 +35,8 @@ jobs:
         run: npm ci
       - name: Validate and build
         run: npm run build
+      - name: Verify production account boundary
+        run: npm run check:account
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Upload artifact

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "build:pdf": "npm run build && node scripts/render_pdf.mjs && npm run build"
+    "build:pdf": "npm run build && node scripts/render_pdf.mjs && npm run build",
+    "check:account": "node scripts/check_account_bundle.mjs"
   },
   "dependencies": {
     "marked": "18.0.6"

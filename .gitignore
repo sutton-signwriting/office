@@ -8,3 +8,6 @@ dist/
 node_modules/
 .browser-cdp-*/
 .env
+
+# Separate generated account preview; never publish.
+dist-preview/

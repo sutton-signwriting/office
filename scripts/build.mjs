@@ -2,10 +2,15 @@ import {cp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {marked} from 'marked';
+import {checkProductionBundle} from './check_account_bundle.mjs';
 
 const root = process.cwd();
 const sourceDir = path.join(root, 'site');
-const outputDir = path.join(root, 'dist');
+const args = process.argv.slice(2);
+if (args.length && (args.length !== 2 || args[0] !== '--account-preview'))
+  throw new Error('Usage: node scripts/build.mjs [--account-preview EXTERNAL_SOURCE_DIRECTORY]');
+const previewSource = args.length ? path.resolve(args[1]) : null;
+const outputDir = path.join(root, previewSource ? 'dist-preview' : 'dist');
 const readJson = async (file) => JSON.parse(await readFile(file, 'utf8'));
 
 const localeConfig = await readJson(path.join(sourceDir, 'data', 'locales.json'));
@@ -148,6 +153,15 @@ await cp(sourceDir, outputDir, {
   }
 });
 await writeFile(path.join(outputDir, 'data', 'countries.json'), JSON.stringify(countries), 'utf8');
+await writeFile(path.join(outputDir, 'account-build.json'), JSON.stringify({mode: previewSource ? 'preview' : 'production'}));
+if (previewSource) {
+  await mkdir(path.join(outputDir, 'preview'), {recursive: true});
+  for (const file of ['provider.js', 'styles.css'])
+    await cp(path.join(previewSource, file), path.join(outputDir, 'preview', file));
+  await writeFile(path.join(outputDir, 'account-provider.js'), "export {createAccountProvider} from './preview/provider.js';\n");
+} else {
+  await writeFile(path.join(outputDir, 'account-provider.js'), "export {createAccountProvider} from './account-unavailable.js';\n");
+}
 
 const modelMarkdown = await readFile(path.join(sourceDir, 'office-model.md'), 'utf8');
 const modelRevision = createHash('sha256').update(modelMarkdown).digest('hex').slice(0, 12);
@@ -173,6 +187,10 @@ try { await cp(path.join(root, 'downloads'), path.join(outputDir, 'downloads'), 
 const revisionHash = createHash('sha256');
 for (const file of [
   'app.js',
+  'account.js',
+  'account-unavailable.js',
+  'account-callback.js',
+  'auth/callback/index.html',
   'styles.css',
   'data/office.json',
   'data/locales.json',
@@ -188,9 +206,10 @@ revisionHash.update(JSON.stringify(countries));
 const revision = revisionHash.digest('hex').slice(0, 12);
 
 const indexPath = path.join(outputDir, 'index.html');
-const index = (await readFile(indexPath, 'utf8'))
+let index = (await readFile(indexPath, 'utf8'))
   .replace('href="styles.css"', 'href="styles.css?v=' + revision + '"')
   .replace('src="app.js"', 'src="app.js?v=' + revision + '"');
+if (previewSource) index = index.replace('</head>', '<link rel="stylesheet" href="preview/styles.css"></head>');
 await writeFile(indexPath, index);
 
 const localAssets = [...index.matchAll(/(?:href|src)="([^"#]+)"/g)]
@@ -198,4 +217,6 @@ const localAssets = [...index.matchAll(/(?:href|src)="([^"#]+)"/g)]
   .filter((reference) => !reference.includes(':'));
 for (const reference of localAssets) await readFile(path.join(outputDir, reference.split('?')[0]));
 
-console.log('Built public office ' + revision + ': ' + countries.length + ' locations, ' + localeCodes.length + ' complete interface languages, ' + office.bots.length + ' bots, ' + office.departments.length + ' departments.');
+if (!previewSource) await checkProductionBundle(outputDir);
+
+console.log('Built ' + (previewSource ? 'local preview' : 'public') + ' office ' + revision + ': ' + countries.length + ' locations, ' + localeCodes.length + ' complete interface languages, ' + office.bots.length + ' bots, ' + office.departments.length + ' departments.');
