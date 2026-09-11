@@ -7,6 +7,7 @@ const assetRevision = new URL(import.meta.url).searchParams.get('v');
 let supportedLocales = [];
 let defaultLanguage = 'en';
 let office;
+let publications;
 let countries;
 let fallbackMessages;
 let messages;
@@ -307,6 +308,15 @@ function renderBots() {
     }
     bot.memberOf.forEach((id) => memberships.append(element('span', 'membership', departmentLabel(id))));
     card.append(memberships);
+    const seriesList = element('div', 'bot-series');
+    seriesList.lang = 'en'; seriesList.dir = 'ltr';
+    seriesList.append(element('strong', '', 'Publication references · proposed'));
+    publications.series.filter(series => series.desks.includes(bot.id) || publications.secondaryResponsibilities?.[series.slug]?.includes(bot.id)).forEach(series => {
+      const link = element('a', '', series.title.replace('Sutton SignWriting ', '') + (series.desks.includes(bot.id) ? '' : ' · supporting UX'));
+      link.href = '#series-' + series.slug;
+      seriesList.append(link);
+    });
+    card.append(seriesList);
 
     const primaryDepartment = office.departments.find((department) => department.id === bot.headOf)
       || office.departments.find((department) => bot.memberOf.includes(department.id));
@@ -405,6 +415,7 @@ async function changeLanguage(code) {
 
 function render() {
   updateDocumentLanguage();
+  document.querySelector('.review-language-note').hidden = currentLanguage === 'en';
   translateStaticContent();
   renderLanguageSelect();
   renderCountrySelect();
@@ -418,14 +429,16 @@ function render() {
 }
 
 async function start() {
-  const [localeConfig, officeData, countryData] = await Promise.all([
+  const [localeConfig, officeData, countryData, publicationData] = await Promise.all([
     fetchJson('data/locales.json'),
     fetchJson('data/office.json'),
-    fetchJson('data/countries.json')
+    fetchJson('data/countries.json'),
+    fetchJson('data/publications.json')
   ]);
   supportedLocales = localeConfig.locales;
   defaultLanguage = localeConfig.defaultLocale;
   office = officeData;
+  publications = publicationData;
   countries = countryData;
   currentLanguage = initialLanguage();
   currentCountry = initialCountry();

@@ -1,0 +1,7 @@
+name: office-designer
+services:
+  web:
+    build: .
+    ports:
+      - "${OFFICE_REVIEW_BIND_IP:-127.0.0.1}:7041:80"
+    restart: unless-stopped

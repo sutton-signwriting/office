@@ -29,8 +29,9 @@
 
       <nav class="desktop-nav" aria-label="Primary">
         <a href="#contact" data-i18n="nav.contact">Contact</a>
-        <a href="#bots" data-i18n="nav.bots">Office bots</a>
-        <a href="#departments" data-i18n="nav.departments">Departments</a>
+        <a href="#stewards" lang="en">Stewards</a>
+        <a href="#publications" lang="en">Publications</a>
+        <a href="#work" lang="en">Work</a>
         <a href="#resources" data-i18n="nav.resources">Resources</a>
       </nav>
 
@@ -44,6 +45,7 @@
     </header>
 
     <main id="main">
+      <p class="review-language-note section-shell" lang="en" dir="ltr" hidden>New stewardship, work, and publication sections are shown in English while translations are reviewed.</p>
       <section class="hero section-shell" id="top">
         <div class="hero-copy">
           <p class="eyebrow" data-i18n="hero.eyebrow">A human-directed international office</p>
@@ -55,13 +57,12 @@
           </div>
           <p class="microcopy" data-i18n="hero.readonly">This first release is informational and read-only. Email is the way to respond.</p>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <picture>
-            <source media="(max-width: 720px)" srcset="assets/front-office-ensemble-720.webp">
-            <source type="image/webp" srcset="assets/front-office-ensemble-1200.webp">
-            <img src="assets/front-office-ensemble-1200.webp" alt="" width="1200" height="800">
-          </picture>
-        </div>
+        <aside class="hero-library" lang="en" dir="ltr" aria-label="Publication library">
+          <p class="eyebrow">Read · understand · build</p>
+          <p class="hero-library-title">A written world.<br>A shared future.</p>
+          <div class="library-counts"><span><strong>8</strong>series</span><span><strong>57</strong>entries</span><span><strong>v1</strong>published</span></div>
+          <a href="#publications">Enter the reference library →</a>
+        </aside>
       </section>
 
       <section class="context-band" aria-labelledby="context-title">
@@ -92,6 +93,8 @@
         </div>
       </section>
 
+      <!-- STEWARDS -->
+
       <section class="content-section section-shell" id="contact">
         <div class="section-heading">
           <div>
@@ -102,6 +105,10 @@
         </div>
         <div class="card-grid contact-grid" id="contact-list"></div>
       </section>
+
+      <!-- WORK -->
+
+      <!-- PUBLICATIONS -->
 
       <section class="content-section section-shell" id="bots">
         <div class="section-heading">
@@ -185,18 +192,19 @@
       <div>
         <strong>Sutton SignWriting Office</strong>
         <p data-i18n="footer.description">A public guide to people, roles, and active work.</p>
+        <p><a href="https://www.sutton-signwriting.io/">Technology, tools, and status ↗</a></p>
         <p><a href="office-model.html">How the Office works · Markdown, print, and PDF</a></p>
       </div>
       <div>
         <a href="mailto:help@signwriting.org">help@signwriting.org</a>
-        <p><span data-i18n="footer.updated">Content reviewed</span> <time datetime="2026-09-05">2026-09-05</time></p>
+        <p><span data-i18n="footer.updated">Content reviewed</span> <time datetime="2026-09-11">2026-09-11</time></p>
       </div>
     </footer>
 
     <nav class="mobile-nav" aria-label="Mobile">
       <a href="#contact"><span aria-hidden="true">✉</span><span data-i18n="nav.contact">Contact</span></a>
-      <a href="#bots"><span aria-hidden="true">◎</span><span data-i18n="nav.bots">Office bots</span></a>
-      <a href="#departments"><span aria-hidden="true">▦</span><span data-i18n="nav.departments">Departments</span></a>
+      <a href="#publications" lang="en"><span aria-hidden="true">▤</span><span>Publications</span></a>
+      <a href="#stewards" lang="en"><span aria-hidden="true">◎</span><span>Stewards</span></a>
     </nav>
 
 

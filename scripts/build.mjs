@@ -2,6 +2,7 @@ import {cp, mkdir, readFile, rm, writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {marked} from 'marked';
+import {renderRedesign} from './redesign.mjs';
 import {checkProductionBundle} from './check_account_bundle.mjs';
 
 const root = process.cwd();
@@ -187,6 +188,8 @@ try { await cp(path.join(root, 'downloads'), path.join(outputDir, 'downloads'), 
 const revisionHash = createHash('sha256');
 for (const file of [
   'app.js',
+  'index.html',
+  'data/publications.json',
   'account.js',
   'account-unavailable.js',
   'account-callback.js',
@@ -205,8 +208,12 @@ for (const file of [
 revisionHash.update(JSON.stringify(countries));
 const revision = revisionHash.digest('hex').slice(0, 12);
 
+const redesign = await renderRedesign(sourceDir, office);
 const indexPath = path.join(outputDir, 'index.html');
 let index = (await readFile(indexPath, 'utf8'))
+  .replace('<!-- STEWARDS -->', redesign.stewards)
+  .replace('<!-- WORK -->', redesign.work)
+  .replace('<!-- PUBLICATIONS -->', redesign.publications)
   .replace('href="styles.css"', 'href="styles.css?v=' + revision + '"')
   .replace('src="app.js"', 'src="app.js?v=' + revision + '"');
 if (previewSource) index = index.replace('</head>', '<link rel="stylesheet" href="preview/styles.css"></head>');

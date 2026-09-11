@@ -1,0 +1,621 @@
+{
+  "schemaVersion": 1,
+  "title": "Sutton SignWriting Platform",
+  "subtitle": "Complete Eight-Series Release",
+  "version": "v1.0.0",
+  "doi": "10.5281/zenodo.20041043",
+  "license": "CC BY 4.0",
+  "publicationDate": "2026-05-15",
+  "checked": "2026-09-11",
+  "sourceRepository": "https://github.com/sutton-signwriting/platform-record",
+  "sourceCommit": "9f0000339fa3514a34a4714b7e57793537b329de",
+  "companions": [
+    {
+      "file": "how-to-read-the-platform.md",
+      "edition": "Living companion",
+      "url": "https://github.com/sutton-signwriting/platform-record/blob/main/how-to-read-the-platform.md"
+    },
+    {
+      "file": "reader-paths.md",
+      "edition": "Archival v1",
+      "url": "https://github.com/sutton-signwriting/platform-record/blob/9f0000339fa3514a34a4714b7e57793537b329de/reader-paths.md"
+    },
+    {
+      "file": "ai-orientation.md",
+      "edition": "Living companion",
+      "url": "https://github.com/sutton-signwriting/platform-record/blob/main/ai-orientation.md"
+    },
+    {
+      "file": "layer-aware-evaluation.md",
+      "edition": "Living companion",
+      "url": "https://github.com/sutton-signwriting/platform-record/blob/main/layer-aware-evaluation.md"
+    },
+    {
+      "file": "claims-and-evidence-map.md",
+      "edition": "Living companion",
+      "url": "https://github.com/sutton-signwriting/platform-record/blob/main/claims-and-evidence-map.md"
+    },
+    {
+      "file": "the-inevitable-text.md",
+      "edition": "Archival v1",
+      "url": "https://github.com/sutton-signwriting/platform-record/blob/9f0000339fa3514a34a4714b7e57793537b329de/the-inevitable-text.md"
+    },
+    {
+      "file": "platform-manifest.json",
+      "edition": "Archival v1",
+      "url": "https://github.com/sutton-signwriting/platform-record/blob/9f0000339fa3514a34a4714b7e57793537b329de/platform-manifest.json"
+    },
+    {
+      "file": "platform-manifest.csv",
+      "edition": "Archival v1",
+      "url": "https://github.com/sutton-signwriting/platform-record/blob/9f0000339fa3514a34a4714b7e57793537b329de/platform-manifest.csv"
+    }
+  ],
+  "secondaryResponsibilities": {
+    "foundations": [
+      "community"
+    ],
+    "formal-signwriting": [
+      "designer"
+    ],
+    "language-and-literacy-research": [
+      "designer"
+    ]
+  },
+  "assignmentStatus": "Proposed for human review",
+  "series": [
+    {
+      "title": "Sutton SignWriting Foundations",
+      "slug": "foundations",
+      "version": "v1.0.0",
+      "doi": "10.5281/zenodo.20041560",
+      "license": "CC BY 4.0",
+      "living_url": "https://steveslevinski.me/#series/foundations",
+      "repository_url": "https://github.com/sutton-signwriting/foundations",
+      "role": "Public entry point and conceptual foundation.",
+      "sourceCommit": "23b9fcbd9b530e82c9d86043e0474063b32ef9cd",
+      "archiveUrl": "https://doi.org/10.5281/zenodo.20041560",
+      "immutableSourceUrl": "https://github.com/sutton-signwriting/foundations/tree/23b9fcbd9b530e82c9d86043e0474063b32ef9cd",
+      "desks": [
+        "steward",
+        "archivist"
+      ],
+      "entries": [
+        {
+          "slug": "start-here",
+          "title": "Start Here",
+          "number": 1,
+          "sourceUrl": "https://github.com/sutton-signwriting/foundations/blob/23b9fcbd9b530e82c9d86043e0474063b32ef9cd/entries/start-here/orientation.md",
+          "livingUrl": "https://steveslevinski.me/#series/foundations/start-here/primary"
+        },
+        {
+          "slug": "language-without-sound",
+          "title": "Language Without Sound",
+          "number": 2,
+          "sourceUrl": "https://github.com/sutton-signwriting/foundations/blob/23b9fcbd9b530e82c9d86043e0474063b32ef9cd/entries/language-without-sound/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/foundations/language-without-sound/primary"
+        },
+        {
+          "slug": "the-shape-of-writing",
+          "title": "The Shape of Writing",
+          "number": 3,
+          "sourceUrl": "https://github.com/sutton-signwriting/foundations/blob/23b9fcbd9b530e82c9d86043e0474063b32ef9cd/entries/the-shape-of-writing/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/foundations/the-shape-of-writing/primary"
+        }
+      ]
+    },
+    {
+      "title": "Sutton SignWriting Evidence and Adoption",
+      "slug": "evidence-and-adoption",
+      "version": "v1.0.0",
+      "doi": "10.5281/zenodo.20042446",
+      "license": "CC BY 4.0",
+      "living_url": "https://steveslevinski.me/#series/evidence-and-adoption",
+      "repository_url": "https://github.com/sutton-signwriting/evidence-and-adoption",
+      "role": "Evidence base, adoption boundaries, and country anchors.",
+      "sourceCommit": "cebdd7e9f13cd3bda26ea239f97b7364a8aed277",
+      "archiveUrl": "https://doi.org/10.5281/zenodo.20042446",
+      "immutableSourceUrl": "https://github.com/sutton-signwriting/evidence-and-adoption/tree/cebdd7e9f13cd3bda26ea239f97b7364a8aed277",
+      "desks": [
+        "researcher",
+        "community"
+      ],
+      "entries": [
+        {
+          "slug": "overview",
+          "title": "Sutton SignWriting Evidence and Adoption Overview",
+          "number": 0,
+          "sourceUrl": "https://github.com/sutton-signwriting/evidence-and-adoption/blob/cebdd7e9f13cd3bda26ea239f97b7364a8aed277/entries/overview/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/evidence-and-adoption/overview/primary"
+        },
+        {
+          "slug": "brazil-as-the-empirical-center-of-signwriting",
+          "title": "Brazil as the Empirical Center of SignWriting",
+          "number": 1,
+          "sourceUrl": "https://github.com/sutton-signwriting/evidence-and-adoption/blob/cebdd7e9f13cd3bda26ea239f97b7364a8aed277/entries/brazil-as-the-empirical-center-of-signwriting/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/evidence-and-adoption/brazil-as-the-empirical-center-of-signwriting/primary"
+        },
+        {
+          "slug": "south-korea-as-a-current-institutional-case-study",
+          "title": "South Korea as a Current Institutional Case Study",
+          "number": 2,
+          "sourceUrl": "https://github.com/sutton-signwriting/evidence-and-adoption/blob/cebdd7e9f13cd3bda26ea239f97b7364a8aed277/entries/south-korea-as-a-current-institutional-case-study/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/evidence-and-adoption/south-korea-as-a-current-institutional-case-study/primary"
+        },
+        {
+          "slug": "evidence-boundaries-and-adoption-limits",
+          "title": "Evidence Boundaries and Adoption Limits",
+          "number": 3,
+          "sourceUrl": "https://github.com/sutton-signwriting/evidence-and-adoption/blob/cebdd7e9f13cd3bda26ea239f97b7364a8aed277/entries/evidence-boundaries-and-adoption-limits/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/evidence-and-adoption/evidence-boundaries-and-adoption-limits/primary"
+        },
+        {
+          "slug": "what-the-current-evidence-base-shows",
+          "title": "What the Current Evidence Base Shows",
+          "number": 4,
+          "sourceUrl": "https://github.com/sutton-signwriting/evidence-and-adoption/blob/cebdd7e9f13cd3bda26ea239f97b7364a8aed277/entries/what-the-current-evidence-base-shows/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/evidence-and-adoption/what-the-current-evidence-base-shows/primary"
+        }
+      ]
+    },
+    {
+      "title": "Signed Language Writing Critical Review Series",
+      "slug": "signed-language-writing-critical-review",
+      "version": "v1.0.0",
+      "doi": "10.5281/zenodo.20042604",
+      "license": "CC BY 4.0",
+      "living_url": "https://steveslevinski.me/#series/signed-language-writing-critical-review",
+      "repository_url": "https://github.com/sutton-signwriting/signed-language-writing-critical-review",
+      "role": "Literature and standards review through the layer-based framework.",
+      "sourceCommit": "749d0fa6e3722d6392e4f284e1ebb37e2da68327",
+      "archiveUrl": "https://doi.org/10.5281/zenodo.20042604",
+      "immutableSourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/tree/749d0fa6e3722d6392e4f284e1ebb37e2da68327",
+      "desks": [
+        "red-team",
+        "researcher"
+      ],
+      "entries": [
+        {
+          "slug": "overview",
+          "title": "Signed Language Writing Critical Review Series Overview",
+          "number": 0,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/overview/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/overview/primary"
+        },
+        {
+          "slug": "full-path-critique-framework-for-signed-language-writing-and-text-infrastructure",
+          "title": "Full-Path Critique Framework for Signed-Language Writing and Text Infrastructure",
+          "number": 1,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/full-path-critique-framework-for-signed-language-writing-and-text-infrastructure/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/full-path-critique-framework-for-signed-language-writing-and-text-infrastructure/primary"
+        },
+        {
+          "slug": "sutton-signwriting-and-formal-signwriting-through-the-framework",
+          "title": "Sutton SignWriting and Formal SignWriting Through the Framework",
+          "number": 2,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/sutton-signwriting-and-formal-signwriting-through-the-framework/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/sutton-signwriting-and-formal-signwriting-through-the-framework/primary"
+        },
+        {
+          "slug": "a-layer-based-evaluation-of-signed-language-writing-systems",
+          "title": "A Layer-Based Evaluation of Signed Language Writing Systems",
+          "number": 3,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/a-layer-based-evaluation-of-signed-language-writing-systems/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/a-layer-based-evaluation-of-signed-language-writing-systems/primary"
+        },
+        {
+          "slug": "official-unicode-signwriting-the-character-problem-and-the-written-sign-problem",
+          "title": "A Review of Official Unicode SignWriting",
+          "number": 4,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/official-unicode-signwriting-the-character-problem-and-the-written-sign-problem/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/official-unicode-signwriting-the-character-problem-and-the-written-sign-problem/primary"
+        },
+        {
+          "slug": "grushkin-2017-writing-signed-languages-what-for-what-form",
+          "title": "A Review of Grushkin (2017)",
+          "number": 5,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/grushkin-2017-writing-signed-languages-what-for-what-form/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/grushkin-2017-writing-signed-languages-what-for-what-form/primary"
+        },
+        {
+          "slug": "filhol-2020-a-human-editable-sign-language-representation",
+          "title": "A Review of Filhol (2020)",
+          "number": 6,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/filhol-2020-a-human-editable-sign-language-representation/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/filhol-2020-a-human-editable-sign-language-representation/primary"
+        },
+        {
+          "slug": "thiessen-2011-a-grammar-of-signwriting",
+          "title": "A Review of Thiessen (2011)",
+          "number": 7,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/thiessen-2011-a-grammar-of-signwriting/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/thiessen-2011-a-grammar-of-signwriting/primary"
+        },
+        {
+          "slug": "martin-2000-from-notation-to-writing",
+          "title": "A Review of Martin (2000)",
+          "number": 8,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/martin-2000-from-notation-to-writing/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/martin-2000-from-notation-to-writing/primary"
+        },
+        {
+          "slug": "meletis-and-durscheid-2022-writing-systems-and-their-use",
+          "title": "A Review of Meletis and Dürscheid (2022)",
+          "number": 9,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/meletis-and-durscheid-2022-writing-systems-and-their-use/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/meletis-and-durscheid-2022-writing-systems-and-their-use/primary"
+        },
+        {
+          "slug": "from-critique-to-construction-priorities-for-signed-language-writing-infrastructure",
+          "title": "From Critique to Construction: Priorities for Signed-Language Writing Infrastructure",
+          "number": 10,
+          "sourceUrl": "https://github.com/sutton-signwriting/signed-language-writing-critical-review/blob/749d0fa6e3722d6392e4f284e1ebb37e2da68327/entries/from-critique-to-construction-priorities-for-signed-language-writing-infrastructure/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/signed-language-writing-critical-review/from-critique-to-construction-priorities-for-signed-language-writing-infrastructure/primary"
+        }
+      ]
+    },
+    {
+      "title": "Writing and Representation in Sutton SignWriting",
+      "slug": "writing-and-representation",
+      "version": "v1.0.0",
+      "doi": "10.5281/zenodo.20070484",
+      "license": "CC BY 4.0",
+      "living_url": "https://steveslevinski.me/#series/writing-and-representation",
+      "repository_url": "https://github.com/sutton-signwriting/writing-and-representation",
+      "role": "Writing-systems theory, authored space, and typological framing.",
+      "sourceCommit": "fb91cb517b32b85d00d8ed93d29882361750e0bf",
+      "archiveUrl": "https://doi.org/10.5281/zenodo.20070484",
+      "immutableSourceUrl": "https://github.com/sutton-signwriting/writing-and-representation/tree/fb91cb517b32b85d00d8ed93d29882361750e0bf",
+      "desks": [
+        "voice",
+        "designer"
+      ],
+      "entries": [
+        {
+          "slug": "overview",
+          "title": "Writing and Representation in Sutton SignWriting Overview",
+          "number": 0,
+          "sourceUrl": "https://github.com/sutton-signwriting/writing-and-representation/blob/fb91cb517b32b85d00d8ed93d29882361750e0bf/entries/overview/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/writing-and-representation/overview/primary"
+        },
+        {
+          "slug": "plane-based-writing-and-script-typology",
+          "title": "Plane-Based Writing and Script Typology",
+          "number": 1,
+          "sourceUrl": "https://github.com/sutton-signwriting/writing-and-representation/blob/fb91cb517b32b85d00d8ed93d29882361750e0bf/entries/plane-based-writing-and-script-typology/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/writing-and-representation/plane-based-writing-and-script-typology/primary"
+        },
+        {
+          "slug": "perspective-and-authored-space",
+          "title": "Perspective and Authored Space",
+          "number": 2,
+          "sourceUrl": "https://github.com/sutton-signwriting/writing-and-representation/blob/fb91cb517b32b85d00d8ed93d29882361750e0bf/entries/perspective-and-authored-space/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/writing-and-representation/perspective-and-authored-space/primary"
+        },
+        {
+          "slug": "iconicity-convention-and-legibility",
+          "title": "Iconicity, Convention, and Legibility",
+          "number": 3,
+          "sourceUrl": "https://github.com/sutton-signwriting/writing-and-representation/blob/fb91cb517b32b85d00d8ed93d29882361750e0bf/entries/iconicity-convention-and-legibility/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/writing-and-representation/iconicity-convention-and-legibility/primary"
+        },
+        {
+          "slug": "handwriting-and-spatial-script-practice",
+          "title": "Handwriting and Spatial Script Practice",
+          "number": 4,
+          "sourceUrl": "https://github.com/sutton-signwriting/writing-and-representation/blob/fb91cb517b32b85d00d8ed93d29882361750e0bf/entries/handwriting-and-spatial-script-practice/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/writing-and-representation/handwriting-and-spatial-script-practice/primary"
+        },
+        {
+          "slug": "human-writing-and-machine-encoding",
+          "title": "Human Writing and Machine Encoding",
+          "number": 5,
+          "sourceUrl": "https://github.com/sutton-signwriting/writing-and-representation/blob/fb91cb517b32b85d00d8ed93d29882361750e0bf/entries/human-writing-and-machine-encoding/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/writing-and-representation/human-writing-and-machine-encoding/primary"
+        },
+        {
+          "slug": "kinematography-and-the-limits-of-writing-system-typology",
+          "title": "Kinematography and the Limits of Writing-System Typology",
+          "number": 6,
+          "sourceUrl": "https://github.com/sutton-signwriting/writing-and-representation/blob/fb91cb517b32b85d00d8ed93d29882361750e0bf/entries/kinematography-and-the-limits-of-writing-system-typology/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/writing-and-representation/kinematography-and-the-limits-of-writing-system-typology/primary"
+        },
+        {
+          "slug": "other-sign-language-scripts-and-their-conceptions",
+          "title": "Other Sign Language Scripts and Their Conceptions",
+          "number": 7,
+          "sourceUrl": "https://github.com/sutton-signwriting/writing-and-representation/blob/fb91cb517b32b85d00d8ed93d29882361750e0bf/entries/other-sign-language-scripts-and-their-conceptions/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/writing-and-representation/other-sign-language-scripts-and-their-conceptions/primary"
+        }
+      ]
+    },
+    {
+      "title": "Formal SignWriting",
+      "slug": "formal-signwriting",
+      "version": "v1.0.0",
+      "doi": "10.5281/zenodo.20074767",
+      "license": "CC BY 4.0",
+      "living_url": "https://steveslevinski.me/#series/formal-signwriting",
+      "repository_url": "https://github.com/sutton-signwriting/formal-signwriting",
+      "role": "Technical text model, encoding, search, rendering, styling, and practice.",
+      "sourceCommit": "99e0258ed19db56d89099dc43e15fa5c82719983",
+      "archiveUrl": "https://doi.org/10.5281/zenodo.20074767",
+      "immutableSourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/tree/99e0258ed19db56d89099dc43e15fa5c82719983",
+      "desks": [
+        "code",
+        "systems"
+      ],
+      "entries": [
+        {
+          "slug": "overview",
+          "title": "Formal SignWriting Overview",
+          "number": 0,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/overview/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/overview/primary"
+        },
+        {
+          "slug": "formal-signwriting",
+          "title": "Formal SignWriting",
+          "number": 1,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/formal-signwriting/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/formal-signwriting/primary"
+        },
+        {
+          "slug": "fsw-and-swu",
+          "title": "FSW and SWU",
+          "number": 2,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/fsw-and-swu/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/fsw-and-swu/primary"
+        },
+        {
+          "slug": "the-shape-of-a-sign",
+          "title": "The Shape of a Sign",
+          "number": 3,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/the-shape-of-a-sign/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/the-shape-of-a-sign/primary"
+        },
+        {
+          "slug": "grammar-of-formal-signwriting",
+          "title": "Grammar of Formal SignWriting",
+          "number": 4,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/grammar-of-formal-signwriting/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/grammar-of-formal-signwriting/primary"
+        },
+        {
+          "slug": "searching-signed-text",
+          "title": "Searching Signed Text",
+          "number": 5,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/searching-signed-text/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/searching-signed-text/primary"
+        },
+        {
+          "slug": "sign-text-layout",
+          "title": "Sign Text Layout",
+          "number": 6,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/sign-text-layout/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/sign-text-layout/primary"
+        },
+        {
+          "slug": "rendering-formal-signwriting",
+          "title": "Rendering Formal SignWriting",
+          "number": 7,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/rendering-formal-signwriting/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/rendering-formal-signwriting/primary"
+        },
+        {
+          "slug": "styling-signs",
+          "title": "Styling Signs",
+          "number": 8,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/styling-signs/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/styling-signs/primary"
+        },
+        {
+          "slug": "formal-signwriting-in-practice",
+          "title": "Formal SignWriting in Practice",
+          "number": 9,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/formal-signwriting-in-practice/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/formal-signwriting-in-practice/primary"
+        },
+        {
+          "slug": "encoding-authority-and-stability",
+          "title": "Encoding Stewardship and Stability",
+          "number": 10,
+          "sourceUrl": "https://github.com/sutton-signwriting/formal-signwriting/blob/99e0258ed19db56d89099dc43e15fa5c82719983/entries/encoding-authority-and-stability/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/formal-signwriting/encoding-authority-and-stability/primary"
+        }
+      ]
+    },
+    {
+      "title": "Sutton SignWriting Language and Literacy Research",
+      "slug": "language-and-literacy-research",
+      "version": "v1.0.0",
+      "doi": "10.5281/zenodo.20074878",
+      "license": "CC BY 4.0",
+      "living_url": "https://steveslevinski.me/#series/language-and-literacy-research",
+      "repository_url": "https://github.com/sutton-signwriting/language-and-literacy-research",
+      "role": "Research agenda for signed-language literacy, reading, and pathway questions.",
+      "sourceCommit": "8665bf64f164a134167e2ed9e24110531c0872a9",
+      "archiveUrl": "https://doi.org/10.5281/zenodo.20074878",
+      "immutableSourceUrl": "https://github.com/sutton-signwriting/language-and-literacy-research/tree/8665bf64f164a134167e2ed9e24110531c0872a9",
+      "desks": [
+        "community",
+        "researcher"
+      ],
+      "entries": [
+        {
+          "slug": "overview",
+          "title": "Sutton SignWriting Language and Literacy Research Overview",
+          "number": 0,
+          "sourceUrl": "https://github.com/sutton-signwriting/language-and-literacy-research/blob/8665bf64f164a134167e2ed9e24110531c0872a9/entries/overview/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/language-and-literacy-research/overview/primary"
+        },
+        {
+          "slug": "the-four-language-pathways",
+          "title": "The Four Language Pathways",
+          "number": 1,
+          "sourceUrl": "https://github.com/sutton-signwriting/language-and-literacy-research/blob/8665bf64f164a134167e2ed9e24110531c0872a9/entries/the-four-language-pathways/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/language-and-literacy-research/the-four-language-pathways/primary"
+        },
+        {
+          "slug": "reading-signed-text",
+          "title": "Reading Signed Text",
+          "number": 2,
+          "sourceUrl": "https://github.com/sutton-signwriting/language-and-literacy-research/blob/8665bf64f164a134167e2ed9e24110531c0872a9/entries/reading-signed-text/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/language-and-literacy-research/reading-signed-text/primary"
+        },
+        {
+          "slug": "research-program-for-literacy-without-sound",
+          "title": "Research Program for Literacy Without Sound",
+          "number": 3,
+          "sourceUrl": "https://github.com/sutton-signwriting/language-and-literacy-research/blob/8665bf64f164a134167e2ed9e24110531c0872a9/entries/research-program-for-literacy-without-sound/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/language-and-literacy-research/research-program-for-literacy-without-sound/primary"
+        }
+      ]
+    },
+    {
+      "title": "Sutton SignWriting Infrastructure and Program",
+      "slug": "infrastructure-and-program",
+      "version": "v1.0.0",
+      "doi": "10.5281/zenodo.20075076",
+      "license": "CC BY 4.0",
+      "living_url": "https://steveslevinski.me/#series/infrastructure-and-program",
+      "repository_url": "https://github.com/sutton-signwriting/infrastructure-and-program",
+      "role": "Stewardship, host structure, shared infrastructure, and program design.",
+      "sourceCommit": "04746940d98cf55d5b169797a3264a1b396f7c1e",
+      "archiveUrl": "https://doi.org/10.5281/zenodo.20075076",
+      "immutableSourceUrl": "https://github.com/sutton-signwriting/infrastructure-and-program/tree/04746940d98cf55d5b169797a3264a1b396f7c1e",
+      "desks": [
+        "chief-of-staff",
+        "philanthropy",
+        "systems",
+        "security"
+      ],
+      "entries": [
+        {
+          "slug": "overview",
+          "title": "Sutton SignWriting Infrastructure and Program Overview",
+          "number": 0,
+          "sourceUrl": "https://github.com/sutton-signwriting/infrastructure-and-program/blob/04746940d98cf55d5b169797a3264a1b396f7c1e/entries/overview/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/infrastructure-and-program/overview/primary"
+        },
+        {
+          "slug": "executive-brief",
+          "title": "Executive Brief",
+          "number": 1,
+          "sourceUrl": "https://github.com/sutton-signwriting/infrastructure-and-program/blob/04746940d98cf55d5b169797a3264a1b396f7c1e/entries/executive-brief/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/infrastructure-and-program/executive-brief/primary"
+        },
+        {
+          "slug": "infrastructure-and-stewardship",
+          "title": "Infrastructure and Stewardship",
+          "number": 2,
+          "sourceUrl": "https://github.com/sutton-signwriting/infrastructure-and-program/blob/04746940d98cf55d5b169797a3264a1b396f7c1e/entries/infrastructure-and-stewardship/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/infrastructure-and-program/infrastructure-and-stewardship/primary"
+        },
+        {
+          "slug": "international-shared-support",
+          "title": "International Shared Support",
+          "number": 3,
+          "sourceUrl": "https://github.com/sutton-signwriting/infrastructure-and-program/blob/04746940d98cf55d5b169797a3264a1b396f7c1e/entries/international-shared-support/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/infrastructure-and-program/international-shared-support/primary"
+        },
+        {
+          "slug": "country-ambassadors",
+          "title": "Country Ambassadors",
+          "number": 4,
+          "sourceUrl": "https://github.com/sutton-signwriting/infrastructure-and-program/blob/04746940d98cf55d5b169797a3264a1b396f7c1e/entries/country-ambassadors/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/infrastructure-and-program/country-ambassadors/primary"
+        },
+        {
+          "slug": "host-structure-and-stewardship-requirements",
+          "title": "Host Structure and Stewardship Requirements",
+          "number": 5,
+          "sourceUrl": "https://github.com/sutton-signwriting/infrastructure-and-program/blob/04746940d98cf55d5b169797a3264a1b396f7c1e/entries/host-structure-and-stewardship-requirements/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/infrastructure-and-program/host-structure-and-stewardship-requirements/primary"
+        },
+        {
+          "slug": "infrastructure-core-and-philanthropy",
+          "title": "Infrastructure Core and Philanthropy",
+          "number": 6,
+          "sourceUrl": "https://github.com/sutton-signwriting/infrastructure-and-program/blob/04746940d98cf55d5b169797a3264a1b396f7c1e/entries/infrastructure-core-and-philanthropy/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/infrastructure-and-program/infrastructure-core-and-philanthropy/primary"
+        },
+        {
+          "slug": "relevant-precedents-for-signwriting-infrastructure",
+          "title": "Relevant Precedents for SignWriting Infrastructure",
+          "number": 7,
+          "sourceUrl": "https://github.com/sutton-signwriting/infrastructure-and-program/blob/04746940d98cf55d5b169797a3264a1b396f7c1e/entries/relevant-precedents-for-signwriting-infrastructure/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/infrastructure-and-program/relevant-precedents-for-signwriting-infrastructure/primary"
+        },
+        {
+          "slug": "signwriting-ai-and-layered-stewardship",
+          "title": "SignWriting, AI, and Layered Stewardship",
+          "number": 8,
+          "sourceUrl": "https://github.com/sutton-signwriting/infrastructure-and-program/blob/04746940d98cf55d5b169797a3264a1b396f7c1e/entries/signwriting-ai-and-layered-stewardship/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/infrastructure-and-program/signwriting-ai-and-layered-stewardship/primary"
+        }
+      ]
+    },
+    {
+      "title": "Unicode and SignWriting",
+      "slug": "unicode-and-signwriting",
+      "version": "v1.0.0",
+      "doi": "10.5281/zenodo.20075119",
+      "license": "CC BY 4.0",
+      "living_url": "https://steveslevinski.me/#series/unicode-and-signwriting",
+      "repository_url": "https://github.com/sutton-signwriting/unicode-and-signwriting",
+      "role": "Unicode-facing technical notes, compatibility issues, and standards record.",
+      "sourceCommit": "0c1d5236e2327d7b8d0a1e9a6b4833cbceb6a8bf",
+      "archiveUrl": "https://doi.org/10.5281/zenodo.20075119",
+      "immutableSourceUrl": "https://github.com/sutton-signwriting/unicode-and-signwriting/tree/0c1d5236e2327d7b8d0a1e9a6b4833cbceb6a8bf",
+      "desks": [
+        "code",
+        "steward"
+      ],
+      "entries": [
+        {
+          "slug": "overview",
+          "title": "Unicode and SignWriting Overview",
+          "number": 0,
+          "sourceUrl": "https://github.com/sutton-signwriting/unicode-and-signwriting/blob/0c1d5236e2327d7b8d0a1e9a6b4833cbceb6a8bf/entries/overview/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/unicode-and-signwriting/overview/primary"
+        },
+        {
+          "slug": "unicode-overview",
+          "title": "Unicode Overview",
+          "number": 1,
+          "sourceUrl": "https://github.com/sutton-signwriting/unicode-and-signwriting/blob/0c1d5236e2327d7b8d0a1e9a6b4833cbceb6a8bf/entries/unicode-overview/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/unicode-and-signwriting/unicode-overview/primary"
+        },
+        {
+          "slug": "developer-notes",
+          "title": "Developer Notes",
+          "number": 2,
+          "sourceUrl": "https://github.com/sutton-signwriting/unicode-and-signwriting/blob/0c1d5236e2327d7b8d0a1e9a6b4833cbceb6a8bf/entries/developer-notes/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/unicode-and-signwriting/developer-notes/primary"
+        },
+        {
+          "slug": "chronology-and-record",
+          "title": "Chronology and Record",
+          "number": 3,
+          "sourceUrl": "https://github.com/sutton-signwriting/unicode-and-signwriting/blob/0c1d5236e2327d7b8d0a1e9a6b4833cbceb6a8bf/entries/chronology-and-record/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/unicode-and-signwriting/chronology-and-record/primary"
+        },
+        {
+          "slug": "wikimedia-brief",
+          "title": "Wikimedia Brief",
+          "number": 4,
+          "sourceUrl": "https://github.com/sutton-signwriting/unicode-and-signwriting/blob/0c1d5236e2327d7b8d0a1e9a6b4833cbceb6a8bf/entries/wikimedia-brief/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/unicode-and-signwriting/wikimedia-brief/primary"
+        },
+        {
+          "slug": "facial-orthography-boundary",
+          "title": "Facial Orthography Boundary",
+          "number": 5,
+          "sourceUrl": "https://github.com/sutton-signwriting/unicode-and-signwriting/blob/0c1d5236e2327d7b8d0a1e9a6b4833cbceb6a8bf/entries/facial-orthography-boundary/essay.md",
+          "livingUrl": "https://steveslevinski.me/#series/unicode-and-signwriting/facial-orthography-boundary/primary"
+        }
+      ]
+    }
+  ]
+}
