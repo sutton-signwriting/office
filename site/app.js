@@ -312,7 +312,7 @@ function renderBots() {
     seriesList.lang = 'en'; seriesList.dir = 'ltr';
     seriesList.append(element('strong', '', 'Publication references · proposed'));
     publications.series.filter(series => series.desks.includes(bot.id) || publications.secondaryResponsibilities?.[series.slug]?.includes(bot.id)).forEach(series => {
-      const link = element('a', '', series.title.replace('Sutton SignWriting ', '') + (series.desks.includes(bot.id) ? '' : ' · supporting UX'));
+      const link = element('a', '', series.title.replace('Sutton SignWriting ', '') + (series.desks.includes(bot.id) ? '' : bot.id === 'community' ? ' · public entry' : ' · supporting UX'));
       link.href = '#series-' + series.slug;
       seriesList.append(link);
     });
