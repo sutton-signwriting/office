@@ -1,3 +1,4 @@
+import {setupMapNavigation} from './map-navigation.js';
 import {updateAccount} from './account.js';
 import {createPlace, restorePlace, countryCode} from './place.js';
 
@@ -11,6 +12,7 @@ let office;
 let publications;
 let countries;
 let placeData;
+let mapNavigation;
 let currentPlace;
 let fallbackMessages;
 let messages;
@@ -235,7 +237,6 @@ function setupMap() {
       node.dataset.country = feature.code;
       node.setAttribute('role', 'button');
       node.setAttribute('tabindex', '-1');
-      node.addEventListener('click', () => setPlace(feature.code));
       node.addEventListener('keydown', event => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
@@ -256,9 +257,14 @@ function setupMap() {
     } else node.setAttribute('aria-hidden', 'true');
     layer.append(node);
   }
+  mapNavigation = setupMapNavigation(svg, code => setPlace(code));
 }
 
 function renderMapState() {
+  mapNavigation?.refresh();
+  document.querySelector('#map-zoom-in').setAttribute('aria-label', t('place.zoomIn'));
+  document.querySelector('#map-zoom-out').setAttribute('aria-label', t('place.zoomOut'));
+  document.querySelector('[data-map-navigation]').setAttribute('aria-label', t('place.mapView'));
   const svg = document.querySelector('#place-map');
   svg.setAttribute('aria-label', t('place.mapLabel'));
   svg.dataset.country = currentPlace.country;

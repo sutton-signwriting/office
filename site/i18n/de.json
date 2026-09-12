@@ -151,5 +151,10 @@
   "context.spokenLanguages": "Lautsprachen in den verfügbaren Daten",
   "context.noSpokenData": "Noch kein Eintrag zu Lautsprachen",
   "context.sharedSpokenData": "International zeigt die Sprachen der gemeinsamen Website-Übersetzungen.",
-  "context.languageDataNote": "Die Sprachlisten sind nicht vollständig. Die Kopfzeile bietet alle verfügbaren Website-Sprachen."
+  "context.languageDataNote": "Die Sprachlisten sind nicht vollständig. Die Kopfzeile bietet alle verfügbaren Website-Sprachen.",
+  "place.zoomIn": "Vergrößern",
+  "place.zoomOut": "Verkleinern",
+  "place.resetView": "Ansicht zurücksetzen",
+  "place.mapView": "Kartenansicht",
+  "place.gestureHelp": "Mit den Tasten, zwei Fingern oder dem Mausrad in der Karte zoomen. Die vergrößerte Karte lässt sich ziehen. Fehlende kleine Orte bleiben über die Auswahlfelder verfügbar."
 }

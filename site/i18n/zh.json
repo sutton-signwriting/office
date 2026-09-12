@@ -151,5 +151,10 @@
   "context.spokenLanguages": "现有数据中的口语语言",
   "context.noSpokenData": "暂无口语语言条目",
   "context.sharedSpokenData": "“国际”显示网站共享翻译所涵盖的语言。",
-  "context.languageDataNote": "语言列表并不完整。页眉提供所有可用的网站语言。"
+  "context.languageDataNote": "语言列表并不完整。页眉提供所有可用的网站语言。",
+  "place.zoomIn": "放大",
+  "place.zoomOut": "缩小",
+  "place.resetView": "重置视图",
+  "place.mapView": "地图视图",
+  "place.gestureHelp": "使用按钮、双指缩放或在地图内滚动来缩放。放大后可拖动地图。概览中未显示的小地区仍可通过选择器选择。"
 }

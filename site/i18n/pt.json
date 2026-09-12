@@ -151,5 +151,10 @@
   "context.spokenLanguages": "Línguas faladas nos dados disponíveis",
   "context.noSpokenData": "Ainda não há dados de línguas faladas",
   "context.sharedSpokenData": "Internacional mostra as línguas representadas pelas traduções compartilhadas do site.",
-  "context.languageDataNote": "As listas de línguas não são completas. O cabeçalho oferece todos os idiomas disponíveis do site."
+  "context.languageDataNote": "As listas de línguas não são completas. O cabeçalho oferece todos os idiomas disponíveis do site.",
+  "place.zoomIn": "Ampliar",
+  "place.zoomOut": "Reduzir",
+  "place.resetView": "Redefinir vista",
+  "place.mapView": "Vista do mapa",
+  "place.gestureHelp": "Use os botões, o gesto de pinça ou a roda dentro do mapa para ampliar. Arraste para mover quando ampliado. Lugares pequenos ausentes continuam nos seletores."
 }

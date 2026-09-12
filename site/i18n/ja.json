@@ -151,5 +151,10 @@
   "context.spokenLanguages": "利用可能なデータに含まれる音声言語",
   "context.noSpokenData": "音声言語のデータはまだありません",
   "context.sharedSpokenData": "「国際」では、共通のサイト翻訳に含まれる言語を表示します。",
-  "context.languageDataNote": "言語一覧は網羅的ではありません。ヘッダーから利用可能なすべてのサイト言語を選べます。"
+  "context.languageDataNote": "言語一覧は網羅的ではありません。ヘッダーから利用可能なすべてのサイト言語を選べます。",
+  "place.zoomIn": "拡大",
+  "place.zoomOut": "縮小",
+  "place.resetView": "表示をリセット",
+  "place.mapView": "地図表示",
+  "place.gestureHelp": "ボタン、ピンチ操作、地図内のスクロールで拡大・縮小できます。拡大後はドラッグで移動できます。地図にない小さな地域も選択欄から選べます。"
 }

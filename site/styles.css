@@ -1382,3 +1382,14 @@ summary { cursor: pointer; min-height: 44px; padding-block: 10px; }
 .hero-languages { border-top: 1px solid #526772; padding-block-start: 18px; }
 .hero-languages h3, .hero-languages .language-data-note, .hero-languages .text-link { color: var(--paper); }
 .context-panel .place-languages { grid-template-columns: minmax(0, 1fr); }
+
+/* Map gestures stay within the map; page scrolling remains available around it. */
+#place-map { aspect-ratio: 2 / 1; touch-action: none; user-select: none; -webkit-user-select: none; overflow: hidden; }
+#place-map[data-zoom]:not([data-zoom="1"]) { cursor: grab; }
+#place-map.is-dragging, #place-map.is-dragging .map-country { cursor: grabbing; }
+.map-country { vector-effect: non-scaling-stroke; }
+.map-navigation { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-block-start: 10px; }
+.map-navigation button { min-width: 44px; min-height: 44px; padding: 8px 12px; border: 1px solid #41616a; border-radius: 10px; background: var(--paper); color: var(--ink); font: 700 .88rem/1.4 system-ui, sans-serif; cursor: pointer; }
+.map-navigation button:disabled { opacity: .5; cursor: default; }
+#map-zoom-in, #map-zoom-out { font-size: 1.25rem; }
+#map-zoom-level { min-width: 3ch; font-size: .85rem; text-align: center; }

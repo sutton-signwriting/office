@@ -128,3 +128,11 @@ lists are not exhaustive and do not imply region-specific language coverage.
 International uses the shared translation catalog. Undetermined language codes and
 missing entries use an explicit empty state. Choosing a site language preserves the
 selected country/region, including across reloads; both sets of buttons stay in sync.
+
+Map navigation includes keyboard/touch-sized zoom and reset controls (1–64×),
+wheel zoom, pointer drag, and two-pointer pinch/pan. Gestures are contained to the
+map surface; reset restores the world framing while preserving place and language.
+Country keyboard navigation remains available and brings focused polygons into view
+when zoomed. Zoom does not add missing overview geometry; country/region selectors
+remain an equal route. Real device/browser review is required alongside Chromium
+gesture emulation, especially for iOS Safari.

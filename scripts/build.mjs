@@ -193,6 +193,7 @@ const revisionHash = createHash('sha256');
 for (const file of [
   'app.js',
   'place.js',
+  'map-navigation.js',
   'index.html',
   'data/publications.json',
   'account.js',

@@ -302,6 +302,93 @@ try {
     agree: true, selected: 'en', language: 'en', sharedNote: true, beforeActions: true,
     spokenInformational: true, help: true, choices: 'en|es|pt-BR|pt-PT|fr|de|ar|zh|ja|ko|hi|bn'
   });
+  const navigationSnapshot = `(() => {
+    const map = document.querySelector('#place-map');
+    const box = map.getBoundingClientRect();
+    return {
+      zoom: Number(map.dataset.zoom), view: map.getAttribute('viewBox'), scroll: window.scrollY,
+      place: map.dataset.country, language: document.documentElement.lang,
+      touchAction: getComputedStyle(map).touchAction,
+      largeTargets: [...document.querySelectorAll('.map-navigation button')].every(button => {
+        const bounds = button.getBoundingClientRect(); return bounds.width >= 44 && bounds.height >= 44;
+      }),
+      outDisabled: document.querySelector('#map-zoom-out').disabled,
+      inDisabled: document.querySelector('#map-zoom-in').disabled,
+      overflow: document.documentElement.scrollWidth > innerWidth,
+      labelOutsideMap: !map.contains(document.querySelector('#hero-place-label')),
+      x: box.x + box.width / 2, y: box.y + box.height / 2
+    };
+  })()`;
+  await client.call('Emulation.setDeviceMetricsOverride', {width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false});
+  await evaluate(client, 'window.scrollTo({top: 0, behavior: "instant"})');
+  assertState('map navigation controls and scroll boundary', await evaluate(client, navigationSnapshot), {
+    zoom: 1, touchAction: 'none', largeTargets: true, outDisabled: true, inDisabled: false, labelOutsideMap: true, overflow: false
+  });
+  await evaluate(client, "document.querySelector('#map-zoom-in').focus()");
+  await client.call('Input.dispatchKeyEvent', {type: 'keyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, text: '\r'});
+  await client.call('Input.dispatchKeyEvent', {type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13});
+  assertState('keyboard map zoom', await evaluate(client, navigationSnapshot), {zoom: 2, place: 'INTL', language: 'en'});
+  await evaluate(client, "for(let i = 0; i < 10; i++) document.querySelector('#map-zoom-in').click()");
+  assertState('bounded 64x map zoom', await evaluate(client, navigationSnapshot), {zoom: 64, inDisabled: true});
+  await evaluate(client, "document.querySelector('#map-reset').click()");
+
+  const countryPoint = code => `(() => {
+    const path = document.querySelector('#place-map .map-country[data-country="${code}"]');
+    const b = path.getBBox();
+    const point = new DOMPoint(b.x + b.width / 2, b.y + b.height / 2).matrixTransform(path.getScreenCTM());
+    return {x: point.x, y: point.y};
+  })()`;
+  const wheelPoint = await evaluate(client, countryPoint('LU'));
+  const beforeWheel = await evaluate(client, navigationSnapshot);
+  for (let i = 0; i < 4; i++) await client.call('Input.dispatchMouseEvent', {
+    type: 'mouseWheel', ...wheelPoint, deltaX: 0, deltaY: -240
+  });
+  await delay(100);
+  const afterWheel = await evaluate(client, navigationSnapshot);
+  assertState('wheel zoom stays inside map without scrolling page', afterWheel, {zoom: 64, scroll: beforeWheel.scroll, place: 'INTL'});
+  const center = {x: afterWheel.x, y: afterWheel.y};
+  await client.call('Input.dispatchMouseEvent', {type: 'mousePressed', ...center, button: 'left', clickCount: 1});
+  await client.call('Input.dispatchMouseEvent', {type: 'mouseMoved', x: center.x + 35, y: center.y + 20, button: 'left', buttons: 1});
+  await client.call('Input.dispatchMouseEvent', {type: 'mouseReleased', x: center.x + 35, y: center.y + 20, button: 'left', clickCount: 1});
+  const afterDrag = await evaluate(client, navigationSnapshot);
+  if (afterDrag.view === afterWheel.view || afterDrag.place !== 'INTL') throw new Error('Mouse drag must pan without selecting a country');
+  console.log('mouse drag pans without accidental selection: PASS');
+  await evaluate(client, "document.querySelector('#place-map .map-country[data-country=LU]').focus()");
+  await delay(550);
+  const pick = await evaluate(client, countryPoint('LU'));
+  await client.call('Input.dispatchMouseEvent', {type: 'mousePressed', ...pick, button: 'left', clickCount: 1});
+  await client.call('Input.dispatchMouseEvent', {type: 'mouseReleased', ...pick, button: 'left', clickCount: 1});
+  assertState('small country can be picked after zoom', await evaluate(client, navigationSnapshot), {place: 'LU', zoom: 64});
+  await screenshot('map-small-country-desktop');
+  await evaluate(client, "document.querySelector('#map-reset').click()");
+  assertState('reset restores world view while preserving selection', await evaluate(client, navigationSnapshot), {zoom: 1, view: '0 0 720 360', place: 'LU', language: 'en'});
+
+  await client.call('Emulation.setDeviceMetricsOverride', {width: 375, height: 812, deviceScaleFactor: 1, mobile: true});
+  await client.call('Emulation.setTouchEmulationEnabled', {enabled: true, maxTouchPoints: 2});
+  await evaluate(client, 'window.scrollTo({top: 0, behavior: "instant"})');
+  const mobileMap = await evaluate(client, navigationSnapshot);
+  assertState('mobile zoom controls keep touch targets', mobileMap, {largeTargets: true, overflow: false, touchAction: 'none'});
+  const touch = (x, y, id) => ({x, y, id, radiusX: 4, radiusY: 4, force: 1});
+  await client.call('Input.dispatchTouchEvent', {type: 'touchStart', touchPoints: [touch(mobileMap.x - 25, mobileMap.y, 1), touch(mobileMap.x + 25, mobileMap.y, 2)]});
+  await client.call('Input.dispatchTouchEvent', {type: 'touchMove', touchPoints: [touch(mobileMap.x - 70, mobileMap.y, 1), touch(mobileMap.x + 70, mobileMap.y, 2)]});
+  await client.call('Input.dispatchTouchEvent', {type: 'touchEnd', touchPoints: []});
+  const afterPinch = await evaluate(client, navigationSnapshot);
+  if (afterPinch.zoom <= 1 || afterPinch.scroll !== mobileMap.scroll || afterPinch.place !== 'LU') throw new Error('Pinch must zoom the map without page scroll or place changes');
+  console.log('touch pinch zoom stays on the map: PASS');
+  await client.call('Input.dispatchTouchEvent', {type: 'touchStart', touchPoints: [touch(mobileMap.x, mobileMap.y, 3)]});
+  await client.call('Input.dispatchTouchEvent', {type: 'touchMove', touchPoints: [touch(mobileMap.x + 35, mobileMap.y + 15, 3)]});
+  await client.call('Input.dispatchTouchEvent', {type: 'touchEnd', touchPoints: []});
+  const afterTouchPan = await evaluate(client, navigationSnapshot);
+  if (afterTouchPan.view === afterPinch.view || afterTouchPan.scroll !== mobileMap.scroll || afterTouchPan.place !== 'LU') throw new Error('Touch pan must not scroll the page or change selection');
+  console.log('touch drag pans without page scroll or selection: PASS');
+  await screenshot('map-gesture-mobile');
+  await evaluate(client, `(() => {
+    document.querySelector('#map-reset').click();
+    const country = document.querySelector('#hero-country-select');
+    country.value = 'WO'; country.dispatchEvent(new Event('change', {bubbles: true}));
+  })()`);
+  await client.call('Emulation.setTouchEmulationEnabled', {enabled: false});
+  await client.call('Emulation.clearDeviceMetricsOverride');
   const mapPaths = await evaluate(client, "document.querySelectorAll('#place-map [data-country]').length");
   if (mapPaths < 150) throw new Error('Country geometry missing from map');
   await evaluate(client, "document.querySelector('#place-map [data-country=ES]').focus()");
@@ -371,7 +458,7 @@ try {
   assertState('mobile country language lists match', await evaluate(client, languageListsSnapshot), {
     agree: true, spokenCodes: 'ja|ryu|ko', signed: 'Japanese Sign Language', selected: 'en', overflow: false
   });
-  await evaluate(client, "document.querySelector('.hero-languages').scrollIntoView({block: 'center'})");
+  await evaluate(client, "document.querySelector('.hero-languages').scrollIntoView({block: 'center', behavior: 'instant'})");
   await screenshot('languages-country-mobile');
 
   await evaluate(client, `(async () => {
@@ -384,7 +471,7 @@ try {
   assertState('header language remains selected outside local suggestions', await evaluate(client, languageListsSnapshot), {
     agree: true, selected: 'ar', language: 'ar', overflow: false
   });
-  await evaluate(client, "document.querySelector('.hero-languages').scrollIntoView({block: 'center'})");
+  await evaluate(client, "document.querySelector('.hero-languages').scrollIntoView({block: 'center', behavior: 'instant'})");
   await screenshot('languages-country-mobile-arabic');
 
   await evaluate(client, `(async () => {

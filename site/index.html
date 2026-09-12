@@ -95,9 +95,16 @@
               <span id="hero-place-flag" aria-hidden="true">🌐</span>
               <div><h2 id="hero-place-label">International</h2><p id="hero-place-context"></p></div>
             </div>
-            <svg id="place-map" role="group" aria-label="Country map" aria-describedby="map-help" viewBox="0 0 720 360">
+            <svg id="place-map" role="group" aria-label="Country map" aria-describedby="map-help map-gesture-help" viewBox="0 0 720 360">
               <g id="map-countries"></g>
             </svg>
+            <div class="map-navigation" role="group" aria-label="Map view" data-map-navigation>
+              <button id="map-zoom-in" type="button" aria-label="Zoom in">+</button>
+              <button id="map-zoom-out" type="button" aria-label="Zoom out">−</button>
+              <output id="map-zoom-level" aria-live="off">1×</output>
+              <button id="map-reset" type="button" data-i18n="place.resetView">Reset view</button>
+            </div>
+            <p id="map-gesture-help" class="map-help" data-i18n="place.gestureHelp">Zoom with the buttons, pinch or scroll inside the map. Drag to move when zoomed. Small places missing from this overview remain in the selectors.</p>
             <p id="map-help" class="map-help" data-i18n="place.mapHelp">Choose on the map or use the selectors.</p>
             <div class="hero-place-controls">
               <label><span data-i18n="controls.country">Country or region</span><select id="hero-country-select" data-country-select></select></label>

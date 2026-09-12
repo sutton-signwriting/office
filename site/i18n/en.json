@@ -151,5 +151,10 @@
   "context.spokenLanguages": "Spoken languages in available data",
   "context.noSpokenData": "No spoken-language entry yet",
   "context.sharedSpokenData": "International shows languages represented by the shared site translations.",
-  "context.languageDataNote": "Language lists are not exhaustive. The header offers all available site languages."
+  "context.languageDataNote": "Language lists are not exhaustive. The header offers all available site languages.",
+  "place.zoomIn": "Zoom in",
+  "place.zoomOut": "Zoom out",
+  "place.resetView": "Reset view",
+  "place.mapView": "Map view",
+  "place.gestureHelp": "Zoom with the buttons, pinch or scroll inside the map. Drag to move when zoomed. Small places missing from this overview remain in the selectors."
 }
