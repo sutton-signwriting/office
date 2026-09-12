@@ -40,8 +40,39 @@
           <span data-i18n="controls.language">Site language</span>
           <select id="language-select"></select>
         </label>
+        <button type="button" id="country-entry" class="button country-entry" aria-expanded="false" aria-controls="context-panel" aria-haspopup="dialog" aria-label="Country or region: International" disabled><span id="header-country-flag" aria-hidden="true">🌐</span></button>
         <button type="button" id="account-entry" class="button account-entry" aria-haspopup="dialog" aria-controls="account-dialog" data-i18n="account.title">Account</button>
       </div>
+      <section id="context-panel" class="context-panel" role="dialog" aria-modal="false" aria-labelledby="context-panel-title" hidden>
+        <div class="context-panel-heading">
+          <h2 id="context-panel-title" data-i18n="context.eyebrow">Your Local Starting Point</h2>
+          <button type="button" id="context-close" class="account-close" aria-label="Close">×</button>
+        </div>
+        <div class="section-shell context-grid">
+          <div class="context-location">
+            <div class="context-place" aria-live="polite">
+              <span class="context-flag" id="context-flag" aria-hidden="true">🌐</span>
+              <h3 id="context-title"><span id="context-country">International</span></h3>
+            </div>
+            <label class="context-country-control">
+              <span data-i18n="controls.country">Country or region</span>
+              <select id="country-select" aria-describedby="location-note"></select>
+            </label>
+            <p id="location-note" data-i18n="context.explainer">Choose a country or region to see useful spoken-language suggestions and known sign languages. Choose International for work between countries or on shared infrastructure. A flag identifies a place, never a language.</p>
+          </div>
+          <div class="context-languages">
+            <div>
+              <h3 data-i18n="context.siteLanguages">Suggested site languages</h3>
+              <div class="chip-list" id="site-language-suggestions"></div>
+            </div>
+            <div>
+              <h3 data-i18n="context.signLanguages">Sign languages in project data</h3>
+              <div class="chip-list" id="sign-language-list"></div>
+            </div>
+            <a class="text-link" id="language-help" href="mailto:help@signwriting.org" data-i18n="context.requestLanguage">Ask for a language or report a translation issue</a>
+          </div>
+        </div>
+      </section>
     </header>
 
     <main id="main">
@@ -63,34 +94,6 @@
           <div class="library-counts"><span><strong>8</strong>series</span><span><strong>57</strong>entries</span><span><strong>v1</strong>published</span></div>
           <a href="#publications">Enter the reference library →</a>
         </aside>
-      </section>
-
-      <section class="context-band" aria-labelledby="context-title">
-        <div class="section-shell context-grid">
-          <div class="context-location">
-            <p class="eyebrow" data-i18n="context.eyebrow">Your local starting point</p>
-            <div class="context-place" aria-live="polite">
-              <span class="context-flag" id="context-flag" aria-hidden="true">🌐</span>
-              <h2 id="context-title"><span id="context-country">International</span></h2>
-            </div>
-            <label class="context-country-control">
-              <span data-i18n="controls.country">Country or region</span>
-              <select id="country-select" aria-describedby="location-note"></select>
-            </label>
-            <p id="location-note" data-i18n="context.explainer">Choose a country or region to see useful spoken-language suggestions and known sign languages. Choose International for work between countries or on shared infrastructure. A flag identifies a place, never a language.</p>
-          </div>
-          <div class="context-languages">
-            <div>
-              <h3 data-i18n="context.siteLanguages">Suggested site languages</h3>
-              <div class="chip-list" id="site-language-suggestions"></div>
-            </div>
-            <div>
-              <h3 data-i18n="context.signLanguages">Sign languages in project data</h3>
-              <div class="chip-list" id="sign-language-list"></div>
-            </div>
-            <a class="text-link" id="language-help" href="mailto:help@signwriting.org" data-i18n="context.requestLanguage">Ask for a language or report a translation issue</a>
-          </div>
-        </div>
       </section>
 
       <!-- STEWARDS -->

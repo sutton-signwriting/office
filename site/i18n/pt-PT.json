@@ -142,5 +142,6 @@
   "account.exhausted.title": "Limite diário atingido",
   "account.exhausted.body": "Utilizou a quota de documentos de hoje. Tente novamente após a renovação diária.",
   "account.disabled.title": "O acesso à conta está suspenso",
-  "account.disabled.body": "Contacte o Escritório para obter ajuda com a sua conta."
+  "account.disabled.body": "Contacte o Escritório para obter ajuda com a sua conta.",
+  "context.close": "Fechar o painel da conta"
 }

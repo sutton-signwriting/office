@@ -18,7 +18,7 @@
   "hero.readonly": "This first release is informational and read-only. Email is the way to respond.",
   "actions.preregister": "Pre-register your interest",
   "actions.explore": "Explore the office",
-  "context.eyebrow": "Your local starting point",
+  "context.eyebrow": "Your Local Starting Point",
   "context.international": "International",
   "context.explainer": "Choose a country or region to see useful spoken-language suggestions and known sign languages. Choose International for work between countries or on shared infrastructure. A flag identifies a place, never a language.",
   "context.siteLanguages": "Suggested site languages",
@@ -142,5 +142,6 @@
   "account.exhausted.title": "Daily allowance used",
   "account.exhausted.body": "You have used today’s document allowance. Try again after the daily reset.",
   "account.disabled.title": "Account access is paused",
-  "account.disabled.body": "Contact the Office for help with your account."
+  "account.disabled.body": "Contact the Office for help with your account.",
+  "context.close": "Close account panel"
 }

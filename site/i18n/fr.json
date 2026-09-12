@@ -142,5 +142,6 @@
   "account.exhausted.title": "Quota quotidien atteint",
   "account.exhausted.body": "Vous avez utilisé votre quota de documents pour aujourd’hui. Réessayez après la réinitialisation quotidienne.",
   "account.disabled.title": "L’accès au compte est suspendu",
-  "account.disabled.body": "Contactez le Bureau pour obtenir de l’aide avec votre compte."
+  "account.disabled.body": "Contactez le Bureau pour obtenir de l’aide avec votre compte.",
+  "context.close": "Fermer le panneau du compte"
 }

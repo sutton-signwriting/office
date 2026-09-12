@@ -323,10 +323,6 @@ h3 {
   object-position: 58% 51%;
 }
 
-.context-band {
-  margin-block: 20px 0;
-}
-
 .context-grid {
   display: grid;
   gap: 26px;
@@ -336,7 +332,7 @@ h3 {
   padding: 26px 22px;
 }
 
-.context-grid h2 {
+.context-place h3 {
   margin: 0;
   font-size: clamp(1.8rem, 8vw, 2.8rem);
 }
@@ -1327,3 +1323,21 @@ summary { cursor: pointer; min-height: 44px; padding-block: 10px; }
  .hero-library a { margin-top: 18px; }
 }
 .publication-section .text-link { color: var(--paper); }
+
+/* Country context is a nonmodal disclosure below the header. */
+.locale-controls { grid-template-columns: minmax(0, 1fr) auto auto; }
+.locale-controls label { min-width: 0; }
+.country-entry { min-width: 46px; min-height: 46px; padding: 6px; font-size: 1.6rem; background: var(--white); cursor: pointer; }
+.country-entry[aria-expanded="true"] { background: var(--teal-soft); border-color: var(--teal); }
+.context-panel[hidden] { display: none !important; }
+.context-panel { position: absolute; inset-block-start: calc(100% + 8px); inset-inline-end: 16px; width: min(860px, calc(100% - 32px)); max-height: calc(100dvh - 180px); overflow-y: auto; overscroll-behavior: contain; border: 1px solid #cbdedc; border-radius: var(--radius-md); background: var(--teal-soft); box-shadow: var(--shadow); }
+.context-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px 0; }
+.context-panel-heading h2 { margin: 0; font-size: 1.2rem; }
+.context-panel-heading button { flex-shrink: 0; }
+.context-panel .context-grid { width: 100%; margin: 0; border: 0; padding: 22px; }
+@media print { .context-panel, .country-entry { display: none !important; } }
+
+.context-panel .context-place h3 { min-width: 0; font-size: clamp(1.4rem, 4vw, 2rem); overflow-wrap: anywhere; }
+@media (min-width: 980px) {
+  .context-panel .context-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; align-items: start; }
+}

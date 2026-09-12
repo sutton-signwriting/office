@@ -142,5 +142,6 @@
   "account.exhausted.title": "Límite diario alcanzado",
   "account.exhausted.body": "Has usado el cupo de documentos de hoy. Inténtalo después del reinicio diario.",
   "account.disabled.title": "El acceso a la cuenta está suspendido",
-  "account.disabled.body": "Contacta con la Oficina para obtener ayuda con tu cuenta."
+  "account.disabled.body": "Contacta con la Oficina para obtener ayuda con tu cuenta.",
+  "context.close": "Cerrar el panel de cuenta"
 }

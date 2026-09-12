@@ -56,6 +56,7 @@ function initialLanguage() {
 }
 
 function initialCountry() {
+  // A future signed-in profile may seed a default; no demographic data is read here.
   for (const candidate of [requestedCountry, storedCountry, 'WO']) {
     const normalized = String(candidate || '').toUpperCase();
     if (countries.some((country) => country.code === normalized)) return normalized;
@@ -191,6 +192,9 @@ function renderContext() {
   const country = selectedCountry();
   document.querySelector('#context-flag').textContent = flagEmoji(country.code);
   document.querySelector('#context-country').textContent = countryName(country);
+  document.querySelector('#header-country-flag').textContent = flagEmoji(country.code);
+  document.querySelector('#country-entry').setAttribute('aria-label', t('controls.country') + ': ' + countryName(country));
+  document.querySelector('#context-close').setAttribute('aria-label', t('context.close'));
 
   const suggestions = document.querySelector('#site-language-suggestions');
   suggestions.replaceChildren();
@@ -428,6 +432,46 @@ function render() {
   updateAccount(t);
 }
 
+function setupCountryPanel() {
+  const entry = document.querySelector('#country-entry');
+  const panel = document.querySelector('#context-panel');
+  const close = document.querySelector('#context-close');
+  const sizePanel = () => {
+    if (panel.hidden) return;
+    const headerBottom = document.querySelector('.site-header').getBoundingClientRect().bottom;
+    const navigation = document.querySelector('.mobile-nav');
+    const bottom = getComputedStyle(navigation).display === 'none'
+      ? window.innerHeight
+      : Math.min(window.innerHeight, navigation.getBoundingClientRect().top);
+    panel.style.maxHeight = Math.max(100, bottom - headerBottom - 16) + 'px';
+  };
+  const setOpen = (open, returnFocus = false) => {
+    panel.hidden = !open;
+    entry.setAttribute('aria-expanded', String(open));
+    if (open) {
+      sizePanel();
+      close.focus({preventScroll: true});
+    } else if (returnFocus) entry.focus({preventScroll: true});
+  };
+  entry.addEventListener('click', () => setOpen(panel.hidden));
+  close.addEventListener('click', () => setOpen(false, true));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !panel.hidden) {
+      event.preventDefault();
+      setOpen(false, true);
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (!panel.hidden && !panel.contains(event.target) && !entry.contains(event.target)) setOpen(false);
+  });
+  document.addEventListener('focusin', (event) => {
+    if (!panel.hidden && !panel.contains(event.target) && !entry.contains(event.target)) setOpen(false);
+  });
+  window.addEventListener('resize', sizePanel);
+  new ResizeObserver(sizePanel).observe(document.querySelector('.site-header'));
+  entry.disabled = false;
+}
+
 async function start() {
   const [localeConfig, officeData, countryData, publicationData] = await Promise.all([
     fetchJson('data/locales.json'),
@@ -462,6 +506,7 @@ async function start() {
   document.querySelector('#language-select').addEventListener('change', (event) => changeLanguage(event.target.value));
   persistSelection();
   render();
+  setupCountryPanel();
 }
 
 start().catch((error) => {

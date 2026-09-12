@@ -142,5 +142,6 @@
   "account.exhausted.title": "今日额度已用完",
   "account.exhausted.body": "您已用完今天的文档额度。请在每日额度重置后重试。",
   "account.disabled.title": "账户访问已暂停",
-  "account.disabled.body": "请联系办公室以获取账户帮助。"
+  "account.disabled.body": "请联系办公室以获取账户帮助。",
+  "context.close": "关闭账户面板"
 }

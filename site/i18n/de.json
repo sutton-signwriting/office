@@ -142,5 +142,6 @@
   "account.exhausted.title": "Tageskontingent aufgebraucht",
   "account.exhausted.body": "Sie haben Ihr heutiges Dokumentkontingent aufgebraucht. Versuchen Sie es nach der täglichen Zurücksetzung erneut.",
   "account.disabled.title": "Kontozugriff ausgesetzt",
-  "account.disabled.body": "Wenden Sie sich bei Fragen zu Ihrem Konto an das Office."
+  "account.disabled.body": "Wenden Sie sich bei Fragen zu Ihrem Konto an das Office.",
+  "context.close": "Kontobereich schließen"
 }

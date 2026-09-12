@@ -1,4 +1,4 @@
-import {mkdtemp, rm} from 'node:fs/promises';
+import {mkdtemp, rm, mkdir, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {spawn} from 'node:child_process';
 
@@ -93,7 +93,7 @@ const snapshot = `(() => ({
   countrySelect: document.querySelector('#country-select').value,
   country: document.querySelector('#context-country').textContent,
   flag: document.querySelector('#context-flag').textContent,
-  headerCountryControl: Boolean(document.querySelector('.site-header #country-select')),
+  headerCountryControl: Boolean(document.querySelector('.locale-controls #country-entry')),
   localCountryControl: Boolean(document.querySelector('.context-location #country-select')),
   internationalOption: document.querySelector('#country-select option[value="WO"]')?.textContent,
   suggestedLanguageCount: document.querySelectorAll('#site-language-suggestions .chip-button').length,
@@ -145,13 +145,103 @@ try {
   await evaluate(client, waitForOffice);
   assertState('international initialization', await evaluate(client, snapshot), {
     language: 'en', languageSelect: 'en', countrySelect: 'WO', country: 'International',
-    flag: '🌐', headerCountryControl: false, localCountryControl: true,
+    flag: '🌐', headerCountryControl: true, localCountryControl: true,
     internationalOption: '🌐 International', suggestedLanguageCount: 12,
     brazilianSuggestion: true, portugalSuggestion: true,
     portugueseOptions: 'pt-BR|pt-PT',
     signContext: 'Choose a country or region to see its known sign languages.',
     savedLanguage: 'en', savedCountry: 'WO', search: '', urlLanguage: null, urlCountry: null
   });
+
+  const panelSnapshot = `(() => {
+    const panel = document.querySelector('#context-panel');
+    const entry = document.querySelector('#country-entry');
+    const rect = panel.getBoundingClientRect();
+    const header = document.querySelector('.site-header').getBoundingClientRect();
+    return {
+      hidden: panel.hidden, expanded: entry.getAttribute('aria-expanded'),
+      label: entry.getAttribute('aria-label'), flag: document.querySelector('#header-country-flag').textContent,
+      closeFocused: document.activeElement.id === 'context-close',
+      entryFocused: document.activeElement.id === 'country-entry',
+      noBand: !document.querySelector('main .context-band, main #country-select'),
+      anchored: Math.abs(rect.top - header.bottom - 8) < 2,
+      fits: rect.left >= 0 && rect.right <= innerWidth && rect.bottom <= innerHeight,
+      clearOfMobileNav: getComputedStyle(document.querySelector('.mobile-nav')).display === 'none'
+        || rect.bottom <= document.querySelector('.mobile-nav').getBoundingClientRect().top,
+      titleFits: document.querySelector('.context-place h3').getBoundingClientRect().right
+        <= document.querySelector('.context-location').getBoundingClientRect().right,
+      overflow: document.documentElement.scrollWidth > innerWidth,
+      savedCountry: localStorage.getItem('sgnw_office_country'),
+      semantics: panel.getAttribute('role') === 'dialog' && entry.getAttribute('aria-controls') === panel.id
+        && Boolean(document.getElementById(panel.getAttribute('aria-labelledby'))),
+      help: document.querySelector('#language-help').href.startsWith('mailto:help@signwriting.org?')
+    };
+  })()`;
+  const screenshot = async (name) => {
+    if (!process.env.OFFICE_SCREENSHOT_DIR) return;
+    await mkdir(process.env.OFFICE_SCREENSHOT_DIR, {recursive: true});
+    const {data} = await client.call('Page.captureScreenshot', {format: 'png'});
+    await writeFile(path.join(process.env.OFFICE_SCREENSHOT_DIR, name + '.png'), Buffer.from(data, 'base64'));
+  };
+  await client.call('Emulation.setDeviceMetricsOverride', {width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false});
+  assertState('country panel initially hidden', await evaluate(client, panelSnapshot), {
+    hidden: true, expanded: 'false', noBand: true, flag: '🌐', label: 'Country or region: International', semantics: true
+  });
+  await screenshot('country-closed-desktop');
+  await evaluate(client, "document.querySelector('#country-entry').focus()");
+  await client.call('Input.dispatchKeyEvent', {type: 'keyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, text: '\r'});
+  await client.call('Input.dispatchKeyEvent', {type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13});
+  assertState('keyboard opens anchored country panel', await evaluate(client, panelSnapshot), {
+    hidden: false, expanded: 'true', closeFocused: true, anchored: true, fits: true, overflow: false, clearOfMobileNav: true, titleFits: true, help: true
+  });
+  await screenshot('country-open-desktop');
+  await client.call('Input.dispatchKeyEvent', {type: 'keyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9});
+  await client.call('Input.dispatchKeyEvent', {type: 'keyUp', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9});
+  assertState('Tab reaches country selector', await evaluate(client, "({focused: document.activeElement.id})"), {focused: 'country-select'});
+  await evaluate(client, `(() => {
+    const country = document.querySelector('#country-select');
+    country.value = 'DE'; country.dispatchEvent(new Event('change', {bubbles: true}));
+  })()`);
+  assertState('country immediately updates header and storage', await evaluate(client, panelSnapshot), {
+    hidden: false, flag: '🇩🇪', label: 'Country or region: Germany', savedCountry: 'DE'
+  });
+  await client.call('Input.dispatchKeyEvent', {type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27});
+  await client.call('Input.dispatchKeyEvent', {type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27});
+  assertState('Escape closes country panel and restores focus', await evaluate(client, panelSnapshot), {
+    hidden: true, expanded: 'false', entryFocused: true
+  });
+  await client.call('Page.reload');
+  await delay(350);
+  await evaluate(client, waitForOffice);
+  assertState('reload keeps country and closes panel', await evaluate(client, panelSnapshot), {
+    hidden: true, expanded: 'false', flag: '🇩🇪', savedCountry: 'DE'
+  });
+  await evaluate(client, "document.querySelector('#country-entry').click(); document.querySelector('#context-close').click()");
+  assertState('close button restores country focus', await evaluate(client, panelSnapshot), {hidden: true, entryFocused: true});
+  await evaluate(client, "document.querySelector('#country-entry').click(); document.querySelector('main').click()");
+  assertState('outside click closes country panel', await evaluate(client, panelSnapshot), {hidden: true, expanded: 'false'});
+  await evaluate(client, "document.querySelector('#country-entry').click(); document.querySelector('#account-entry').focus()");
+  assertState('keyboard focus can leave nonmodal panel', await evaluate(client, panelSnapshot), {hidden: true, expanded: 'false'});
+  await client.call('Emulation.setDeviceMetricsOverride', {width: 375, height: 812, deviceScaleFactor: 1, mobile: true});
+  await evaluate(client, "document.querySelector('#country-entry').click()");
+  assertState('mobile country panel fits', await evaluate(client, panelSnapshot), {hidden: false, anchored: true, fits: true, overflow: false, clearOfMobileNav: true, titleFits: true});
+  await screenshot('country-open-mobile');
+  await evaluate(client, `(async () => {
+    const language = document.querySelector('#language-select');
+    language.value = 'ar'; language.dispatchEvent(new Event('change', {bubbles: true}));
+    while (document.documentElement.lang !== 'ar') await new Promise(resolve => setTimeout(resolve, 25));
+  })()`);
+  assertState('RTL country panel fits', await evaluate(client, panelSnapshot), {hidden: false, anchored: true, fits: true, overflow: false, clearOfMobileNav: true, titleFits: true});
+  await screenshot('country-open-mobile-arabic');
+  await evaluate(client, `(async () => {
+    document.querySelector('#context-close').click();
+    const country = document.querySelector('#country-select');
+    country.value = 'WO'; country.dispatchEvent(new Event('change', {bubbles: true}));
+    const language = document.querySelector('#language-select');
+    language.value = 'en'; language.dispatchEvent(new Event('change', {bubbles: true}));
+    while (document.documentElement.lang !== 'en') await new Promise(resolve => setTimeout(resolve, 25));
+  })()`);
+  await client.call('Emulation.clearDeviceMetricsOverride');
 
   await evaluate(client, `(async () => {
     const language = document.querySelector('#language-select');
@@ -196,7 +286,7 @@ try {
   })()`);
   assertState('dropdown setting', await evaluate(client, snapshot), {
     language: 'de', languageSelect: 'de', countrySelect: 'DE', country: 'Deutschland',
-    flag: '🇩🇪', headerCountryControl: false, localCountryControl: true,
+    flag: '🇩🇪', headerCountryControl: true, localCountryControl: true,
     savedLanguage: 'de', savedCountry: 'DE', urlLanguage: 'de', urlCountry: 'DE',
     firstBotAction: 'E-Mail an Chief of Staff', researchContact: true, helpContact: true,
     languageHelp: true, researchDepartment: true, avatarImages: 12, rawKeyVisible: false
@@ -221,7 +311,7 @@ try {
   })()`);
   assertState('dropdown reset', await evaluate(client, snapshot), {
     language: 'en', languageSelect: 'en', countrySelect: 'WO', country: 'International',
-    flag: '🌐', headerCountryControl: false, localCountryControl: true,
+    flag: '🌐', headerCountryControl: true, localCountryControl: true,
     internationalOption: '🌐 International',
     savedLanguage: 'en', savedCountry: 'WO', search: '', urlLanguage: null, urlCountry: null,
     firstBotAction: 'Email Chief of Staff', researchContact: true,
@@ -233,7 +323,7 @@ try {
   await evaluate(client, waitForOffice);
   assertState('reset persistence', await evaluate(client, snapshot), {
     language: 'en', languageSelect: 'en', countrySelect: 'WO', country: 'International',
-    flag: '🌐', headerCountryControl: false, localCountryControl: true,
+    flag: '🌐', headerCountryControl: true, localCountryControl: true,
     internationalOption: '🌐 International',
     savedLanguage: 'en', savedCountry: 'WO', search: '', urlLanguage: null, urlCountry: null,
     firstBotAction: 'Email Chief of Staff', rawKeyVisible: false
