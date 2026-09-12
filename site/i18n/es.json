@@ -147,5 +147,9 @@
   "place.mapHelp": "Elige en el mapa o usa los selectores.",
   "place.regionMap": "El mapa muestra países; la región elegida aparece por su nombre.",
   "place.sources": "Fuentes del mapa y los lugares",
-  "place.countryContext": "Las sugerencias de idiomas usan datos del país: {country}."
+  "place.countryContext": "Las sugerencias de idiomas usan datos del país: {country}.",
+  "context.spokenLanguages": "Lenguas habladas en los datos disponibles",
+  "context.noSpokenData": "Aún no hay datos de lenguas habladas",
+  "context.sharedSpokenData": "Internacional muestra las lenguas representadas por las traducciones compartidas del sitio.",
+  "context.languageDataNote": "Las listas de lenguas no son exhaustivas. La cabecera ofrece todos los idiomas disponibles del sitio."
 }

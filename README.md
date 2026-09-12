@@ -119,3 +119,12 @@ Run `node --test scripts/test_place.mjs` for migration and validation checks, th
 existing browser state test for shared controls, region persistence, keyboard operation,
 and desktop/mobile/RTL layout. Translated additions retain their catalog's existing
 community-review status. The Office model PDF is unaffected by this hero change.
+
+The map card and Local Starting Point panel share three language lists: spoken
+languages in the existing country snapshot, sign languages in project data, and
+selectable site-language suggestions. Country suggestions include English and the
+current site language; the header always offers all supported translations. The
+lists are not exhaustive and do not imply region-specific language coverage.
+International uses the shared translation catalog. Undetermined language codes and
+missing entries use an explicit empty state. Choosing a site language preserves the
+selected country/region, including across reloads; both sets of buttons stay in sync.

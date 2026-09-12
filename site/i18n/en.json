@@ -147,5 +147,9 @@
   "place.mapHelp": "Choose on the map or use the selectors.",
   "place.regionMap": "The map outlines countries; your selected region is shown by name.",
   "place.sources": "Map and place sources",
-  "place.countryContext": "Language suggestions use country-level data: {country}."
+  "place.countryContext": "Language suggestions use country-level data: {country}.",
+  "context.spokenLanguages": "Spoken languages in available data",
+  "context.noSpokenData": "No spoken-language entry yet",
+  "context.sharedSpokenData": "International shows languages represented by the shared site translations.",
+  "context.languageDataNote": "Language lists are not exhaustive. The header offers all available site languages."
 }

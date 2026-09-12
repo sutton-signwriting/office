@@ -147,5 +147,9 @@
   "place.mapHelp": "Auf der Karte oder über die Auswahllisten wählen.",
   "place.regionMap": "Die Karte zeigt Länder; die gewählte Region wird mit ihrem Namen angezeigt.",
   "place.sources": "Karten- und Ortsquellen",
-  "place.countryContext": "Sprachvorschläge verwenden Daten für das Land: {country}."
+  "place.countryContext": "Sprachvorschläge verwenden Daten für das Land: {country}.",
+  "context.spokenLanguages": "Lautsprachen in den verfügbaren Daten",
+  "context.noSpokenData": "Noch kein Eintrag zu Lautsprachen",
+  "context.sharedSpokenData": "International zeigt die Sprachen der gemeinsamen Website-Übersetzungen.",
+  "context.languageDataNote": "Die Sprachlisten sind nicht vollständig. Die Kopfzeile bietet alle verfügbaren Website-Sprachen."
 }

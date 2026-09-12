@@ -279,6 +279,69 @@ function renderMapState() {
   });
 }
 
+function renderPlaceLanguages(country) {
+  const spokenLanguages = country.languages.filter(language => language.code !== 'und');
+  const countryLanguages = spokenLanguages.map(language => language.code);
+  const suggestedCodes = country.code === 'WO'
+    ? supportedLocales.map(locale => locale.code)
+    : supportedLocales.filter(locale =>
+      locale.spokenCodes.some(code => countryLanguages.includes(code))
+      && (!locale.suggestedCountries?.length || locale.suggestedCountries.includes(country.code))
+    ).map(locale => locale.code);
+  // Keep the chosen language visible even when it is not a local suggestion.
+  const visibleCodes = [...new Set([...suggestedCodes, defaultLanguage, currentLanguage])];
+  document.querySelectorAll('[data-place-languages]').forEach(container => {
+    const spoken = container.querySelector('[data-spoken-languages]');
+    spoken.replaceChildren();
+    spokenLanguages.forEach(language => {
+      const chip = element('span', 'chip', languageName(language.code));
+      chip.dataset.languageCode = language.code;
+      spoken.append(chip);
+    });
+    if (!spokenLanguages.length) spoken.append(element('span', 'chip muted', t('context.noSpokenData')));
+
+    const signed = container.querySelector('[data-sign-languages]');
+    signed.replaceChildren();
+    country.signLanguages.forEach(language => {
+      const chip = element('span', 'chip', language.name);
+      chip.lang = 'en';
+      chip.dataset.languageCode = language.code;
+      signed.append(chip);
+    });
+    if (!country.signLanguages.length) signed.append(element('span', 'chip muted',
+      t(country.code === 'WO' ? 'context.internationalSignData' : 'context.noSignData')));
+
+    const suggestions = container.querySelector('[data-site-languages]');
+    suggestions.replaceChildren();
+    visibleCodes.forEach(code => {
+      const locale = supportedLocales.find(item => item.code === code);
+      const button = element('button', 'chip-button', locale.native);
+      button.type = 'button';
+      button.lang = locale.bcp47;
+      button.dir = locale.dir;
+      button.dataset.siteLanguage = code;
+      button.setAttribute('aria-current', String(code === currentLanguage));
+      button.setAttribute('aria-pressed', String(code === currentLanguage));
+      button.addEventListener('click', async () => {
+        await changeLanguage(code);
+        // Re-rendering replaces this button; preserve keyboard focus without
+        // taking it back from a user who moved to another control while loading.
+        if (document.activeElement === document.body) {
+          [...container.querySelectorAll('[data-site-language]')]
+            .find(node => node.dataset.siteLanguage === currentLanguage)?.focus({preventScroll: true});
+        }
+      });
+      suggestions.append(button);
+    });
+    const dataNote = container.querySelector('[data-language-data-note]');
+    dataNote.textContent = t(country.code === 'WO' ? 'context.sharedSpokenData' : 'context.languageDataNote');
+    const regionNote = container.querySelector('[data-country-data-note]');
+    regionNote.hidden = !currentPlace.region;
+    regionNote.textContent = currentPlace.region ? t('place.countryContext', {country: countryName(country)}) : '';
+    container.querySelector('[data-language-help]').href = mailtoHref('help@signwriting.org', t('mail.topic.language'));
+  });
+}
+
 function renderContext() {
   const country = selectedCountry();
   document.querySelector('#context-flag').textContent = flagEmoji(country.code);
@@ -286,63 +349,7 @@ function renderContext() {
   document.querySelector('#header-country-flag').textContent = flagEmoji(country.code);
   document.querySelector('#country-entry').setAttribute('aria-label', t('controls.country') + ': ' + currentPlace.label);
   document.querySelector('#context-close').setAttribute('aria-label', t('context.close'));
-  const dataNote = document.querySelector('#context-data-note');
-  dataNote.hidden = !currentPlace.region;
-  dataNote.textContent = currentPlace.region ? t('place.countryContext', {country: countryName(country)}) : '';
-
-  const suggestions = document.querySelector('#site-language-suggestions');
-  suggestions.replaceChildren();
-  const countryLanguages = country.code === 'WO'
-    ? supportedLocales.flatMap((locale) => locale.spokenCodes)
-    : country.languages.map((language) => language.code);
-  const supportedSuggestions = country.code === 'WO'
-    ? supportedLocales.map((locale) => locale.code)
-    : supportedLocales
-      .filter((locale) =>
-        locale.spokenCodes.some((code) => countryLanguages.includes(code))
-        && (!locale.suggestedCountries?.length || locale.suggestedCountries.includes(country.code))
-      )
-      .map((locale) => locale.code);
-  if (!supportedSuggestions.includes(defaultLanguage)) supportedSuggestions.push(defaultLanguage);
-
-  const visibleSuggestions = country.code === 'WO'
-    ? supportedSuggestions
-    : supportedSuggestions.slice(0, 4);
-  visibleSuggestions.forEach((code) => {
-    const locale = supportedLocales.find((item) => item.code === code);
-    const button = element('button', 'chip-button', locale.native);
-    button.type = 'button';
-    button.lang = locale.bcp47;
-    button.setAttribute('aria-current', String(code === currentLanguage));
-    button.addEventListener('click', () => changeLanguage(code));
-    suggestions.append(button);
-  });
-
-  country.languages.filter((language) =>
-    !supportedLocales.some((locale) => locale.spokenCodes.includes(language.code))
-  )
-    .slice(0, 3)
-    .forEach((language) => {
-      const chip = element('span', 'chip muted', languageName(language.code));
-      chip.title = t('context.notYetAvailable');
-      suggestions.append(chip);
-    });
-
-  const signList = document.querySelector('#sign-language-list');
-  signList.replaceChildren();
-  if (country.code === 'WO') {
-    signList.append(element('span', 'chip muted', t('context.internationalSignData')));
-  } else if (country.signLanguages.length) {
-    country.signLanguages.forEach((language) => {
-      const chip = element('span', 'chip', language.name);
-      chip.lang = 'en';
-      signList.append(chip);
-    });
-  } else {
-    signList.append(element('span', 'chip muted', t('context.noSignData')));
-  }
-
-  document.querySelector('#language-help').href = mailtoHref('help@signwriting.org', t('mail.topic.language'));
+  renderPlaceLanguages(country);
   document.querySelectorAll('.js-register').forEach((link) => {
     link.href = mailtoHref('register@signwriting.org', t('mail.topic.register'));
   });

@@ -1370,3 +1370,15 @@ summary { cursor: pointer; min-height: 44px; padding-block: 10px; }
 }
 
 .map-country[aria-pressed="true"]:hover { fill: var(--yellow); }
+
+/* The hero and local-context panel share the same language data and controls. */
+.place-languages { display: grid; gap: 16px; min-width: 0; }
+.place-languages > div { min-width: 0; }
+.place-languages h3 { margin: 0 0 8px; font: 750 .75rem/1.4 system-ui, sans-serif; letter-spacing: .04em; text-transform: uppercase; }
+.place-languages .chip, .place-languages .chip-button { max-width: 100%; overflow-wrap: anywhere; text-align: start; }
+.place-languages .chip-button { min-height: 44px; }
+.place-languages .language-data-note { margin: 0; font-size: .8rem; }
+.place-languages [hidden] { display: none !important; }
+.hero-languages { border-top: 1px solid #526772; padding-block-start: 18px; }
+.hero-languages h3, .hero-languages .language-data-note, .hero-languages .text-link { color: var(--paper); }
+.context-panel .place-languages { grid-template-columns: minmax(0, 1fr); }

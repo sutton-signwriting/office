@@ -62,19 +62,24 @@
               <span data-i18n="controls.region">Region</span>
               <select id="region-select" data-region-select disabled></select>
             </label>
-            <p id="context-data-note" hidden></p>
             <p id="location-note" data-i18n="context.explainer">Choose a country or region to see useful spoken-language suggestions and known sign languages. Choose International for work between countries or on shared infrastructure. A flag identifies a place, never a language.</p>
           </div>
-          <div class="context-languages">
+          <div class="context-languages place-languages" data-place-languages>
             <div>
-              <h3 data-i18n="context.siteLanguages">Suggested site languages</h3>
-              <div class="chip-list" id="site-language-suggestions"></div>
+              <h3 data-i18n="context.spokenLanguages">Spoken languages in available data</h3>
+              <div class="chip-list" id="spoken-language-list" data-spoken-languages></div>
             </div>
             <div>
               <h3 data-i18n="context.signLanguages">Sign languages in project data</h3>
-              <div class="chip-list" id="sign-language-list"></div>
+              <div class="chip-list" id="sign-language-list" data-sign-languages></div>
             </div>
-            <a class="text-link" id="language-help" href="mailto:help@signwriting.org" data-i18n="context.requestLanguage">Ask for a language or report a translation issue</a>
+            <div>
+              <h3 data-i18n="context.siteLanguages">Suggested site languages</h3>
+              <div class="chip-list" id="site-language-suggestions" data-site-languages></div>
+            </div>
+            <p class="language-data-note" data-language-data-note></p>
+            <p class="language-data-note" id="context-data-note" data-country-data-note hidden></p>
+            <a class="text-link" id="language-help" data-language-help href="mailto:help@signwriting.org" data-i18n="context.requestLanguage">Ask for a language or report a translation issue</a>
           </div>
         </div>
       </section>
@@ -100,6 +105,23 @@
             </div>
             <p id="map-detail-note" class="map-help" data-i18n="place.regionMap" hidden>The map outlines countries; your selected region is shown by name.</p>
             <a class="map-source" href="place-sources.html" data-i18n="place.sources">Map and place sources</a>
+          </div>
+          <div class="hero-languages place-languages" data-place-languages>
+            <div>
+              <h3 data-i18n="context.spokenLanguages">Spoken languages in available data</h3>
+              <div class="chip-list" id="hero-spoken-language-list" data-spoken-languages></div>
+            </div>
+            <div>
+              <h3 data-i18n="context.signLanguages">Sign languages in project data</h3>
+              <div class="chip-list" id="hero-sign-language-list" data-sign-languages></div>
+            </div>
+            <div>
+              <h3 data-i18n="context.siteLanguages">Suggested site languages</h3>
+              <div class="chip-list" id="hero-site-language-suggestions" data-site-languages></div>
+            </div>
+            <p class="language-data-note" data-language-data-note></p>
+            <p class="language-data-note" id="hero-data-note" data-country-data-note hidden></p>
+            <a class="text-link" id="hero-language-help" data-language-help href="mailto:help@signwriting.org" data-i18n="context.requestLanguage">Ask for a language or report a translation issue</a>
           </div>
           <div class="hero-actions">
             <a class="button button-primary js-register" href="mailto:register@signwriting.org" data-i18n="actions.preregister">Pre-register</a>

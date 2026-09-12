@@ -147,5 +147,9 @@
   "place.mapHelp": "地図または選択リストから選んでください。",
   "place.regionMap": "地図は国を示し、選択した地域は名前で表示されます。",
   "place.sources": "地図と地名の出典",
-  "place.countryContext": "言語の提案には国単位のデータを使用しています：{country}。"
+  "place.countryContext": "言語の提案には国単位のデータを使用しています：{country}。",
+  "context.spokenLanguages": "利用可能なデータに含まれる音声言語",
+  "context.noSpokenData": "音声言語のデータはまだありません",
+  "context.sharedSpokenData": "「国際」では、共通のサイト翻訳に含まれる言語を表示します。",
+  "context.languageDataNote": "言語一覧は網羅的ではありません。ヘッダーから利用可能なすべてのサイト言語を選べます。"
 }

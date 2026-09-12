@@ -271,6 +271,37 @@ try {
     title: 'A Human-Directed International Office', place: 'International', mapCountry: 'INTL',
     explore: '#work', bottomActions: true, oldCopy: false, counts: false, overflow: false, selectorReadable: true
   });
+  const languageListsSnapshot = `(() => {
+    const groups = [...document.querySelectorAll('[data-place-languages]')];
+    const read = group => ({
+      spoken: group.querySelector('[data-spoken-languages]').textContent,
+      signed: group.querySelector('[data-sign-languages]').textContent,
+      choices: [...group.querySelectorAll('[data-site-language]')].map(n => n.dataset.siteLanguage).join('|'),
+      selected: group.querySelector('[data-site-language][aria-pressed="true"]')?.dataset.siteLanguage,
+      note: group.querySelector('[data-language-data-note]').textContent,
+      regionNote: group.querySelector('[data-country-data-note]').textContent
+    });
+    const hero = document.querySelector('.hero-languages');
+    return {
+      agree: JSON.stringify(read(groups[0])) === JSON.stringify(read(groups[1])),
+      spoken: read(hero).spoken, signed: read(hero).signed, choices: read(hero).choices,
+      spokenCodes: [...hero.querySelectorAll('[data-spoken-languages] [data-language-code]')].map(n => n.dataset.languageCode).join('|'),
+      selected: read(hero).selected, language: document.querySelector('#language-select').value,
+      spokenInformational: !hero.querySelector('[data-spoken-languages] button, [data-sign-languages] button'),
+      beforeActions: Boolean(hero.compareDocumentPosition(document.querySelector('.hero-actions')) & Node.DOCUMENT_POSITION_FOLLOWING),
+      help: hero.querySelector('[data-language-help]').href.startsWith('mailto:help@signwriting.org?'),
+      unavailable: Boolean(hero.querySelector('[data-site-language="ca"]')),
+      focusedLanguage: document.activeElement.dataset.siteLanguage || '',
+      panelOpen: !document.querySelector('#context-panel').hidden,
+      region: document.querySelector('#hero-region-select').value,
+      sharedNote: read(hero).note.includes('shared site translations'),
+      overflow: document.documentElement.scrollWidth > innerWidth
+    };
+  })()`;
+  assertState('international language lists share available translations', await evaluate(client, languageListsSnapshot), {
+    agree: true, selected: 'en', language: 'en', sharedNote: true, beforeActions: true,
+    spokenInformational: true, help: true, choices: 'en|es|pt-BR|pt-PT|fr|de|ar|zh|ja|ko|hi|bn'
+  });
   const mapPaths = await evaluate(client, "document.querySelectorAll('#place-map [data-country]').length");
   if (mapPaths < 150) throw new Error('Country geometry missing from map');
   await evaluate(client, "document.querySelector('#place-map [data-country=ES]').focus()");
@@ -297,6 +328,36 @@ try {
   await evaluate(client, "window.scrollTo(0, 0)");
   await client.call('Emulation.setDeviceMetricsOverride', {width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false});
   await screenshot('map-region-desktop');
+  assertState('country language data stays separate from UI availability', await evaluate(client, languageListsSnapshot), {
+    agree: true, selected: 'en', region: 'ES-CT', unavailable: false,
+    spoken: 'SpanishCatalanGalicianBasqueAsturianOccitanEnglish',
+    signed: 'Catalan Sign LanguageSpanish Sign LanguageValencian Sign Language'
+  });
+  await evaluate(client, "document.querySelector('#hero-site-language-suggestions [data-site-language=es]').focus()");
+  await client.call('Input.dispatchKeyEvent', {type: 'keyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, text: '\r'});
+  await client.call('Input.dispatchKeyEvent', {type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13});
+  await evaluate(client, "(async () => {while (document.documentElement.lang !== 'es') await new Promise(r => setTimeout(r, 25));})()");
+  assertState('hero language keyboard activation keeps region and focus', await evaluate(client, languageListsSnapshot), {
+    agree: true, selected: 'es', language: 'es', region: 'ES-CT', focusedLanguage: 'es'
+  });
+  await client.call('Page.reload');
+  await delay(500);
+  await evaluate(client, waitForOffice);
+  assertState('language chip choice and region survive reload', await evaluate(client, languageListsSnapshot), {
+    agree: true, selected: 'es', language: 'es', region: 'ES-CT'
+  });
+  await evaluate(client, `(async () => {
+    document.querySelector('#country-entry').click();
+    const chip = document.querySelector('#site-language-suggestions [data-site-language=en]');
+    chip.focus(); chip.click();
+    while (document.documentElement.lang !== 'en') await new Promise(r => setTimeout(r, 25));
+  })()`);
+  assertState('overlay language choice updates hero without closing panel', await evaluate(client, languageListsSnapshot), {
+    agree: true, selected: 'en', language: 'en', region: 'ES-CT', panelOpen: true, focusedLanguage: 'en'
+  });
+  await screenshot('languages-overlay-desktop');
+  await evaluate(client, "document.querySelector('#context-close').click()");
+
   await evaluate(client, `(() => {
     const select = document.querySelector('#country-select');
     select.value = 'JP'; select.dispatchEvent(new Event('change', {bubbles: true}));
@@ -307,6 +368,12 @@ try {
   await client.call('Emulation.setDeviceMetricsOverride', {width: 375, height: 812, deviceScaleFactor: 1, mobile: true});
   assertState('mobile hero fits', await evaluate(client, heroSnapshot), {overflow: false});
   await screenshot('map-country-mobile');
+  assertState('mobile country language lists match', await evaluate(client, languageListsSnapshot), {
+    agree: true, spokenCodes: 'ja|ryu|ko', signed: 'Japanese Sign Language', selected: 'en', overflow: false
+  });
+  await evaluate(client, "document.querySelector('.hero-languages').scrollIntoView({block: 'center'})");
+  await screenshot('languages-country-mobile');
+
   await evaluate(client, `(async () => {
     const language = document.querySelector('#language-select');
     language.value = 'ar'; language.dispatchEvent(new Event('change', {bubbles: true}));
@@ -314,6 +381,12 @@ try {
   })()`);
   assertState('Arabic hero keeps selected geography', await evaluate(client, heroSnapshot), {mapCountry: 'JP', heroCountry: 'JP', language: 'ar', overflow: false});
   await screenshot('map-country-mobile-arabic');
+  assertState('header language remains selected outside local suggestions', await evaluate(client, languageListsSnapshot), {
+    agree: true, selected: 'ar', language: 'ar', overflow: false
+  });
+  await evaluate(client, "document.querySelector('.hero-languages').scrollIntoView({block: 'center'})");
+  await screenshot('languages-country-mobile-arabic');
+
   await evaluate(client, `(async () => {
     const country = document.querySelector('#hero-country-select');
     country.value = 'WO'; country.dispatchEvent(new Event('change', {bubbles: true}));
@@ -321,6 +394,13 @@ try {
     language.value = 'en'; language.dispatchEvent(new Event('change', {bubbles: true}));
     while (document.documentElement.lang !== 'en') await new Promise(resolve => setTimeout(resolve, 25));
   })()`);
+  await evaluate(client, `(() => {
+    const country = document.querySelector('#hero-country-select');
+    country.value = 'AQ'; country.dispatchEvent(new Event('change', {bubbles: true}));
+  })()`);
+  assertState('missing or undetermined language data has honest empty states', await evaluate(client, languageListsSnapshot), {
+    agree: true, spoken: 'No spoken-language entry yet', signed: 'No country-specific entry yet', choices: 'en', selected: 'en'
+  });
   await client.call('Emulation.clearDeviceMetricsOverride');
 
   await evaluate(client, `(async () => {

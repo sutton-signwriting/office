@@ -147,5 +147,9 @@
   "place.mapHelp": "在地图上选择，或使用选择列表。",
   "place.regionMap": "地图显示国家边界；所选地区以名称显示。",
   "place.sources": "地图和地点来源",
-  "place.countryContext": "语言建议使用国家级数据：{country}。"
+  "place.countryContext": "语言建议使用国家级数据：{country}。",
+  "context.spokenLanguages": "现有数据中的口语语言",
+  "context.noSpokenData": "暂无口语语言条目",
+  "context.sharedSpokenData": "“国际”显示网站共享翻译所涵盖的语言。",
+  "context.languageDataNote": "语言列表并不完整。页眉提供所有可用的网站语言。"
 }
