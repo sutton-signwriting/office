@@ -143,5 +143,5 @@
   "account.exhausted.body": "本日の文書利用枠を使い切りました。毎日のリセット後にもう一度お試しください。",
   "account.disabled.title": "アカウントへのアクセスは停止中です",
   "account.disabled.body": "アカウントについてはオフィスにお問い合わせください。",
-  "context.close": "アカウントパネルを閉じる"
+  "context.close": "閉じる"
 }

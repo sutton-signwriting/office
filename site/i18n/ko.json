@@ -143,5 +143,5 @@
   "account.exhausted.body": "오늘의 문서 이용 한도를 모두 사용했습니다. 일일 한도가 초기화된 후 다시 시도하세요.",
   "account.disabled.title": "계정 접근이 일시 중지되었습니다",
   "account.disabled.body": "계정에 대한 도움이 필요하면 오피스에 문의하세요.",
-  "context.close": "계정 패널 닫기"
+  "context.close": "닫기"
 }

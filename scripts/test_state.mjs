@@ -160,6 +160,7 @@ try {
     const header = document.querySelector('.site-header').getBoundingClientRect();
     return {
       hidden: panel.hidden, expanded: entry.getAttribute('aria-expanded'),
+      closeLabel: document.querySelector('#context-close').getAttribute('aria-label'),
       label: entry.getAttribute('aria-label'), flag: document.querySelector('#header-country-flag').textContent,
       closeFocused: document.activeElement.id === 'context-close',
       entryFocused: document.activeElement.id === 'country-entry',
@@ -185,7 +186,7 @@ try {
   };
   await client.call('Emulation.setDeviceMetricsOverride', {width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false});
   assertState('country panel initially hidden', await evaluate(client, panelSnapshot), {
-    hidden: true, expanded: 'false', noBand: true, flag: '🌐', label: 'Country or region: International', semantics: true
+    hidden: true, expanded: 'false', noBand: true, flag: '🌐', label: 'Country or region: International', closeLabel: 'Close', semantics: true
   });
   await screenshot('country-closed-desktop');
   await evaluate(client, "document.querySelector('#country-entry').focus()");

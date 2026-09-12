@@ -143,5 +143,5 @@
   "account.exhausted.body": "You have used today’s document allowance. Try again after the daily reset.",
   "account.disabled.title": "Account access is paused",
   "account.disabled.body": "Contact the Office for help with your account.",
-  "context.close": "Close account panel"
+  "context.close": "Close"
 }
