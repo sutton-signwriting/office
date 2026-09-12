@@ -1,0 +1,16 @@
+{
+  "reviewed": "2026-09-12",
+  "map": {
+    "source": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_110m_admin_0_countries.geojson",
+    "upstreamCommit": "ca96624a56bd078437bca8184e78163e5039ad19",
+    "sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+    "license": "Public domain",
+    "terms": "https://www.naturalearthdata.com/about/terms-of-use/"
+  },
+  "subdivisions": {
+    "source": "https://salsa.debian.org/iso-codes-team/iso-codes",
+    "version": "4.16.0",
+    "sha256": "4dddd6dc5ea7cc7dba1ee289c659c94c61d45813f0e5f797363de28bf3e8e29a",
+    "license": "LGPL-2.1-or-later"
+  }
+}

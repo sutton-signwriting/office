@@ -244,6 +244,85 @@ try {
   })()`);
   await client.call('Emulation.clearDeviceMetricsOverride');
 
+  const heroSnapshot = `(() => ({
+    title: document.querySelector('.hero h1').textContent,
+    place: document.querySelector('#hero-place-label').textContent,
+    context: document.querySelector('#context-country').textContent,
+    heroCountry: document.querySelector('#hero-country-select').value,
+    overlayCountry: document.querySelector('#country-select').value,
+    heroRegion: document.querySelector('#hero-region-select').value,
+    overlayRegion: document.querySelector('#region-select').value,
+    saved: localStorage.getItem('sgnw_office_place'),
+    labelMatchesOption: document.querySelector('#hero-place-label').textContent === document.querySelector('#hero-region-select option:checked').textContent,
+    mapCountry: document.querySelector('#place-map').dataset.country,
+    mapRegion: document.querySelector('#place-map').dataset.region,
+    mapSelected: document.querySelector('#place-map [aria-pressed="true"]')?.dataset.country || '',
+    language: document.documentElement.lang,
+    explore: document.querySelector('.hero-actions .button-quiet').getAttribute('href'),
+    bottomActions: document.querySelector('.hero-place-card').lastElementChild.classList.contains('hero-actions'),
+    selectorReadable: getComputedStyle(document.querySelector('#hero-country-select')).color !== getComputedStyle(document.querySelector('#hero-country-select')).backgroundColor,
+    dataNote: document.querySelector('#context-data-note').textContent,
+    oldCopy: Boolean(document.querySelector('.hero [data-i18n="hero.body"], .hero [data-i18n="hero.readonly"], .hero [data-i18n="hero.eyebrow"]')),
+    counts: Boolean(document.querySelector('.hero-place [data-count], .hero-place .count')),
+    paths: document.querySelectorAll('#place-map [data-country]').length,
+    overflow: document.documentElement.scrollWidth > innerWidth
+  }))()`;
+  assertState('map hero contract', await evaluate(client, heroSnapshot), {
+    title: 'A Human-Directed International Office', place: 'International', mapCountry: 'INTL',
+    explore: '#work', bottomActions: true, oldCopy: false, counts: false, overflow: false, selectorReadable: true
+  });
+  const mapPaths = await evaluate(client, "document.querySelectorAll('#place-map [data-country]').length");
+  if (mapPaths < 150) throw new Error('Country geometry missing from map');
+  await evaluate(client, "document.querySelector('#place-map [data-country=ES]').focus()");
+  await client.call('Input.dispatchKeyEvent', {type: 'keyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, text: '\r'});
+  await client.call('Input.dispatchKeyEvent', {type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13});
+  assertState('map keyboard selection synchronizes country controls', await evaluate(client, heroSnapshot), {
+    heroCountry: 'ES', overlayCountry: 'ES', mapCountry: 'ES', mapSelected: 'ES', place: 'Spain', language: 'en'
+  });
+  await evaluate(client, `(() => {
+    const region = document.querySelector('#hero-region-select');
+    region.value = 'ES-CT'; region.dispatchEvent(new Event('change', {bubbles: true}));
+  })()`);
+  const chosenRegion = await evaluate(client, "document.querySelector('#hero-region-select option:checked').textContent");
+  assertState('region shares its own label without changing language', await evaluate(client, heroSnapshot), {
+    place: chosenRegion, context: chosenRegion, labelMatchesOption: true, dataNote: 'Language suggestions use country-level data: Spain.',
+    heroRegion: 'ES-CT', overlayRegion: 'ES-CT', mapRegion: 'ES-CT', language: 'en'
+  });
+  await client.call('Page.reload');
+  await delay(500);
+  await evaluate(client, waitForOffice);
+  assertState('region survives reload', await evaluate(client, heroSnapshot), {
+    place: chosenRegion, heroRegion: 'ES-CT', overlayRegion: 'ES-CT', mapRegion: 'ES-CT', language: 'en'
+  });
+  await evaluate(client, "window.scrollTo(0, 0)");
+  await client.call('Emulation.setDeviceMetricsOverride', {width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false});
+  await screenshot('map-region-desktop');
+  await evaluate(client, `(() => {
+    const select = document.querySelector('#country-select');
+    select.value = 'JP'; select.dispatchEvent(new Event('change', {bubbles: true}));
+  })()`);
+  assertState('overlay country clears region and synchronizes map', await evaluate(client, heroSnapshot), {
+    place: 'Japan', heroCountry: 'JP', overlayCountry: 'JP', heroRegion: '', overlayRegion: '', mapRegion: '', mapSelected: 'JP', language: 'en'
+  });
+  await client.call('Emulation.setDeviceMetricsOverride', {width: 375, height: 812, deviceScaleFactor: 1, mobile: true});
+  assertState('mobile hero fits', await evaluate(client, heroSnapshot), {overflow: false});
+  await screenshot('map-country-mobile');
+  await evaluate(client, `(async () => {
+    const language = document.querySelector('#language-select');
+    language.value = 'ar'; language.dispatchEvent(new Event('change', {bubbles: true}));
+    while (document.documentElement.lang !== 'ar') await new Promise(resolve => setTimeout(resolve, 25));
+  })()`);
+  assertState('Arabic hero keeps selected geography', await evaluate(client, heroSnapshot), {mapCountry: 'JP', heroCountry: 'JP', language: 'ar', overflow: false});
+  await screenshot('map-country-mobile-arabic');
+  await evaluate(client, `(async () => {
+    const country = document.querySelector('#hero-country-select');
+    country.value = 'WO'; country.dispatchEvent(new Event('change', {bubbles: true}));
+    const language = document.querySelector('#language-select');
+    language.value = 'en'; language.dispatchEvent(new Event('change', {bubbles: true}));
+    while (document.documentElement.lang !== 'en') await new Promise(resolve => setTimeout(resolve, 25));
+  })()`);
+  await client.call('Emulation.clearDeviceMetricsOverride');
+
   await evaluate(client, `(async () => {
     const language = document.querySelector('#language-select');
     language.value = 'pt-PT';
@@ -333,6 +412,7 @@ try {
   await evaluate(client, `(() => {
     localStorage.setItem('sgnw_office_language', 'de');
     localStorage.setItem('sgnw_office_country', 'DE');
+    localStorage.removeItem('sgnw_office_place');
   })()`);
   await client.call('Page.navigate', {url: new URL('?country=ZZ&lang=xx', baseUrl).href});
   await delay(800);

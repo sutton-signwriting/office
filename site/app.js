@@ -1,7 +1,8 @@
 import {updateAccount} from './account.js';
+import {createPlace, restorePlace, countryCode} from './place.js';
 
 const iconByName = {hello: '◎', spark: '✦', help: '?', lens: '⌕', records: '▤', people: '◌', bridge: '⌁'};
-const storageKeys = {country: 'sgnw_office_country', language: 'sgnw_office_language'};
+const storageKeys = {country: 'sgnw_office_country', language: 'sgnw_office_language', place: 'sgnw_office_place'};
 const assetRevision = new URL(import.meta.url).searchParams.get('v');
 
 let supportedLocales = [];
@@ -9,6 +10,8 @@ let defaultLanguage = 'en';
 let office;
 let publications;
 let countries;
+let placeData;
+let currentPlace;
 let fallbackMessages;
 let messages;
 let languageRequest = 0;
@@ -21,7 +24,7 @@ const requestedCountry = url.searchParams.get('country');
 const storedCountry = localStorage.getItem(storageKeys.country);
 const browserLanguages = navigator.languages?.length ? navigator.languages : [navigator.language];
 let currentLanguage;
-let currentCountry;
+
 
 function matchLanguage(code) {
   const normalized = String(code || '').replaceAll('_', '-').toLowerCase();
@@ -55,13 +58,26 @@ function initialLanguage() {
   return defaultLanguage;
 }
 
-function initialCountry() {
-  // A future signed-in profile may seed a default; no demographic data is read here.
-  for (const candidate of [requestedCountry, storedCountry, 'WO']) {
-    const normalized = String(candidate || '').toUpperCase();
-    if (countries.some((country) => country.code === normalized)) return normalized;
-  }
-  return 'WO';
+function placeCatalog() {
+  return {countries, subdivisions: placeData.subdivisions};
+}
+
+function placeCountryLabel(code) {
+  return countryName(countries.find(country => country.code === code));
+}
+
+function setPlace(country, region) {
+  const place = createPlace({country, region}, placeCatalog(), placeCountryLabel);
+  if (!place) return;
+  currentPlace = place;
+  persistSelection();
+  renderCountrySelect();
+  renderRegions();
+  renderContext();
+  renderMapState();
+  renderContacts();
+  renderBots();
+  renderDepartments();
 }
 
 function versionedUrl(resource) {
@@ -129,15 +145,15 @@ function languageName(code) {
 }
 
 function selectedCountry() {
-  return countries.find((country) => country.code === currentCountry) || countries[0];
+  return countries.find((country) => country.code === countryCode(currentPlace)) || countries[0];
 }
 
 function mailtoHref(email, topic) {
   const country = selectedCountry();
   const subject = t('mail.subject', {topic});
   const body = t('mail.body', {
-    country: countryName(country),
-    countryCode: country.code,
+    country: currentPlace.label,
+    countryCode: currentPlace.region || country.code,
     language: languageName(currentLanguage),
     languageCode: currentLanguage
   });
@@ -174,27 +190,105 @@ function renderLanguageSelect() {
 }
 
 function renderCountrySelect() {
-  const select = document.querySelector('#country-select');
   const collator = new Intl.Collator(currentLanguage);
-  const international = countries.find((country) => country.code === 'WO');
-  const sorted = countries.filter((country) => country.code !== 'WO')
+  const international = countries.find(country => country.code === 'WO');
+  const sorted = countries.filter(country => country.code !== 'WO')
     .sort((a, b) => collator.compare(countryName(a), countryName(b)));
-  select.replaceChildren();
-  [international, ...sorted].forEach((country) => {
-    const option = element('option', '', flagEmoji(country.code) + ' ' + countryName(country));
-    option.value = country.code;
-    option.selected = country.code === currentCountry;
-    select.append(option);
+  document.querySelectorAll('[data-country-select]').forEach(select => {
+    select.replaceChildren();
+    [international, ...sorted].forEach(country => {
+      const option = element('option', '', flagEmoji(country.code) + ' ' + countryName(country));
+      option.value = country.code;
+      option.selected = country.code === countryCode(currentPlace);
+      select.append(option);
+    });
+  });
+}
+
+function renderRegions() {
+  const regions = placeData.subdivisions.filter(item => item.country === currentPlace.country)
+    .sort((a, b) => a.name.localeCompare(b.name, currentLanguage));
+  document.querySelectorAll('[data-region-select]').forEach(select => {
+    select.closest('label').hidden = regions.length === 0;
+    select.disabled = regions.length === 0;
+    const whole = element('option', '', t('place.wholeCountry'));
+    whole.value = '';
+    select.replaceChildren(whole);
+    for (const region of regions) {
+      const option = element('option', '', region.name);
+      option.value = region.code;
+      select.append(option);
+    }
+    select.value = currentPlace.region || '';
+  });
+}
+
+function setupMap() {
+  const svg = document.querySelector('#place-map');
+  svg.setAttribute('viewBox', placeData.map.viewBox);
+  const layer = document.querySelector('#map-countries');
+  for (const feature of placeData.map.features) {
+    const node = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    node.setAttribute('d', feature.d);
+    node.setAttribute('class', 'map-country');
+    if (feature.code) {
+      node.dataset.country = feature.code;
+      node.setAttribute('role', 'button');
+      node.setAttribute('tabindex', '-1');
+      node.addEventListener('click', () => setPlace(feature.code));
+      node.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setPlace(feature.code);
+        } else if (['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
+          event.preventDefault();
+          const paths = [...layer.querySelectorAll('[data-country]')];
+          const step = ['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1;
+          const index = event.key === 'Home' ? 0 : event.key === 'End' ? paths.length - 1
+            : (paths.indexOf(node) + step + paths.length) % paths.length;
+          paths.forEach(path => path.setAttribute('tabindex', '-1'));
+          paths[index].setAttribute('tabindex', '0');
+          paths[index].focus();
+        }
+      });
+      const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+      node.append(title);
+    } else node.setAttribute('aria-hidden', 'true');
+    layer.append(node);
+  }
+}
+
+function renderMapState() {
+  const svg = document.querySelector('#place-map');
+  svg.setAttribute('aria-label', t('place.mapLabel'));
+  svg.dataset.country = currentPlace.country;
+  svg.dataset.region = currentPlace.region || '';
+  document.querySelector('#hero-place-label').textContent = currentPlace.label;
+  document.querySelector('#hero-place-flag').textContent = flagEmoji(countryCode(currentPlace));
+  document.querySelector('#hero-place-context').textContent = currentPlace.region ? placeCountryLabel(currentPlace.country) : '';
+  document.querySelector('#map-detail-note').hidden = !currentPlace.region;
+  const paths = [...svg.querySelectorAll('[data-country]')];
+  const selected = paths.find(node => node.dataset.country === currentPlace.country);
+  paths.forEach((node, index) => {
+    const isSelected = node === selected;
+    node.setAttribute('aria-pressed', String(isSelected));
+    node.setAttribute('tabindex', isSelected || (!selected && index === 0) ? '0' : '-1');
+    const label = placeCountryLabel(node.dataset.country);
+    node.setAttribute('aria-label', label);
+    node.querySelector('title').textContent = label;
   });
 }
 
 function renderContext() {
   const country = selectedCountry();
   document.querySelector('#context-flag').textContent = flagEmoji(country.code);
-  document.querySelector('#context-country').textContent = countryName(country);
+  document.querySelector('#context-country').textContent = currentPlace.label;
   document.querySelector('#header-country-flag').textContent = flagEmoji(country.code);
-  document.querySelector('#country-entry').setAttribute('aria-label', t('controls.country') + ': ' + countryName(country));
+  document.querySelector('#country-entry').setAttribute('aria-label', t('controls.country') + ': ' + currentPlace.label);
   document.querySelector('#context-close').setAttribute('aria-label', t('context.close'));
+  const dataNote = document.querySelector('#context-data-note');
+  dataNote.hidden = !currentPlace.region;
+  dataNote.textContent = currentPlace.region ? t('place.countryContext', {country: countryName(country)}) : '';
 
   const suggestions = document.querySelector('#site-language-suggestions');
   suggestions.replaceChildren();
@@ -388,11 +482,14 @@ function renderResources() {
 }
 
 function persistSelection() {
-  localStorage.setItem(storageKeys.country, currentCountry);
+  localStorage.setItem(storageKeys.country, countryCode(currentPlace));
+  localStorage.setItem(storageKeys.place, JSON.stringify(currentPlace));
   localStorage.setItem(storageKeys.language, currentLanguage);
   const nextUrl = new URL(window.location.href);
-  if (currentCountry === 'WO') nextUrl.searchParams.delete('country');
-  else nextUrl.searchParams.set('country', currentCountry);
+  if (countryCode(currentPlace) === 'WO') nextUrl.searchParams.delete('country');
+  else nextUrl.searchParams.set('country', countryCode(currentPlace));
+  if (currentPlace.region) nextUrl.searchParams.set('region', currentPlace.region);
+  else nextUrl.searchParams.delete('region');
   if (currentLanguage === 'en') nextUrl.searchParams.delete('lang');
   else nextUrl.searchParams.set('lang', currentLanguage);
   history.replaceState({}, '', nextUrl);
@@ -413,6 +510,7 @@ async function changeLanguage(code) {
     ? defaultLanguage
     : nextLanguage;
   messages = nextMessages;
+  currentPlace = createPlace(currentPlace, placeCatalog(), placeCountryLabel);
   persistSelection();
   render();
 }
@@ -423,7 +521,9 @@ function render() {
   translateStaticContent();
   renderLanguageSelect();
   renderCountrySelect();
+  renderRegions();
   renderContext();
+  renderMapState();
   renderContacts();
   renderBots();
   renderDepartments();
@@ -473,11 +573,12 @@ function setupCountryPanel() {
 }
 
 async function start() {
-  const [localeConfig, officeData, countryData, publicationData] = await Promise.all([
+  const [localeConfig, officeData, countryData, publicationData, loadedPlaceData] = await Promise.all([
     fetchJson('data/locales.json'),
     fetchJson('data/office.json'),
     fetchJson('data/countries.json'),
-    fetchJson('data/publications.json')
+    fetchJson('data/publications.json'),
+    fetchJson('data/places.json')
   ]);
   supportedLocales = localeConfig.locales;
   defaultLanguage = localeConfig.defaultLocale;
@@ -485,7 +586,7 @@ async function start() {
   publications = publicationData;
   countries = countryData;
   currentLanguage = initialLanguage();
-  currentCountry = initialCountry();
+  placeData = loadedPlaceData;
   fallbackMessages = await fetchJson(localeFor(defaultLanguage).catalog);
   try {
     messages = await loadMessages(currentLanguage);
@@ -495,14 +596,16 @@ async function start() {
     messages = fallbackMessages;
   }
 
-  document.querySelector('#country-select').addEventListener('change', (event) => {
-    currentCountry = event.target.value;
-    persistSelection();
-    renderContext();
-    renderContacts();
-    renderBots();
-    renderDepartments();
-  });
+  // A future signed-in profile may seed a default; no demographic API is read here.
+  currentPlace = restorePlace({
+    queryCountry: requestedCountry, queryRegion: url.searchParams.get('region'),
+    storedPlace: localStorage.getItem(storageKeys.place), storedCountry
+  }, placeCatalog(), placeCountryLabel);
+  document.querySelectorAll('[data-country-select]').forEach(select =>
+    select.addEventListener('change', event => setPlace(event.target.value)));
+  document.querySelectorAll('[data-region-select]').forEach(select =>
+    select.addEventListener('change', event => setPlace(currentPlace.country, event.target.value)));
+  setupMap();
   document.querySelector('#language-select').addEventListener('change', (event) => changeLanguage(event.target.value));
   persistSelection();
   render();

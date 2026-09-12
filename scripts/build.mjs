@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {marked} from 'marked';
 import {renderRedesign} from './redesign.mjs';
+import {buildPlaceData} from './place-data.mjs';
 import {checkProductionBundle} from './check_account_bundle.mjs';
 
 const root = process.cwd();
@@ -72,6 +73,8 @@ countries.unshift({
   languages: localeCodes.map((code) => ({code, populationPercent: null, officialStatus: null})),
   signLanguages: []
 });
+
+const placeData = await buildPlaceData(sourceDir, countries);
 
 const fallback = await readJson(path.join(sourceDir, 'i18n', 'en.json'));
 const requiredKeys = new Set(Object.keys(fallback));
@@ -154,6 +157,7 @@ await cp(sourceDir, outputDir, {
   }
 });
 await writeFile(path.join(outputDir, 'data', 'countries.json'), JSON.stringify(countries), 'utf8');
+await writeFile(path.join(outputDir, 'data', 'places.json'), JSON.stringify(placeData));
 await writeFile(path.join(outputDir, 'account-build.json'), JSON.stringify({mode: previewSource ? 'preview' : 'production'}));
 if (previewSource) {
   await mkdir(path.join(outputDir, 'preview'), {recursive: true});
@@ -188,6 +192,7 @@ try { await cp(path.join(root, 'downloads'), path.join(outputDir, 'downloads'), 
 const revisionHash = createHash('sha256');
 for (const file of [
   'app.js',
+  'place.js',
   'index.html',
   'data/publications.json',
   'account.js',
@@ -206,6 +211,7 @@ for (const file of [
   revisionHash.update(await readFile(path.join(sourceDir, file)));
 }
 revisionHash.update(JSON.stringify(countries));
+revisionHash.update(JSON.stringify(placeData));
 const revision = revisionHash.digest('hex').slice(0, 12);
 
 const redesign = await renderRedesign(sourceDir, office);

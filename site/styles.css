@@ -1341,3 +1341,32 @@ summary { cursor: pointer; min-height: 44px; padding-block: 10px; }
 @media (min-width: 980px) {
   .context-panel .context-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; align-items: start; }
 }
+
+/* Shared place picker in the hero. No account statistics are supplied here. */
+.hero-place-card, [dir="rtl"] .hero-place-card { padding: 34px; align-self: stretch; display: flex; flex-direction: column; gap: 20px; }
+.hero-place-card h1 { max-width: none; margin: 0; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; }
+.hero-place { min-width: 0; }
+.hero-place-heading { display: flex; gap: 12px; align-items: center; margin-block-end: 10px; }
+.hero-place-heading > span { font-size: 2rem; flex-shrink: 0; }
+.hero-place-heading h2 { margin: 0; font: 600 clamp(20px, 2.5vw, 30px)/1.2 system-ui, sans-serif; overflow-wrap: anywhere; }
+.hero-place-heading p { margin: 5px 0 0; font-size: 13px; color: #d4e5e4; }
+.hero-place-heading p:empty { display: none; }
+#place-map { display: block; width: 100%; height: auto; direction: ltr; background: #183e4b; border: 1px solid #41616a; border-radius: 14px; }
+.map-country { fill: #749d9d; stroke: #183e4b; stroke-width: .6; fill-rule: evenodd; }
+.map-country[data-country] { cursor: pointer; }
+.map-country[aria-pressed="true"] { fill: var(--yellow); stroke: var(--paper); stroke-width: 1.5; }
+.map-country[data-country]:hover { fill: #d7eee5; }
+.map-country:focus-visible { fill: var(--yellow); stroke: white; stroke-width: 2; outline: none; }
+.hero-place-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; margin-block: 12px; }
+.hero-place-controls label { min-width: 0; }
+.hero-place-controls label > span { display: block; font-size: .75rem; font-weight: 700; margin-block-end: 5px; }
+.hero-place-controls select { min-width: 0; color: var(--ink); background: var(--white); }
+.hero-place-controls [hidden], .context-country-control[hidden] { display: none !important; }
+.map-help { color: #d4e5e4; font-size: 12px; margin-block: 8px; }
+.map-source { display: inline-block; color: #d4e5e4; font-size: 12px; text-underline-offset: 3px; }
+.hero-place-card .hero-actions { margin-block-start: auto; padding-block-start: 4px; }
+@media (max-width: 760px) {
+  .hero-place-card, [dir="rtl"] .hero-place-card { padding: 28px 24px; }
+}
+
+.map-country[aria-pressed="true"]:hover { fill: var(--yellow); }

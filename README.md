@@ -94,3 +94,28 @@ Do not edit the generated publication metadata or copy publication prose here.
 `OFFICE_REVIEW_BIND_IP` explicitly for the intended review interface. The regular
 Compose service and GitHub Pages deployment remain separate. Production changes to
 contacts, roles, copy, or campaigns still need the normal human review.
+
+## Shared map and place selection
+
+The review hero uses one canonical place object for the map, header flag, and context
+panel. Country codes follow the existing ISO list; optional regions use the bundled
+iso-codes subdivision snapshot. International uses `INTL` with rollup `001`; the older
+`WO` country preference remains a compatibility field. Saved labels are regenerated
+from validated catalog entries. Place selection never changes the interface language.
+
+`site/place.js` owns normalization and migration. `scripts/place-data.mjs` builds map
+paths and subdivision data from pinned sources under `site/vendor/`; `dist/data/places.json`
+is generated and must not be hand-edited. The build verifies source digests in
+`site/vendor/place-sources.json`. Source/license details are available in
+`site/place-sources.html` and `site/licenses/`.
+
+The map is a country overview. Small places remain available in the selectors;
+regions retain their own labels while their country is outlined. Language suggestions
+use the existing country-level data. No registration counts, user roster, census data,
+identity request, geolocation, or live map service is included. Review a future aggregate
+snapshot and its privacy requirements separately before adding counts.
+
+Run `node --test scripts/test_place.mjs` for migration and validation checks, then the
+existing browser state test for shared controls, region persistence, keyboard operation,
+and desktop/mobile/RTL layout. Translated additions retain their catalog's existing
+community-review status. The Office model PDF is unaffected by this hero change.
